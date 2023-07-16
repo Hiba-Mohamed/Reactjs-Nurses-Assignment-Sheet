@@ -4,7 +4,9 @@ function App() {
 
   return (
     <>
-      APP
+    <div className='bg-red-300'>
+    <h1>Hello World!</h1>
+    </div>
     </>
   )
 }
