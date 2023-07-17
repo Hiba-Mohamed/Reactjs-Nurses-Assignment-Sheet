@@ -5,8 +5,24 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend:
+    {
+
+    },
+
+    fontFamily: 
+    {
+      'nunito': ['"Nunito"', 'sans-serif'],
+    },
+  
+
+    colors:
+    {
+      'peach':'#EF798A'
+    },
+
   },
+
   plugins: [],
 }
 
