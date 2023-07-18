@@ -18,7 +18,8 @@ export default {
 
     colors:
     {
-      'peach':'#EF798A'
+      'peach':'#EF798A',
+      'green':'#68B0AB'
     },
 
   },
