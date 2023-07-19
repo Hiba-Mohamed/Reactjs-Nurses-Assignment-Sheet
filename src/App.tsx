@@ -1,6 +1,6 @@
 import Heading from "./components/header/header";
 import Footer from "./components/footer/footer";
-import WelcomPage from "./pages/welcome-page/welcome-page";
+import WelcomPage from "./pages/welcome-page";
 
 
 function App() {
