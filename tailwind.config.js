@@ -20,10 +20,12 @@ export default {
     {
       'peach':'#EF798A',
       'green':'#68B0AB',
-      'white':'#FFFFFF'
+      'white':'#FFFFFF',
+      'lgreen':'#8FC0A9'
     },
 
   },
+
 
   plugins: [],
 }
