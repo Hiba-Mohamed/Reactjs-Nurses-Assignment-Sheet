@@ -20,16 +20,16 @@ export function Heading() {
                 <div className={`${open ? "block" : "hidden"} w-full`} id="navbar-hamburger">
                     <ul className="flex flex-col items-center font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                         <li>
-                            <a href="./App" className="block py-2 pl-3 pr-4 text-gray-900 bg-blue-700 rounded dark:bg-blue-600 hover:text-green" aria-current="page">Home</a>
+                            <a href="./home" className="block py-2 pl-3 pr-4 text-gray-900 bg-blue-700 rounded dark:bg-blue-600 hover:text-green" aria-current="page">Home</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green">Create an Account</a>
+                            <a href="./account" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green">Create an Account</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green">Login</a>
+                            <a href="./login" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green">Login</a>
                         </li>
                         <li>
-                            <a href="./pages/about-page" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green">About NAS</a>
+                            <a href="./about" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green">About NAS</a>
                         </li>
                     </ul>
                 </div>

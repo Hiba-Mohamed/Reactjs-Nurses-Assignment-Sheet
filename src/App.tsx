@@ -1,14 +1,27 @@
+import Home from "./home";
+import Login from "./login";
+import AboutPage from "./about";
+import Generate from "./generateSheet";
+import {Routes, Route} from "react-router-dom";
 import Heading from "./components/header/header";
 import Footer from "./components/footer/footer";
-import WelcomPage from "./pages/welcome-page";
-
+import Account from "./account";
 
 function App() {
-  return <div>
-    <Heading />
-    <WelcomPage />
-    <Footer />
-    </div>;
+  return (
+  <div className="App">
+<Heading></Heading>
+
+<Routes>
+  <Route path="/home" element={<Home />} />
+  <Route path="/about" element={<AboutPage />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/generateSheet" element={<Generate />} />
+  <Route path="/account" element={<Account />} />
+</Routes>
+
+<Footer></Footer>
+  </div>)
 }
 
 export default App;
