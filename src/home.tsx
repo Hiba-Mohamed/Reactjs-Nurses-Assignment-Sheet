@@ -6,12 +6,10 @@ export function Home() {
   const navigate = useNavigate();
 
   const navigateToAccount = () => {
-    // 👇️ navigate to /contacts
     navigate('/account');
   };
 
   const navigateLogin = () => {
-    // 👇️ navigate to /
     navigate('/login');
   };
 
