@@ -15,11 +15,11 @@ export function Login() {
 
                         <div className="mb-4">
                         <label className="block font-semibold leading-6 text-gray-900 lg:text-xl sm:text-l">Email address</label>
-                        <input required type="email" id="email" className="mt-4 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"></input>
+                        <input required type="email" id="email" className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"></input>
                         </div>
                         <div className="">
                         <label className="block font-semibold leading-6 text-gray-900 lg:text-xl sm:text-l">Password</label>
-                        <input required type="password" id="pass" className="mt-4 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"></input>
+                        <input required type="password" id="pass" className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"></input>
                         </div>
                         <div className="">
                             <button className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 lg:text-xl sm:text-l">Login</button>
