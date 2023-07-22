@@ -6,6 +6,7 @@ import {Routes, Route} from "react-router-dom";
 import Heading from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Account from "./account";
+import CreateSheet from "./createSheet";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
   <Route path="/login" element={<Login />} />
   <Route path="/generateSheet" element={<Generate />} />
   <Route path="/account" element={<Account />} />
+  <Route path="/createSheet" element={<CreateSheet />} />
 </Routes>
 
 <Footer></Footer>
