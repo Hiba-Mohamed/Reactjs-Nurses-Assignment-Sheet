@@ -6,7 +6,11 @@ export function AboutPage() {
     >
       <div className="backdrop-blur-sm font-nunito flex flex-col relative max-w-5xl mx-auto pt-20 sm:pt-12 lg:pt-18">
         <div className="flex flex-row items-center">
-          <img className="w-44" src="./images/NAS-logo.png" alt="" />
+          <img
+            className="w-44"
+            src="./images/NAS-logo.png"
+            alt="Nurses Assignment Sheet logo"
+          />
           <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
             {" "}
             What is the NAS?
@@ -32,7 +36,7 @@ export function AboutPage() {
 
       <div className="backdrop-blur-sm font-nunito flex flex-col relative max-w-5xl mx-auto pt-20 sm:pt-12 lg:pt-18">
         <div className="flex flex-row items-center">
-          <img className="w-44" src="./images/why-pic.png" alt="" />
+          <img className="w-44" src="./images/why-pic.png" alt="A picture of question marks" />
           <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
             Why Use the NAS?
           </h3>
@@ -86,7 +90,7 @@ export function AboutPage() {
       <div>
         <div className="backdrop-blur-sm font-nunito flex flex-col relative max-w-5xl mx-auto pt-20 sm:pt-12 lg:pt-18 my-8">
           <div className="flex flex-row items-center">
-            <img className="w-44" src="./images/feature-pic.png" alt="" />
+            <img className="w-44" src="./images/feature-pic.png" alt="A picture of a light bulb" />
             <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
               The unique features of the NAS:
             </h3>

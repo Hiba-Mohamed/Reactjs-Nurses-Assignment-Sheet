@@ -5,7 +5,11 @@ export function Account() {
       style={{ backgroundImage: `url('images/banner-pic.png')` }}
     >
       <div className="flex flex-col items-center">
-        <img src="./images/NAS-logo.png" className="w-24" alt="" />
+        <img
+          src="./images/NAS-logo.png"
+          className="w-24"
+          alt="Nurses Assignment Sheet logo"
+        />
         <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.04em] text-black sm:text-5xl sm:leading-[3.5rem]">
           Create an Account
         </h2>

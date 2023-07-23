@@ -9,7 +9,7 @@ export function Heading() {
           <img
             src="./images/NAS-logo.png"
             className="h-16 mr-3"
-            alt="Flowbite Logo"
+            alt="Nurses Assignment Sheet logo"
           />
         </a>
         <button
