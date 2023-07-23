@@ -49,6 +49,26 @@ export function CreateSheet() {
             ></input>
           </div>
 
+          <div id="all-patients">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Assigned Patients Details:
+            </label>
+            <div className="flex flex-row items-center my-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
+              <input
+                className="w-24 appearance-none focus:outline-none w-full"
+                type="text"
+                id="room"
+                placeholder="Room"
+              ></input>
+              <input
+                className="w-24 appearance-none focus:outline-none p-0"
+                type="text"
+                id="patient"
+                placeholder="Patient"
+              ></input>
+            </div>
+          </div>
+
           <div className="flex items-center justify-between">
             <button
               className="bg-lgreen hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
