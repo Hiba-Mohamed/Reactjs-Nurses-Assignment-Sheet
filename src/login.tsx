@@ -35,12 +35,19 @@ export function Login() {
               ></input>
             </div>
             <div className="">
-              <button className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 lg:text-xl sm:text-l">
+              <a
+                className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-xl sm:text-l"
+                href="/createSheet"
+              >
                 Login
-              </button>
-              <button className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-xl sm:text-l">
-                <a href="/createSheet">Login as a guest</a>
-              </button>
+              </a>
+
+              <a
+                className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-xl sm:text-l"
+                href="/createSheet"
+              >
+                Login as a guest
+              </a>
             </div>
             <div className="flex items-center flex-col">
               <a className="hover:text-green" href="#">
