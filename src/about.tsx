@@ -11,13 +11,13 @@ export function AboutPage() {
             src="./images/NAS-logo.png"
             alt="Nurses Assignment Sheet logo"
           />
-          <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
+          <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
             {" "}
             What is the NAS?
           </h3>
         </div>
 
-        <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight dark:text-white p-4 text-grey opacity-60">
+        <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight p-4 text-grey opacity-60">
           <p className="my-4">
             The NAS (Nurses Assignment Sheet) is an electronic document that
             replaces the paper based nurses assignment sheet used in some
@@ -37,12 +37,12 @@ export function AboutPage() {
       <div className="backdrop-blur-sm font-nunito flex flex-col relative max-w-5xl mx-auto pt-20 sm:pt-12 lg:pt-18">
         <div className="flex flex-row items-center">
           <img className="w-44" src="./images/why-pic.png" alt="A picture of question marks" />
-          <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
+          <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
             Why Use the NAS?
           </h3>
         </div>
 
-        <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight dark:text-white p-4 text-grey">
+        <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight p-4 text-grey">
           <p className="my-4">
             Using the NAS offers several advantages including, but not limited
             to:
@@ -91,13 +91,13 @@ export function AboutPage() {
         <div className="backdrop-blur-sm font-nunito flex flex-col relative max-w-5xl mx-auto pt-20 sm:pt-12 lg:pt-18 my-8">
           <div className="flex flex-row items-center">
             <img className="w-44" src="./images/feature-pic.png" alt="A picture of a light bulb" />
-            <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
+            <h3 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
               The unique features of the NAS:
             </h3>
           </div>
 
           <div className="flex flex-col">
-            <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight dark:text-white p-4 text-grey">
+            <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight p-4 text-grey">
               <h4 className="text-green font-bold my-4">Regulated access</h4>
               <p className="opacity-60">
                 Electronic nurses' assignment sheets offer regulated access,
@@ -109,7 +109,7 @@ export function AboutPage() {
               </p>
             </div>
 
-            <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight dark:text-white p-4 text-grey">
+            <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight p-4 text-grey">
               <h4 className="text-green font-bold my-4">
                 Creating Electronic Sheets for Future Dates
               </h4>
@@ -123,7 +123,7 @@ export function AboutPage() {
               </p>
             </div>
 
-            <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight dark:text-white p-4 text-grey">
+            <div className="text-nunito-400 text-2xl sm:text-3xl lg:text-4xl tracking-tight p-4 text-grey">
               <h4 className="text-green font-bold my-4">
                 Duplication Safeguards
               </h4>

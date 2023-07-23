@@ -17,7 +17,7 @@ export function Home() {
             alt="A picture of two pictures, on the left two nurses in nursing station, and on the right a picture of a nurse caring for a patient"
           />
 
-          <p className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
+          <p className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
             Generate electronic Nurses Assignment Sheets now using NAS
           </p>
 
