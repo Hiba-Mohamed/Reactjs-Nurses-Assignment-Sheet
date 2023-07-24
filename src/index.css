@@ -3,3 +3,19 @@
 @tailwind utilities;
 
 
+.react-datepicker__header {
+    background-color: #68B0AB;
+    /* Replace with your desired background color */
+    color: #fff;
+    /* Replace with your desired text color */
+    font-weight: 600;
+    /* Optionally adjust font-weight to make it bold or normal */
+}
+
+.react-datepicker__header .react-datepicker__current-month,
+.react-datepicker__header .react-datepicker__day-name {
+    color: #fff;
+    /* Set header text color to white */
+    font-weight: 600;
+    /* Optionally adjust font-weight to make it bold or normal */
+}
