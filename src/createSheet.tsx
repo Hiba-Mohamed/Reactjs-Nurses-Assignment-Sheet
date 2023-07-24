@@ -1,7 +1,30 @@
+import DatePickerComponent from "./datePickerComponent";
+
 export function CreateSheet() {
   return (
     <div className="font-nunito relative flex flex-1 flex-col overflow-hidden justify-center items-center mb-12">
       <div className="w-full max-w-xs">
+        <div>
+          <p>Select a date for the shift</p>
+          <DatePickerComponent />
+        </div>
+        <div>
+          <p> Specify shift type</p>
+          <div className="flex items-center justify-between">
+            <button
+              className="bg-lgreen hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              Day Shift
+            </button>
+            <button
+              className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              Night Shift
+            </button>
+          </div>
+        </div>
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 my-4">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
