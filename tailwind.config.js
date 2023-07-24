@@ -7,7 +7,14 @@ export default {
   theme: {
     extend:
     {
-
+          colors:
+    {
+      'peach':'#EF798A',
+      'green':'#68B0AB',
+      'white':'#FFFFFF',
+      'lgreen':'#8FC0A9'
+    },
+    
     },
 
     fontFamily: 
@@ -16,13 +23,7 @@ export default {
     },
   
 
-    colors:
-    {
-      'peach':'#EF798A',
-      'green':'#68B0AB',
-      'white':'#FFFFFF',
-      'lgreen':'#8FC0A9'
-    },
+
 
   },
 

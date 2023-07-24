@@ -19,7 +19,7 @@ const DatePickerComponent: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-xl font-bold mb-4">Date Picker Example</h3>
+      <h3 className="text-xl font-bold mb-4">Select A Date for the Shift:</h3>
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}

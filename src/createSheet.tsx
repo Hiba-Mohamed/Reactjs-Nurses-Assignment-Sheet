@@ -5,24 +5,26 @@ export function CreateSheet() {
     <div className="font-nunito relative flex flex-1 flex-col overflow-hidden justify-center items-center mb-12">
       <div className="w-full max-w-xs">
         <div>
-          <p>Select a date for the shift</p>
           <DatePickerComponent />
         </div>
         <div>
-          <p> Specify shift type</p>
+          <h3 className="text-xl font-bold mb-4">Specify a Shift Type:</h3>
           <div className="flex items-center justify-between">
-            <button
-              className="bg-lgreen hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-            >
+            <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
               Day Shift
-            </button>
-            <button
-              className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-            >
-              Night Shift
-            </button>
+            </span>
+            <label className="relative inline-flex items-center mr-5 cursor-pointer">
+              <input
+                type="checkbox"
+                value=""
+                className="sr-only peer"
+                checked
+              />
+              <div className="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-800 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-800"></div>
+              <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                purple-800
+              </span>
+            </label>
           </div>
         </div>
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 my-4">
