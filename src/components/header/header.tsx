@@ -3,8 +3,8 @@ import { useState } from "react";
 export function Heading() {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="border-gray-200 bg-gray-50">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="border-gray-200 bg-gray-50 mb-6">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
         <a href="/home" className="flex items-center">
           <img
             src="./images/NAS-logo.png"
