@@ -45,7 +45,7 @@ export function Heading() {
             <li>
               <a
                 href="./home"
-                className="block py-2 pl-3 pr-4 text-gray-900 bg-blue-700 rounded"
+                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
                 aria-current="page"
               >
                 Home
