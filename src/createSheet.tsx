@@ -1,5 +1,5 @@
 import DatePickerComponent from "./datePickerComponent";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, UseFormReturn } from "react-hook-form";
 
 interface IFormInput {
   nurseName: string;
@@ -12,7 +12,11 @@ interface IFormInput {
 }
 
 export function CreateSheet() {
-  const { register, handleSubmit } = useForm<IFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   return (
@@ -53,10 +57,19 @@ export function CreateSheet() {
               Nurse's name
             </label>
             <input
-              {...register("nurseName", { required: true, maxLength: 20 })}
+              {...register("nurseName", { required: true, maxLength: 30 })}
               type="text"
               className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
             ></input>
+            {errors?.nurseName?.type === "required" && (
+              <p className="text-peach">This field is required</p>
+            )}
+            {errors?.nurseName?.type === "maxLength" && (
+              <p className="text-peach">
+               Nurse's name cannot exceed 30 characters
+              </p>
+            )}
+
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -130,7 +143,7 @@ export function CreateSheet() {
             </button>
             <button
               className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              type="submit"
             >
               Add nurse
             </button>
