@@ -1,9 +1,9 @@
 import DatePickerComponent from "./datePickerComponent";
-import { useForm, SubmitHandler, UseFormReturn } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 interface IFormInput {
   nurseName: string;
-  nurseBreak: number;
+  nurseBreak: string;
   reliefName: string;
   extraDuties: string;
   fireCode: string;
@@ -66,20 +66,25 @@ export function CreateSheet() {
             )}
             {errors?.nurseName?.type === "maxLength" && (
               <p className="text-peach">
-               Nurse's name cannot exceed 30 characters
+                Nurse's name cannot exceed 30 characters
               </p>
             )}
-
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Nurse's break
             </label>
-            <input
-              {...register("nurseBreak", { required: true, min: 1, max: 3 })}
-              type="text"
+            <select
+              {...register("nurseBreak", { required: true })}
               className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-            ></input>
+            >
+              <option value="First">First</option>
+              <option value="Second">Second</option>
+              <option value="Third">Third</option>
+            </select>{" "}
+            {errors?.nurseBreak?.type === "required" && (
+              <p className="text-peach">This field is required</p>
+            )}
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -90,26 +95,47 @@ export function CreateSheet() {
               type="text"
               className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
             ></input>
+            {errors?.reliefName?.type === "required" && (
+              <p className="text-peach">This field is required</p>
+            )}
+            {errors?.reliefName?.type === "maxLength" && (
+              <p className="text-peach">
+                Nurse's name cannot exceed 30 characters
+              </p>
+            )}
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Extra Duties
             </label>
             <input
-              {...register("extraDuties", { required: true, maxLength: 20 })}
+              {...register("extraDuties", { required: false, maxLength: 40 })}
               type="text"
               className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
             ></input>
+            {errors?.extraDuties?.type === "maxLength" && (
+              <p className="text-peach">
+                Nurse's name cannot exceed 40 characters
+              </p>
+            )}
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Fire Code
             </label>
-            <input
-              {...register("fireCode", { required: true, maxLength: 1 })}
-              type="text"
+            <select
+              {...register("fireCode", { required: true })}
               className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-            ></input>
+            >
+              <option value="R">R</option>
+              <option value="A">A</option>
+              <option value="C">C</option>
+              <option value="E">E</option>
+            </select>{" "}
+            {errors?.fireCode?.type === "required" && (
+              <p className="text-peach">This field is required</p>
+            )}
+
           </div>
 
           <div id="all-patients">
@@ -118,14 +144,14 @@ export function CreateSheet() {
             </label>
             <div className="flex flex-row items-center my-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
               <input
-                {...register("patientRoom", { required: true, maxLength: 20 })}
+                {...register("patientRoom", { required: false, maxLength: 20 })}
                 className="w-24 appearance-none focus:outline-none w-full"
                 type="text"
                 id="room"
                 placeholder="Room"
               ></input>
               <input
-                {...register("patientName", { required: true, maxLength: 20 })}
+                {...register("patientName", { required: false, maxLength: 20 })}
                 className="w-24 appearance-none focus:outline-none p-0"
                 type="text"
                 id="patient"
