@@ -2,6 +2,7 @@ import DatePickerComponent from "./datePickerComponent";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 interface IFormInput {
+  unit:string;
   nurseName: string;
   nurseBreak: string;
   reliefName: string;
@@ -21,12 +22,26 @@ export function CreateSheet() {
 
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
-      <p className="text-center font-bold text-xl my-4">
-        To get started, please select a shift date and type. Then add nurses and
-        patients.
-      </p>
       <div className="flex flex-row flex-wrap justify-evenly">
         <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 m-4">
+          <div className="mb-4 flex flex-col justify-center">
+            <label className="font-bold text-xl">
+              Unit's name:
+            </label>
+            <input
+              {...register("unit", { required: true, maxLength: 30 })}
+              type="text"
+              className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 shadow-sm sm:text-md focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200 my-10"
+            ></input>
+            {errors?.nurseName?.type === "required" && (
+              <p className="text-peach">This field is required</p>
+            )}
+            {errors?.nurseName?.type === "maxLength" && (
+              <p className="text-peach">
+                Unit's name cannot exceed 30 characters
+              </p>
+            )}
+          </div>
           <div className="mb-14">
             <DatePickerComponent />
           </div>
@@ -53,7 +68,7 @@ export function CreateSheet() {
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
         >
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-gray-700 text-md font-bold mb-2">
               Nurse's name
             </label>
             <input
@@ -73,7 +88,7 @@ export function CreateSheet() {
 
           <div className="flex flex-row">
             <div className="mb-6 basis-1/2 mr-2">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-md font-bold mb-2">
                 Nurse's break
               </label>
               <select
@@ -89,7 +104,7 @@ export function CreateSheet() {
               )}
             </div>
             <div className="mb-6 basis-1/2 ml-2">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-md font-bold mb-2">
                 Nurse's relief
               </label>
               <input
@@ -107,44 +122,43 @@ export function CreateSheet() {
               )}
             </div>
           </div>
-                    <div className="flex flex-row">
-
-          <div className="mb-6 basis-1/2 mr-2">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Extra Duties
-            </label>
-            <input
-              {...register("extraDuties", { required: false, maxLength: 40 })}
-              type="text"
-              className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-            ></input>
-            {errors?.extraDuties?.type === "maxLength" && (
-              <p className="text-peach">
-                Extra Duties cannot exceed 40 characters
-              </p>
-            )}
-          </div>
-          <div className="mb-6 basis-1/2 ml-2">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Fire Code
-            </label>
-            <select
-              {...register("fireCode", { required: true })}
-              className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-            >
-              <option value="R">R</option>
-              <option value="A">A</option>
-              <option value="C">C</option>
-              <option value="E">E</option>
-            </select>{" "}
-            {errors?.fireCode?.type === "required" && (
-              <p className="text-peach">This field is required</p>
-            )}
-          </div>
+          <div className="flex flex-row">
+            <div className="mb-6 basis-1/2 mr-2">
+              <label className="block text-gray-700 text-md font-bold mb-2">
+                Extra Duties
+              </label>
+              <input
+                {...register("extraDuties", { required: false, maxLength: 40 })}
+                type="text"
+                className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+              ></input>
+              {errors?.extraDuties?.type === "maxLength" && (
+                <p className="text-peach">
+                  Extra Duties cannot exceed 40 characters
+                </p>
+              )}
+            </div>
+            <div className="mb-6 basis-1/2 ml-2">
+              <label className="block text-gray-700 text-md font-bold mb-2">
+                Fire Code
+              </label>
+              <select
+                {...register("fireCode", { required: true })}
+                className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+              >
+                <option value="R">R</option>
+                <option value="A">A</option>
+                <option value="C">C</option>
+                <option value="E">E</option>
+              </select>{" "}
+              {errors?.fireCode?.type === "required" && (
+                <p className="text-peach">This field is required</p>
+              )}
+            </div>
           </div>
 
           <div id="all-patients">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="block text-gray-700 text-md font-bold mb-2">
               Assigned Patients Details:
             </label>
             <div className="flex flex-row items-center my-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
@@ -187,7 +201,8 @@ export function CreateSheet() {
 
 export default CreateSheet;
 
-const shift = {
+const unit = {
+  shift: {
   date: "1/August/2023",
   type: "Night",
   staff: {
@@ -226,4 +241,5 @@ const shift = {
       },
     },
   },
+}
 };
