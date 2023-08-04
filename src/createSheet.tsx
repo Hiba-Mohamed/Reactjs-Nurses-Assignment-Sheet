@@ -2,9 +2,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import ShiftComponent from "./shiftcomponent";
 
 interface IFormInput {
-  unit: string;
-  shiftDate: string;
-  shiftType: string;
   nurseName: string;
   nurseBreak: string;
   reliefName: string;
