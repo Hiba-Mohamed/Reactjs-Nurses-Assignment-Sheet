@@ -37,7 +37,7 @@ export function UnitView ()
                 alt=""
               />
               <p className="text-lg rounded-lg p-2 bg-lgreen text-white font-bold mt-2">
-                View Shift History
+                Past/Future shifts
               </p>
             </a>
           </div>

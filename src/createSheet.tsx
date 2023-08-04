@@ -1,9 +1,9 @@
-import DatePickerComponent from "./datePickerComponent";
 import { useForm, SubmitHandler } from "react-hook-form";
+import ShiftComponent from "./shiftcomponent";
 
 interface IFormInput {
   unit: string;
-  shiftDate: Number;
+  shiftDate: string;
   shiftType: string;
   nurseName: string;
   nurseBreak: string;
@@ -20,7 +20,9 @@ export function CreateSheet() {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    
+    console.log(data)};
 
   // function createUnitObject (){
 
@@ -83,52 +85,7 @@ export function CreateSheet() {
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
       <div className="flex flex-row flex-wrap justify-evenly">
-        <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 m-4">
-          <div className="mb-4 flex flex-col justify-center">
-            <label className="font-bold text-xl">Unit's name:</label>
-            <input
-              {...register("unit", { required: true, maxLength: 30 })}
-              type="text"
-              className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 shadow-sm sm:text-md focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-              id="unit-name"
-            ></input>
-            {errors?.nurseName?.type === "required" && (
-              <p className="text-peach">This field is required</p>
-            )}
-            {errors?.nurseName?.type === "maxLength" && (
-              <p className="text-peach">
-                Unit's name cannot exceed 30 characters
-              </p>
-            )}
-          </div>
-          <div className="mb-14">
-            <DatePickerComponent />
-          </div>
-          <div className="mb-6 basis-1/2 mr-2">
-            <label className="font-bold text-xl">Shift Type:</label>
-            <select
-              {...register("shiftType", { required: true })}
-              className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-              id="shift-type"
-            >
-              <option value=""></option>
-              <option value="Day Shift">Day Shift</option>
-              <option value="Night Shift">Night Shift</option>
-            </select>{" "}
-            {errors?.shiftType?.type === "required" && (
-              <p className="text-peach">
-                {errors?.shiftType?.message || "This field is required"}
-              </p>
-            )}
-          </div>
-          <button
-            className="flex justify-center items-center mx-auto bg-green hover:bg-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-            id="unit-shift-button"
-          >
-            Submit
-          </button>
-        </div>
+      <ShiftComponent />
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
