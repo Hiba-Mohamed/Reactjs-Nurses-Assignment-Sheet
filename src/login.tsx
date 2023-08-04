@@ -44,7 +44,7 @@ export function Login() {
 
               <a
                 className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-xl sm:text-l"
-                href="/createSheet"
+                href="/unitView"
               >
                 Login as a guest
               </a>
