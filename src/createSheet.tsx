@@ -82,7 +82,7 @@ export function CreateSheet() {
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
       <div className="flex flex-row flex-wrap justify-evenly">
-      <ShiftComponent />
+        <ShiftComponent />
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
