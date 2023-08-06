@@ -1,6 +1,4 @@
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -11,11 +9,15 @@ interface IFormInput {
   shiftType: string;
 }
 
+interface IUnitShiftData {
+  unitName: string;
+  shiftDate: Date;
+  shiftType: string;
+}
+
 const ShiftComponent: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [unitShiftData, setUnitShiftData] = useState<
-    Array<{ id: number; text: string }>
-  >([]);
+  const [unitShiftData, setUnitShiftData] = useState<IUnitShiftData[]>([]);
   const [nameOfUnit, setNameOfUnit] = useState("");
   const [typeOfShift, setTypeOfShift] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -30,19 +32,32 @@ const ShiftComponent: React.FC = () => {
     formState: { errors },
   } = useForm<IFormInput>();
 
+  useEffect(() => {
+    // Retrieve unit shift data from local storage and set it to state
+    const storedUnitShiftData = JSON.parse(
+      localStorage.getItem("unitShiftData") || "[]"
+    );
+    setUnitShiftData(storedUnitShiftData);
+  }, []);
+
   const onSubmit: SubmitHandler<IFormInput> = (data, event) => {
     event?.preventDefault();
     console.log(data);
 
-    const formattedDate = selectedDate ? selectedDate.toLocaleDateString() : "";
-    console.log("Selected Date:", formattedDate);
-
-    const newShiftData = {
-      id: unitShiftData.length + 1,
-      text: `${nameOfUnit} - ${typeOfShift} - ${formattedDate}`,
+    const newShiftData: IUnitShiftData = {
+      unitName: nameOfUnit,
+      shiftDate: selectedDate || new Date(),
+      shiftType: typeOfShift,
     };
 
+    // Update the unit shift data in state
     setUnitShiftData([...unitShiftData, newShiftData]);
+
+    // Save the updated unit shift data to local storage
+    localStorage.setItem(
+      "unitShiftData",
+      JSON.stringify([...unitShiftData, newShiftData])
+    );
 
     // Update the formSubmitted state to true after submission
     setFormSubmitted(true);
@@ -60,11 +75,22 @@ const ShiftComponent: React.FC = () => {
       {formSubmitted ? (
         <div className="mt-8">
           <ul>
-            <div className="w-screen flex flex-col items-center justify-center text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center m-4">
-              <p>{nameOfUnit}</p>
-              <p>{selectedDate?.toLocaleDateString() || "N/A"}</p>
-              <p>{typeOfShift}</p>
-            </div>
+            {unitShiftData.length > 0 && (
+              <div className="w-screen flex flex-col items-center justify-center text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center m-4">
+                <ul>
+                  {unitShiftData.map((shift, index) => (
+                    <li key={index} className="mb-2">
+                      <p>Unit: {shift.unitName}</p>
+                      <p>
+                        Date: {" "}
+                        {new Date(shift.shiftDate).toLocaleDateString()}
+                      </p>
+                      <p>{shift.shiftType}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </ul>
         </div>
       ) : (
