@@ -1,13 +1,14 @@
-import Home from "./home";
-import Login from "./login";
-import AboutPage from "./about";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import AboutPage from "./pages/about";
 import { Routes, Route } from "react-router-dom";
 import Heading from "./components/header/header";
 import Footer from "./components/footer/footer";
-import Account from "./account";
-import CreateSheet from "./createSheet";
-import { UnitView } from "./unitView";
-import { ShiftHistory } from "./shiftHistory";
+import Account from "./pages/account";
+import ViewSheet from "./pages/viewSheet";
+import UnitNav from "./components/unitNav";
+import { ShiftHistory } from "./pages/shiftHistory";
+import { StartSheet } from "./pages/startSheet";
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/createSheet" element={<CreateSheet />} />
-        <Route path="/unitView" element={<UnitView />} />
+        <Route path="/viewSheet" element={<ViewSheet />} />
+        <Route path="/unitNav" element={<UnitNav />} />
         <Route path="/shiftHistory" element={<ShiftHistory />} />
+        <Route path="/startSheet" element={<StartSheet />} />
       </Routes>
 
       <Footer />

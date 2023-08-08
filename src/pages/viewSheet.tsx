@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import ShiftComponent from "./shiftcomponent";
+import ShiftForm from "../components/shiftForm";
 
 interface IFormInput {
   nurseName: string;
@@ -11,15 +11,15 @@ interface IFormInput {
   patientRoom: string;
 }
 
-export function CreateSheet() {
+export function ViewSheet() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    
-    console.log(data)};
+    console.log(data);
+  };
 
   // function createUnitObject (){
 
@@ -82,7 +82,7 @@ export function CreateSheet() {
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
       <div className="flex flex-row flex-wrap justify-evenly">
-        <ShiftComponent />
+        <ShiftForm />
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
@@ -226,4 +226,4 @@ export function CreateSheet() {
   );
 }
 
-export default CreateSheet;
+export default ViewSheet;

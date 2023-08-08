@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -15,10 +15,12 @@ interface IUnitShiftData {
   shiftType: string;
 }
 
-const ShiftComponent: React.FC = () => {
+const ShiftForm = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [unitShiftData, setUnitShiftData] = useState<IUnitShiftData[]>([]);
-  const [nameOfUnit, setNameOfUnit] = useState("");
+  const [unitShiftData, setUnitShiftData] = useState<IUnitShiftData[]>(JSON.parse(
+       localStorage.getItem("unitShiftData") || "[]"
+)); 
+ const [nameOfUnit, setNameOfUnit] = useState("");
   const [typeOfShift, setTypeOfShift] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -32,13 +34,7 @@ const ShiftComponent: React.FC = () => {
     formState: { errors },
   } = useForm<IFormInput>();
 
-  useEffect(() => {
-    // Retrieve unit shift data from local storage and set it to state
-    const storedUnitShiftData = JSON.parse(
-      localStorage.getItem("unitShiftData") || "[]"
-    );
-    setUnitShiftData(storedUnitShiftData);
-  }, []);
+
 
   const onSubmit: SubmitHandler<IFormInput> = (data, event) => {
     event?.preventDefault();
@@ -72,7 +68,6 @@ const ShiftComponent: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-evenly">
-      {formSubmitted ? (
         <div className="mt-8">
           <ul>
             {unitShiftData.length > 0 && (
@@ -93,7 +88,7 @@ const ShiftComponent: React.FC = () => {
             )}
           </ul>
         </div>
-      ) : (
+      
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
@@ -158,9 +153,8 @@ const ShiftComponent: React.FC = () => {
             Submit
           </button>
         </form>
-      )}
     </div>
   );
 };
 
-export default ShiftComponent;
+export default ShiftForm;

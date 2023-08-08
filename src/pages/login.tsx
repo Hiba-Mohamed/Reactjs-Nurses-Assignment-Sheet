@@ -36,15 +36,15 @@ export function Login() {
             </div>
             <div className="">
               <a
-                className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-xl sm:text-l"
-                href="/createSheet"
+                className="inline-flex justify-center rounded-lg border border-green font-semibold py-2.5 px-4 bg-nunito-900 text-green hover:bg-nunito-700 w-full bg-white mt-6 mb-2 lg:text-xl sm:text-l"
+                href="/unitNav"
               >
                 Login
               </a>
 
               <a
                 className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-xl sm:text-l"
-                href="/unitView"
+                href="/unitNav"
               >
                 Login as a guest
               </a>
@@ -57,7 +57,7 @@ export function Login() {
                 <p className="lg:text-xl sm:text-l hover:text-green">
                   No account?
                 </p>
-                <button className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mb-6 lg:text-xl sm:text-l">
+                <button className="inline-flex justify-center rounded-lg border border-green font-semibold py-2.5 px-4 bg-nunito-900 text-green hover:bg-nunito-700 w-full bg-white mt-6 mb-2 lg:text-xl sm:text-l">
                   <a href="/account">Create an Account</a>
                 </button>
               </div>

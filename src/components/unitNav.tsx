@@ -1,4 +1,4 @@
-export function UnitView ()
+export default function UnitNav ()
 {
     return (
       <div className="font-nunito">
@@ -13,7 +13,7 @@ export function UnitView ()
         <div className="flex flex-row flex-wrap justify-evenly mt-10 mb-40">
           <div>
             <a
-              href="/createSheet"
+              href="/startSheet"
               className="flex flex-col items-center justify-center"
             >
               <img
@@ -21,7 +21,7 @@ export function UnitView ()
                 src="images/create-logo.png"
                 alt=""
               />
-              <p className="text-lg rounded-lg p-2 bg-lgreen text-white font-bold mt-2">
+              <p className="text-lg rounded-lg p-2 bg-white text-green font-bold mt-2">
                 Create A New Shift
               </p>
             </a>
@@ -36,7 +36,7 @@ export function UnitView ()
                 src="images/history-logo.png"
                 alt=""
               />
-              <p className="text-lg rounded-lg p-2 bg-lgreen text-white font-bold mt-2">
+              <p className="text-lg rounded-lg p-2 bg-white text-green font-bold mt-2">
                 Past/Future shifts
               </p>
             </a>
@@ -45,3 +45,4 @@ export function UnitView ()
       </div>
     );
 }
+
