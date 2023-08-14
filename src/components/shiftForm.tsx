@@ -1,4 +1,3 @@
-import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
@@ -12,11 +11,6 @@ interface IUnitShiftData {
 }
 
 const ShiftForm = () => {
-  const [startShiftData, setStartShiftData] = useState<IUnitShiftData[]>(
-    JSON.parse(localStorage.getItem("startShiftData") || "[]")
-  );
-
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const {
     register,
@@ -29,14 +23,15 @@ const ShiftForm = () => {
     event?.preventDefault();
     console.log(data);
 
-    // Update the unit shift data in state
-    setStartShiftData([...startShiftData]);
+    // Retrieve existing data from localStorage or create an empty array
+    const existingDataJSON = localStorage.getItem("startShiftDataArray");
+    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-    // Save the updated unit shift data to local storage
-    localStorage.setItem("startShiftData", JSON.stringify([...startShiftData]));
+    // Add the new data to the array
+    existingData.push(data);
 
-    // Update the formSubmitted state to true after submission
-    setFormSubmitted(true);
+    // Store the updated array back in localStorage
+    localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
   };
 
   // Function to disable past dates (including today)
@@ -48,26 +43,6 @@ const ShiftForm = () => {
 
   return (
     <div className="flex flex-col justify-evenly">
-      <div className="mt-8">
-        <ul>
-          {startShiftData.length > 0 && (
-            <div className="w-screen flex flex-col items-center justify-center text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center m-4">
-              <ul>
-                {startShiftData.map((shift, index) => (
-                  <li key={index} className="mb-2">
-                    <p>Unit: {shift.unitName}</p>
-                    <p>
-                      Date: {new Date(shift.shiftDate).toLocaleDateString()}
-                    </p>
-                    <p>{shift.shiftType}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </ul>
-      </div>
-
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
@@ -97,9 +72,9 @@ const ShiftForm = () => {
               name="shiftDate"
               render={({ field }) => (
                 <DatePicker
-                  placeholderText="Select date"
+                  placeholderText=""
                   onChange={(date) => field.onChange(date)}
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   filterDate={disablePastDates} // Apply the validation function
                   selected={field.value}
                 />
