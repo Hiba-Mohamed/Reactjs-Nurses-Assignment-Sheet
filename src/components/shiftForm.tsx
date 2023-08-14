@@ -1,13 +1,9 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { Controller, useForm, SubmitHandler } from "react-hook-form";
 
-interface IFormInput {
-  unit: string;
-  shiftDate: Date;
-  shiftType: string;
-}
+
 
 interface IUnitShiftData {
   unitName: string;
@@ -16,32 +12,28 @@ interface IUnitShiftData {
 }
 
 const ShiftForm = () => {
-  const [unitShiftData, setUnitShiftData] = useState<IUnitShiftData[]>(JSON.parse(
-       localStorage.getItem("unitShiftData") || "[]"
-)); 
+  const [unitShiftData, setUnitShiftData] = useState<IUnitShiftData[]>(
+    JSON.parse(localStorage.getItem("unitShiftData") || "[]")
+  );
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<IUnitShiftData>();
 
-
-
-  const onSubmit: SubmitHandler<IFormInput> = (data, event) => {
+  const onSubmit: SubmitHandler<IUnitShiftData> = (data, event) => {
     event?.preventDefault();
     console.log(data);
 
     // Update the unit shift data in state
-    setUnitShiftData([...unitShiftData ]);
+    setUnitShiftData([...unitShiftData]);
 
     // Save the updated unit shift data to local storage
-    localStorage.setItem(
-      "unitShiftData",
-      JSON.stringify([...unitShiftData])
-    );
+    localStorage.setItem("unitShiftData", JSON.stringify([...unitShiftData]));
 
     // Update the formSubmitted state to true after submission
     setFormSubmitted(true);
@@ -84,14 +76,14 @@ const ShiftForm = () => {
         <div className="mb-4 flex flex-col justify-center">
           <label className="font-bold text-xl">Unit's name:</label>
           <input
-            {...register("unit", { required: true, maxLength: 30 })}
+            {...register("unitName", { required: true, maxLength: 30 })}
             type="text"
             className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 shadow-sm sm:text-md focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
           ></input>
-          {errors?.unit?.type === "required" && (
+          {errors?.unitName?.type === "required" && (
             <p className="text-peach">This field is required</p>
           )}
-          {errors?.unit?.type === "maxLength" && (
+          {errors?.unitName?.type === "maxLength" && (
             <p className="text-peach">
               Unit's name cannot exceed 30 characters
             </p>
@@ -100,11 +92,18 @@ const ShiftForm = () => {
         <div className="mb-14">
           <div>
             <h3 className="text-xl font-bold mb-4">Shift Date:</h3>
-            <DatePicker
-              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              filterDate={disablePastDates} // Apply the validation function
-              {...register("shiftDate", { required: true })}
-              id="shift-date"
+            <Controller
+              control={control}
+              name="shiftDate"
+              render={({ field }) => (
+                <DatePicker
+                  placeholderText="Select date"
+                  onChange={(date) => field.onChange(date)}
+                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  filterDate={disablePastDates} // Apply the validation function
+                  selected={field.value}
+                />
+              )}
             />
           </div>
         </div>
@@ -127,7 +126,6 @@ const ShiftForm = () => {
         <button
           className="flex justify-center items-center mx-auto bg-green hover:bg-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
-          id="unit-shift-button"
         >
           Submit
         </button>
