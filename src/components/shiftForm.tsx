@@ -1,7 +1,8 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 
 interface IUnitShiftData {
@@ -11,6 +12,8 @@ interface IUnitShiftData {
 }
 
 const ShiftForm = () => {
+
+   const navigate = useNavigate();
 
   const {
     register,
@@ -32,6 +35,11 @@ const ShiftForm = () => {
 
     // Store the updated array back in localStorage
     localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
+
+        const uniqueId = uuidv4(); // Generate a unique ID using uuid
+
+        // Redirect to the new page with the unique ID
+        navigate(`/manageStaff/${uniqueId}`);
   };
 
   // Function to disable past dates (including today)

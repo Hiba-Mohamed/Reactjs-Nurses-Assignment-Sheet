@@ -1,5 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import ShiftForm from "../components/shiftForm";
+import { useParams } from "react-router-dom";
+
+
 
 interface IFormInput {
   nurseName: string;
@@ -12,6 +14,9 @@ interface IFormInput {
 }
 
 export function NurseForm() {
+
+    const { uniqueId } = useParams();
+
   const {
     register,
     handleSubmit,
@@ -82,7 +87,7 @@ export function NurseForm() {
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
       <div className="flex flex-row flex-wrap justify-evenly">
-        <ShiftForm />
+        <h1>Viewing Sheet for ID: {uniqueId}</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
