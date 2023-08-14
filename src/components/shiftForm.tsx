@@ -12,8 +12,8 @@ interface IUnitShiftData {
 }
 
 const ShiftForm = () => {
-  const [unitShiftData, setUnitShiftData] = useState<IUnitShiftData[]>(
-    JSON.parse(localStorage.getItem("unitShiftData") || "[]")
+  const [startShiftData, setStartShiftData] = useState<IUnitShiftData[]>(
+    JSON.parse(localStorage.getItem("startShiftData") || "[]")
   );
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -30,10 +30,10 @@ const ShiftForm = () => {
     console.log(data);
 
     // Update the unit shift data in state
-    setUnitShiftData([...unitShiftData]);
+    setStartShiftData([...startShiftData]);
 
     // Save the updated unit shift data to local storage
-    localStorage.setItem("unitShiftData", JSON.stringify([...unitShiftData]));
+    localStorage.setItem("startShiftData", JSON.stringify([...startShiftData]));
 
     // Update the formSubmitted state to true after submission
     setFormSubmitted(true);
@@ -50,10 +50,10 @@ const ShiftForm = () => {
     <div className="flex flex-col justify-evenly">
       <div className="mt-8">
         <ul>
-          {unitShiftData.length > 0 && (
+          {startShiftData.length > 0 && (
             <div className="w-screen flex flex-col items-center justify-center text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center m-4">
               <ul>
-                {unitShiftData.map((shift, index) => (
+                {startShiftData.map((shift, index) => (
                   <li key={index} className="mb-2">
                     <p>Unit: {shift.unitName}</p>
                     <p>
