@@ -11,7 +11,7 @@ interface IFormInput {
   patientRoom: string;
 }
 
-export function ViewSheet() {
+export function NurseForm() {
   const {
     register,
     handleSubmit,
@@ -226,4 +226,4 @@ export function ViewSheet() {
   );
 }
 
-export default ViewSheet;
+export default NurseForm;
