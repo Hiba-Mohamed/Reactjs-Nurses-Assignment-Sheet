@@ -26,20 +26,20 @@ const ShiftForm = () => {
     event?.preventDefault();
     console.log(data);
 
+    const uniqueId = uuidv4(); // Generate a unique ID using uuid
+
     // Retrieve existing data from localStorage or create an empty array
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
     const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
     // Add the new data to the array
-    existingData.push(data);
+    existingData.push({ [uniqueId]: data });
 
     // Store the updated array back in localStorage
     localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
 
-        const uniqueId = uuidv4(); // Generate a unique ID using uuid
-
-        // Redirect to the new page with the unique ID
-        navigate(`/manageStaff/${uniqueId}`);
+    // Redirect to the new page with the unique ID
+    navigate(`/manageStaff/${uniqueId}`);
   };
 
   // Function to disable past dates (including today)
