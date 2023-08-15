@@ -4,7 +4,6 @@ import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
-
 interface IUnitShiftData {
   unitName: string;
   shiftDate: Date;
@@ -12,8 +11,7 @@ interface IUnitShiftData {
 }
 
 const ShiftForm = () => {
-
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -26,20 +24,20 @@ const ShiftForm = () => {
     event?.preventDefault();
     console.log(data);
 
-    const uniqueId = uuidv4(); // Generate a unique ID using uuid
+    const ShiftId = uuidv4(); // Generate a unique ID using uuid
 
     // Retrieve existing data from localStorage or create an empty array
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
     const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
     // Add the new data to the array
-    existingData.push({ [uniqueId]: data });
+    existingData.push({ ShiftId, data });
 
     // Store the updated array back in localStorage
     localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
 
     // Redirect to the new page with the unique ID
-    navigate(`/manageStaff/${uniqueId}`);
+    navigate(`/manageStaff/${ShiftId}`);
   };
 
   // Function to disable past dates (including today)

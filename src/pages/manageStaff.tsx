@@ -1,8 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-
-
 interface IFormInput {
   nurseName: string;
   nurseBreak: string;
@@ -14,8 +12,7 @@ interface IFormInput {
 }
 
 export function NurseForm() {
-
-    const { uniqueId } = useParams();
+  const { ShiftId } = useParams();
 
   const {
     register,
@@ -26,12 +23,10 @@ export function NurseForm() {
     console.log(data);
   };
 
-  
-
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
       <div className="flex flex-row flex-wrap justify-evenly">
-        <h1>Viewing Sheet for ID: {uniqueId}</h1>
+        <h1>Viewing Sheet for ID: {ShiftId}</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
