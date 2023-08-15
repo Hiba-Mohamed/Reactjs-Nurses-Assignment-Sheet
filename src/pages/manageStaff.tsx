@@ -26,63 +26,7 @@ export function NurseForm() {
     console.log(data);
   };
 
-  // function createUnitObject (){
-
-  //   let unitName = document.getElementById('unit-name').value;
-  //   let shiftDate = document.getElementById('');
-  //   let shiftType = document.getElementById('shift-type');
-  //   let nurseName = document.getElementById('nurse-name');
-  // let nurseBreak = document.getElementById('nurse-break');
-  // let reliefName = document.getElementById('relief-name');
-  // let extraDuties = document.getElementById('extra-duties');
-  // let fireCode = document.getElementById('fire-code');
-  // let patientName = document.getElementById('patient');
-  // let patientRoom = document.getElementById('room');
-
-  // }
-
-  // const unit = {
-  //   shift: {
-  //     date: "1/August/2023",
-  //     type: "Night",
-  //     staff: {
-  //       nurse1: {
-  //         nurseName: "Max",
-  //         nurseBreak: "First",
-  //         reliefName: "Bob",
-  //         fireCode: "R",
-  //         extraDuties: "In-charge",
-  //         patients: {
-  //           patient1: {
-  //             patientName: "123B",
-  //             patientRoom: "Smith",
-  //           },
-  //           patient2: {
-  //             patientName: "160A",
-  //             patientRoom: "White",
-  //           },
-  //         },
-  //       },
-  //       nurse2: {
-  //         nurseName: "Ravi",
-  //         nurseBreak: "Second",
-  //         reliefName: "Max",
-  //         fireCode: "A",
-  //         extraDuties: "Shift Count",
-  //         patients: {
-  //           patient1: {
-  //             patientName: "140B",
-  //             patientRoom: "Green",
-  //           },
-  //           patient2: {
-  //             patientName: "165A",
-  //             patientRoom: "Brown",
-  //           },
-  //         },
-  //       },
-  //     },
-  //   },
-  // };
+  
 
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
