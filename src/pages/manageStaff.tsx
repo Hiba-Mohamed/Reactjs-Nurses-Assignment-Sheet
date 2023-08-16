@@ -23,6 +23,34 @@ export function NurseForm() {
     console.log(data);
   };
 
+
+
+  function retriveShiftDataLSwithShiftId(ShiftId: string): any {
+    // Retrieve shift data array from localStorage
+    const existingDataJSON = localStorage.getItem("startShiftDataArray");
+    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+    console.log("existing Data", existingData)
+
+    // Find the shift data object with the matching shiftId
+    const matchingData = existingData.find(
+      (data: any) => data.ShiftId === ShiftId
+    );
+
+    console.log("matching Data:", matchingData)
+    return matchingData ? matchingData.data : null;
+  }
+
+  const shiftId = "fe36ea3f-c65c-4378-be89-b7cb1b1aa611"; // Replace with your actual shiftId
+  const shiftData = retriveShiftDataLSwithShiftId(shiftId);
+
+  if (shiftData) {
+    console.log("Shift Data:", shiftData);
+  } else {
+    console.log("Shift Data not found for the provided shiftId.");
+  }
+
+
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
       <div className="flex flex-row flex-wrap justify-evenly">
