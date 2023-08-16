@@ -41,20 +41,32 @@ export function NurseForm() {
     return matchingData ? matchingData.data : null;
   }
 
-  const shiftId = "fe36ea3f-c65c-4378-be89-b7cb1b1aa611"; // Replace with your actual shiftId
-  const shiftData = retriveShiftDataLSwithShiftId(shiftId);
+if (ShiftId) {
+  // Check if ShiftId is defined
+  const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
 
   if (shiftData) {
+    return (
+      <div>
+        <p>unit: {shiftData.unitName}</p>
+        <p>Date: {shiftData.shiftDate} </p>
+        <p>{shiftData.shiftType}</p>
+      </div>
+    );
     console.log("Shift Data:", shiftData);
   } else {
     console.log("Shift Data not found for the provided shiftId.");
   }
+} else {
+  console.log("ShiftId is undefined.");
+}
 
 
   return (
     <div className="font-nunito relative overflow-hidden mb-12">
       <div className="flex flex-row flex-wrap justify-evenly">
         <h1>Viewing Sheet for ID: {ShiftId}</h1>
+        
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
