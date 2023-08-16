@@ -61,7 +61,7 @@ if (ShiftId) {
     return (
       <div className="font-nunito bg-greygreen">
         <div className="flex flex-col items-center justify-center ">
-          <div className="text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8">
+          <div className="text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
             <p>{shiftData.unitName}</p>
             <p>{formatDate(shiftData?.shiftDate)}</p>
             <p>{shiftData.shiftType}</p>
@@ -222,6 +222,11 @@ if (ShiftId) {
               </div>
             </form>
           </div>
+        </div>
+        <div className="flex flex-col items-center p-8">
+          <button className="bg-lgreen hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Save Sheet
+          </button>
         </div>
       </div>
     );
