@@ -206,15 +206,15 @@ if (ShiftId) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pt-4">
                 <button
-                  className="bg-lgreen hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="bg-red-200 hover:bg-red-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="button"
                 >
                   Add patient
                 </button>
                 <button
-                  className="bg-green hover:bg-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
                 >
                   Submit
@@ -224,7 +224,7 @@ if (ShiftId) {
           </div>
         </div>
         <div className="flex flex-col items-center p-8">
-          <button className="bg-lgreen hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button className="bg-green hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Save Sheet
           </button>
         </div>
