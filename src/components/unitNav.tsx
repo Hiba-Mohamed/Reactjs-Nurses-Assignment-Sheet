@@ -2,7 +2,7 @@ export default function UnitNav ()
 {
     return (
       <div className="font-nunito">
-        <div className="flex flex-col items-center justify-center mb-10">
+        <div className="flex flex-col items-center justify-center pb-10">
           <h1 className="text-nunito-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center m-4">
             Welcome to Your Nursing Unit
           </h1>

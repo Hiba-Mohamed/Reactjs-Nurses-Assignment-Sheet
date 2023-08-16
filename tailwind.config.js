@@ -8,10 +8,7 @@ export default {
         green: "#68B0AB",
         white: "#FFFFFF",
         lgreen: "#8FC0A9",
-        yellow: "#fbbf24",
-        dyellow: "#d97706",
-        purple: "#86198f",
-        dpurple: "#1e1b4b",
+        greygreen: "#F3FAF8",
       },
 
       boxShadow: {
