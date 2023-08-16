@@ -61,8 +61,8 @@ if (ShiftId) {
     return (
       <div className="font-nunito">
         <div className="w-screen flex flex-col items-center justify-center text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center m-4">
-          <p>unit: {shiftData.unitName}</p>
-          <p>Date: {formatDate(shiftData?.shiftDate)}</p>
+          <p>{shiftData.unitName}</p>
+          <p>{formatDate(shiftData?.shiftDate)}</p>
           <p>{shiftData.shiftType}</p>
         </div>
         <div className="font-nunito relative overflow-hidden mb-12">
