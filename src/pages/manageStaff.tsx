@@ -1,8 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-
-
 interface IFormInput {
   nurseName: string;
   nurseBreak: string;
@@ -12,7 +10,6 @@ interface IFormInput {
   patientName: string;
   patientRoom: string;
 }
-
 
 function formatDate(dateString: string): string {
   const options: Intl.DateTimeFormatOptions = {
@@ -31,215 +28,273 @@ export function NurseForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+
+  const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
+    event?.preventDefault();
+    handleSubmittingNurseDataRelatedfunctions();
+
+    console.log(nurseData);
   };
 
+  function handleSubmittingNurseDataRelatedfunctions() {
+    preventDuplicateNurseNameAndPatientData();
+    makeAndAddNurseDataToLS();
+    displayNurseData();
+  }
 
+  function preventDuplicateNurseNameAndPatientData() {
+    // This function aims to validate the nurse date by comparing the newly entered user input with data in local storage.
+    // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening
+    // b- compare the new "patientName" with all the "patientName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening
+    // b- compare the new "patientRoom" with all the "patientRoom" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening
+  }
+
+  function makeAndAddNurseDataToLS() {
+    // after the nurseData had been validated and duplication is checked and cleared, each nurse data with be inserted into an array object called (staff) that will look like this:
+    // staff = [{
+    //         nurseName: "Ravi",
+    //         nurseBreak: "Second",
+    //         reliefName: "Max",
+    //         fireCode: "A",
+    //         extraDuties: "Shift Count",
+    //         patients: {
+    //           patient1: {
+    //             patientName: "140B",
+    //             patientRoom: "Green",
+    //           },
+    //           patient2: {
+    //             patientName: "165A",
+    //             patientRoom: "Brown",
+    //           },
+    // {
+    //         nurseName: "Ravi",
+    //         nurseBreak: "Second",
+    //         reliefName: "Max",
+    //         fireCode: "A",
+    //         extraDuties: "Shift Count",
+    //         patients: {
+    //           patient1: {
+    //             patientName: "140B",
+    //             patientRoom: "Green",
+    //           },
+    //           patient2: {
+    //             patientName: "165A",
+    //             patientRoom: "Brown",
+    //           },
+    //         ]
+    //      This  "staff" object will be pushed to the "shiftData" object in local storage.
+    //      any new added nurses will be added to the "staff" array in local storage
+  }
+
+  function displayNurseData() {}
+
+  function handleEditNurseData() {}
+
+  function HandleDeleteNurseData() {}
 
   function retriveShiftDataLSwithShiftId(ShiftId: string): any {
     // Retrieve shift data array from localStorage
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
     const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-    console.log("existing Data", existingData)
+    console.log("existing Data", existingData);
 
     // Find the shift data object with the matching shiftId
     const matchingData = existingData.find(
       (data: any) => data.ShiftId === ShiftId
     );
 
-    console.log("matching Data:", matchingData)
+    console.log("matching Data:", matchingData);
     return matchingData ? matchingData.data : null;
   }
 
-if (ShiftId) {
-  // Check if ShiftId is defined
-  const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
+  if (ShiftId) {
+    // Check if ShiftId is defined
+    const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
 
-  if (shiftData) {
-    return (
-      <div className="font-nunito bg-greygreen">
-        <div className="flex flex-col items-center justify-center ">
-          <div className="text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
-            <p>{shiftData.unitName}</p>
-            <p>{formatDate(shiftData?.shiftDate)}</p>
-            <p>{shiftData.shiftType}</p>
+    if (shiftData) {
+      return (
+        <div className="font-nunito bg-greygreen">
+          <div className="flex flex-col items-center justify-center ">
+            <div className="text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
+              <p>{shiftData.unitName}</p>
+              <p>{formatDate(shiftData?.shiftDate)}</p>
+              <p>{shiftData.shiftType}</p>
+            </div>
           </div>
-        </div>
-        <div className="font-nunito relative overflow-hidden pb-12">
-          <div className="flex flex-row flex-wrap justify-evenly">
-            <h1>Viewing Sheet for ID: {ShiftId}</h1>
+          <div className="font-nunito relative overflow-hidden pb-12">
+            <div className="flex flex-row flex-wrap justify-evenly">
+              <h1>Viewing Sheet for ID: {ShiftId}</h1>
 
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
-            >
-              <div className="mb-4">
-                <label className="block text-gray-700 text-md font-bold mb-2">
-                  Nurse's name
-                </label>
-                <input
-                  {...register("nurseName", { required: true, maxLength: 30 })}
-                  type="text"
-                  className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                  id="nurse-name"
-                ></input>
-                {errors?.nurseName?.type === "required" && (
-                  <p className="text-peach">This field is required</p>
-                )}
-                {errors?.nurseName?.type === "maxLength" && (
-                  <p className="text-peach">
-                    Nurse's name cannot exceed 30 characters
-                  </p>
-                )}
-              </div>
-
-              <div className="flex flex-row">
-                <div className="mb-6 basis-1/2 mr-2">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
+              >
+                <div className="mb-4">
                   <label className="block text-gray-700 text-md font-bold mb-2">
-                    Nurse's break
-                  </label>
-                  <select
-                    {...register("nurseBreak", { required: true })}
-                    className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                    id="nurse-break"
-                  >
-                    <option value=""></option>
-                    <option value="First">First</option>
-                    <option value="Second">Second</option>
-                    <option value="Third">Third</option>
-                  </select>{" "}
-                  {errors?.nurseBreak?.type === "required" && (
-                    <p className="text-peach">This field is required</p>
-                  )}
-                </div>
-                <div className="mb-6 basis-1/2 ml-2">
-                  <label className="block text-gray-700 text-md font-bold mb-2">
-                    Nurse's relief
+                    Nurse's name
                   </label>
                   <input
-                    {...register("reliefName", {
+                    {...register("nurseName", {
                       required: true,
-                      maxLength: 20,
+                      maxLength: 30,
                     })}
                     type="text"
                     className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                    id="relief-name"
+                    id="nurse-name"
                   ></input>
-                  {errors?.reliefName?.type === "required" && (
+                  {errors?.nurseName?.type === "required" && (
                     <p className="text-peach">This field is required</p>
                   )}
-                  {errors?.reliefName?.type === "maxLength" && (
+                  {errors?.nurseName?.type === "maxLength" && (
                     <p className="text-peach">
-                      Nurse's relief cannot exceed 30 characters
+                      Nurse's name cannot exceed 30 characters
                     </p>
                   )}
                 </div>
-              </div>
-              <div className="flex flex-row">
-                <div className="mb-6 basis-1/2 mr-2">
-                  <label className="block text-gray-700 text-md font-bold mb-2">
-                    Extra Duties
-                  </label>
-                  <input
-                    {...register("extraDuties", {
-                      required: false,
-                      maxLength: 40,
-                    })}
-                    type="text"
-                    className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                    id="extra-duties"
-                  ></input>
-                  {errors?.extraDuties?.type === "maxLength" && (
-                    <p className="text-peach">
-                      Extra Duties cannot exceed 40 characters
-                    </p>
-                  )}
+
+                <div className="flex flex-row">
+                  <div className="mb-6 basis-1/2 mr-2">
+                    <label className="block text-gray-700 text-md font-bold mb-2">
+                      Nurse's break
+                    </label>
+                    <select
+                      {...register("nurseBreak", { required: true })}
+                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+                      id="nurse-break"
+                    >
+                      <option value=""></option>
+                      <option value="First">First</option>
+                      <option value="Second">Second</option>
+                      <option value="Third">Third</option>
+                    </select>{" "}
+                    {errors?.nurseBreak?.type === "required" && (
+                      <p className="text-peach">This field is required</p>
+                    )}
+                  </div>
+                  <div className="mb-6 basis-1/2 ml-2">
+                    <label className="block text-gray-700 text-md font-bold mb-2">
+                      Nurse's relief
+                    </label>
+                    <input
+                      {...register("reliefName", {
+                        required: true,
+                        maxLength: 20,
+                      })}
+                      type="text"
+                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+                      id="relief-name"
+                    ></input>
+                    {errors?.reliefName?.type === "required" && (
+                      <p className="text-peach">This field is required</p>
+                    )}
+                    {errors?.reliefName?.type === "maxLength" && (
+                      <p className="text-peach">
+                        Nurse's relief cannot exceed 30 characters
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="mb-6 basis-1/2 ml-2">
+                <div className="flex flex-row">
+                  <div className="mb-6 basis-1/2 mr-2">
+                    <label className="block text-gray-700 text-md font-bold mb-2">
+                      Extra Duties
+                    </label>
+                    <input
+                      {...register("extraDuties", {
+                        required: false,
+                        maxLength: 40,
+                      })}
+                      type="text"
+                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+                      id="extra-duties"
+                    ></input>
+                    {errors?.extraDuties?.type === "maxLength" && (
+                      <p className="text-peach">
+                        Extra Duties cannot exceed 40 characters
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-6 basis-1/2 ml-2">
+                    <label className="block text-gray-700 text-md font-bold mb-2">
+                      Fire Code
+                    </label>
+                    <select
+                      {...register("fireCode", { required: true })}
+                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+                      id="fire-code"
+                    >
+                      <option value=""></option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                    </select>{" "}
+                    {errors?.fireCode?.type === "required" && (
+                      <p className="text-peach">This field is required</p>
+                    )}
+                  </div>
+                </div>
+
+                <div id="all-patients">
                   <label className="block text-gray-700 text-md font-bold mb-2">
-                    Fire Code
+                    Assigned Patients Details:
                   </label>
-                  <select
-                    {...register("fireCode", { required: true })}
-                    className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                    id="fire-code"
+                  <div className="flex flex-row items-center my-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
+                    <input
+                      {...register("patientRoom", {
+                        required: false,
+                        maxLength: 20,
+                      })}
+                      className="w-24 appearance-none focus:outline-none w-full"
+                      type="text"
+                      id="room"
+                      placeholder="Room"
+                    ></input>
+                    <input
+                      {...register("patientName", {
+                        required: false,
+                        maxLength: 20,
+                      })}
+                      className="w-24 appearance-none focus:outline-none p-0"
+                      type="text"
+                      id="patient"
+                      placeholder="Patient"
+                    ></input>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-4">
+                  <button
+                    className="bg-red-200 hover:bg-red-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button"
                   >
-                    <option value=""></option>
-                    <option value="R">R</option>
-                    <option value="A">A</option>
-                    <option value="C">C</option>
-                    <option value="E">E</option>
-                  </select>{" "}
-                  {errors?.fireCode?.type === "required" && (
-                    <p className="text-peach">This field is required</p>
-                  )}
+                    Add patient
+                  </button>
+                  <button
+                    className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
                 </div>
-              </div>
-
-              <div id="all-patients">
-                <label className="block text-gray-700 text-md font-bold mb-2">
-                  Assigned Patients Details:
-                </label>
-                <div className="flex flex-row items-center my-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
-                  <input
-                    {...register("patientRoom", {
-                      required: false,
-                      maxLength: 20,
-                    })}
-                    className="w-24 appearance-none focus:outline-none w-full"
-                    type="text"
-                    id="room"
-                    placeholder="Room"
-                  ></input>
-                  <input
-                    {...register("patientName", {
-                      required: false,
-                      maxLength: 20,
-                    })}
-                    className="w-24 appearance-none focus:outline-none p-0"
-                    type="text"
-                    id="patient"
-                    placeholder="Patient"
-                  ></input>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between pt-4">
-                <button
-                  className="bg-red-200 hover:bg-red-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
-                  Add patient
-                </button>
-                <button
-                  className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
+          </div>
+          <div className="flex flex-col items-center p-8">
+            <button className="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Save Sheet
+            </button>
           </div>
         </div>
-        <div className="flex flex-col items-center p-8">
-          <button className="bg-green hover:bg-lgreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Save Sheet
-          </button>
-        </div>
-      </div>
-    );
-    console.log("Shift Data:", shiftData);
+      );
+      console.log("Shift Data:", shiftData);
+    } else {
+      console.log("Shift Data not found for the provided shiftId.");
+    }
   } else {
-    console.log("Shift Data not found for the provided shiftId.");
+    console.log("ShiftId is undefined.");
   }
-} else {
-  console.log("ShiftId is undefined.");
-}
-
-
-
 }
 
 export default NurseForm;
