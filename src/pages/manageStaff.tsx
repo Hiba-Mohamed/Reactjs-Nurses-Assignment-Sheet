@@ -116,10 +116,13 @@ export function NurseForm() {
       return (
         <div className="font-nunito bg-greygreen">
           <div className="flex flex-col items-center justify-center ">
-            <div className="text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
+            <div className="text-nunito-900 font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
               <p>{shiftData.unitName}</p>
-              <p>{formatDate(shiftData?.shiftDate)}</p>
-              <p>{shiftData.shiftType}</p>
+              <div className="flex flex-row items-center">
+                {" "}
+                <p className="px-4">{formatDate(shiftData?.shiftDate)}</p>
+                <p className="px-4">{shiftData.shiftType}</p>
+              </div>
             </div>
           </div>
           <div className="font-nunito relative overflow-hidden pb-12">
@@ -272,7 +275,7 @@ export function NurseForm() {
                     Add patient
                   </button>
                   <button
-                    className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
                   >
                     Submit
@@ -282,7 +285,7 @@ export function NurseForm() {
             </div>
           </div>
           <div className="flex flex-col items-center p-8">
-            <button className="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               Save Sheet
             </button>
           </div>
