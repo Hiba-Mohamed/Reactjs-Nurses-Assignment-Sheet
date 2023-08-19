@@ -86,11 +86,21 @@ export function NurseForm() {
     //      any new added nurses will be added to the "staff" array in local storage
   }
 
-  function displayNurseData() {}
+  function displayNurseData() {
+    // This function will map through the existing data in local storage and display them 
+  }
 
-  function handleEditNurseData() {}
+  function handleEditNurseData() {
+    // this function will autopopulate the nurse form with the specified nurse data index from local storage
+    // then will essentially call the delete function for the nurse data with the specified index
+    // then will call the display data function.
+    // when the user is done editing, the rest will be handled by the on-submit function
+  }
 
-  function HandleDeleteNurseData() {}
+  function HandleDeleteNurseData() {
+    // this function will splice the nurse data with the specified index from local storage
+    // then it will call show nurse data function to update the layout.
+  }
 
   function retriveShiftDataLSwithShiftId(ShiftId: string): any {
     // Retrieve shift data array from localStorage
