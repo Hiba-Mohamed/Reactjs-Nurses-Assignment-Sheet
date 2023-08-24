@@ -266,40 +266,39 @@ export function NurseForm() {
                     Assigned Patients Details:
                   </label>
                   {fields.map((field, index) => (
-                    <div
-                      key={field.id}
-                      className="flex flex-row items-center my-2 mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                    >
-                      <Controller
-                        name={`assignedPatient.${index}.patientRoom`}
-                        control={control}
-                        defaultValue=""
-                        rules={{ required: true, maxLength: 20 }}
-                        render={({ field: { onChange, value } }) => (
-                          <input
-                            className="w-24 appearance-none focus:outline-none w-full"
-                            type="text"
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Room"
-                          />
-                        )}
-                      />
-                      <Controller
-                        name={`assignedPatient.${index}.patientName`}
-                        control={control}
-                        defaultValue=""
-                        rules={{ required: true, maxLength: 20 }}
-                        render={({ field: { onChange, value } }) => (
-                          <input
-                            className="w-24 appearance-none focus:outline-none "
-                            type="text"
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Patient"
-                          />
-                        )}
-                      />
+                    <div key={field.id} className="flex flex-row items-center">
+                      <div className=" flex flex-row items-center mx-2 my-2 mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
+                        <Controller
+                          name={`assignedPatient.${index}.patientRoom`}
+                          control={control}
+                          defaultValue=""
+                          rules={{ required: true, maxLength: 20 }}
+                          render={({ field: { onChange, value } }) => (
+                            <input
+                              className="w-24 appearance-none focus:outline-none w-full"
+                              type="text"
+                              value={value}
+                              onChange={onChange}
+                              placeholder="Room"
+                            />
+                          )}
+                        />
+                        <Controller
+                          name={`assignedPatient.${index}.patientName`}
+                          control={control}
+                          defaultValue=""
+                          rules={{ required: true, maxLength: 20 }}
+                          render={({ field: { onChange, value } }) => (
+                            <input
+                              className="w-24 appearance-none focus:outline-none "
+                              type="text"
+                              value={value}
+                              onChange={onChange}
+                              placeholder="Patient"
+                            />
+                          )}
+                        />
+                      </div>
                       <div>
                         {" "}
                         <button
@@ -312,13 +311,17 @@ export function NurseForm() {
                       </div>
                     </div>
                   ))}
-                  <button
-                    type="button"
-                    onClick={() => append({ patientName: "", patientRoom: "" })}
-                    className="bg-white px-2 border border-green rounded-lg text-green"
-                  >
-                    +
-                  </button>
+                  <div className="flex flex-col items-center">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        append({ patientName: "", patientRoom: "" })
+                      }
+                      className="bg-white px-2 border border-green rounded-lg text-green"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
 
                 <div className="flex justify-center items-center pt-4">
