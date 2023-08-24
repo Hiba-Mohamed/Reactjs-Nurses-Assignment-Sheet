@@ -43,7 +43,26 @@ export function NurseForm() {
 
   const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
     event?.preventDefault();
-    makeAndAddNurseDataToLS(nurseData);
+    // Retrieve the existing shift data array from localStorage
+    const existingDataJSON = localStorage.getItem("startShiftDataArray");
+    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+    // Find the shift data object with the matching ShiftId
+    const matchingDataIndex = existingData.findIndex(
+      (data: any) => data.ShiftId === ShiftId
+    );
+
+    if (matchingDataIndex !== -1) {
+      // If a matching shift data is found, update its "staff" property
+      existingData[matchingDataIndex].staff =
+        existingData[matchingDataIndex].staff || [];
+      existingData[matchingDataIndex].staff.push(nurseData);
+
+      // Update the localStorage with the modified data
+      localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
+    } else {
+      console.log("Matching shift data not found for the provided ShiftId.");
+    }
 
     console.log(nurseData);
   };
@@ -75,6 +94,7 @@ export function NurseForm() {
 
     // Store the updated array back in localStorage
     localStorage.setItem("staff", JSON.stringify(existingStaff));
+
   }
 
   function displayNurseData() {
