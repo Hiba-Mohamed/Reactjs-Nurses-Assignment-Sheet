@@ -1,5 +1,10 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, useFieldArray, Controller } from "react-hook-form";
 import { useParams } from "react-router-dom";
+
+interface IPatientData {
+  patientName: string;
+  patientRoom: string;
+}
 
 interface IFormInput {
   nurseName: string;
@@ -7,8 +12,7 @@ interface IFormInput {
   reliefName: string;
   extraDuties: string;
   fireCode: string;
-  patientName: string;
-  patientRoom: string;
+  assignedPatient: IPatientData[];
 }
 
 function formatDate(dateString: string): string {
@@ -27,7 +31,15 @@ export function NurseForm() {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm<IFormInput>();
+
+
+    const { fields, append, remove } = useFieldArray({
+      name: "assignedPatient",
+      control,
+    });
+
 
   const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
     event?.preventDefault();
@@ -253,37 +265,63 @@ export function NurseForm() {
                   <label className="block text-gray-700 text-md font-bold mb-2">
                     Assigned Patients Details:
                   </label>
-                  <div className="flex flex-row items-center my-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
-                    <input
-                      {...register("patientRoom", {
-                        required: false,
-                        maxLength: 20,
-                      })}
-                      className="w-24 appearance-none focus:outline-none w-full"
-                      type="text"
-                      id="room"
-                      placeholder="Room"
-                    ></input>
-                    <input
-                      {...register("patientName", {
-                        required: false,
-                        maxLength: 20,
-                      })}
-                      className="w-24 appearance-none focus:outline-none p-0"
-                      type="text"
-                      id="patient"
-                      placeholder="Patient"
-                    ></input>
-                  </div>
+                  {fields.map((field, index) => (
+                    <div
+                      key={field.id}
+                      className="flex flex-row items-center my-2 mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+                    >
+                      <Controller
+                        name={`assignedPatient.${index}.patientRoom`}
+                        control={control}
+                        defaultValue=""
+                        rules={{ required: true, maxLength: 20 }}
+                        render={({ field: { onChange, value } }) => (
+                          <input
+                            className="w-24 appearance-none focus:outline-none w-full"
+                            type="text"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Room"
+                          />
+                        )}
+                      />
+                      <Controller
+                        name={`assignedPatient.${index}.patientName`}
+                        control={control}
+                        defaultValue=""
+                        rules={{ required: true, maxLength: 20 }}
+                        render={({ field: { onChange, value } }) => (
+                          <input
+                            className="w-24 appearance-none focus:outline-none "
+                            type="text"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Patient"
+                          />
+                        )}
+                      />
+                      <div>
+                        {" "}
+                        <button
+                          type="button"
+                          onClick={() => remove(index)}
+                          className="bg-white px-2 border border-red-600 rounded-lg text-red-600"
+                        >
+                          -
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => append({ patientName: "", patientRoom: "" })}
+                    className="bg-white px-2 border border-green rounded-lg text-green"
+                  >
+                    +
+                  </button>
                 </div>
 
-                <div className="flex items-center justify-between pt-4">
-                  <button
-                    className="bg-red-200 hover:bg-red-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="button"
-                  >
-                    Add patient
-                  </button>
+                <div className="flex justify-center items-center pt-4">
                   <button
                     className="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
