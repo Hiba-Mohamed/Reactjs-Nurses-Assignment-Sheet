@@ -227,7 +227,6 @@ function retrieveStaffData(ShiftId: string): IFormInput[] {
           <div className="font-nunito bg-greygreen">
             <div className="font-nunito relative overflow-hidden pb-12">
               <div className="flex flex-row flex-wrap justify-evenly">
-                <h1>Viewing Sheet for ID: {ShiftId}</h1>
 
                 <form
                   onSubmit={handleSubmit(onSubmit)}
