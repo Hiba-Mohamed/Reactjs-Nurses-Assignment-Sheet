@@ -158,35 +158,37 @@ function retrieveStaffData(ShiftId: string): IFormInput[] {
             {staffData.map((nurseData: IFormInput, nurseIndex: number) => (
               <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
                 <div key={nurseIndex} className="flex flex-col m-4">
+                  <div className="flex flex-col justify-center items-center text-center font-bold">
+                    {nurseData.nurseName}
+                  </div>
                   <table className="table-auto">
                     <tbody>
-                      <tr className="flex flex-col justify-center items-center">
-                        <td className="text-center font-bold">
-                          {nurseData.nurseName}
-                        </td>
-                      </tr>
                       <tr>
-                        <td className="font-semibold">Break:</td>
+                        <td className="font-semibold text-cyan-700">Break:</td>
                         <td>{nurseData.nurseBreak}</td>
                       </tr>
                       <tr>
-                        <td className="font-semibold">Relief:</td>
+                        <td className="font-semibold text-cyan-700">Relief:</td>
                         <td>{nurseData.reliefName}</td>
                       </tr>
                       <tr>
-                        <td className="font-semibold">Extra Duties:</td>
+                        <td className="font-semibold text-cyan-700">
+                          Extra Duties:
+                        </td>
                         <td>{nurseData.extraDuties}</td>
                       </tr>
                       <tr>
-                        <td className="font-semibold">Fire Code:</td>
-                        <td>{nurseData.fireCode}</td>
+                        <td className="font-semibold text-cyan-700">
+                          Fire Code:
+                        </td>
+                        <td className="text-red-500">{nurseData.fireCode}</td>
                       </tr>
                     </tbody>
                   </table>
 
                   <table>
                     <thead>
-                      <tr className="border border-green bg-cyan-700 text-white">
+                      <tr className="border border-green bg-cyan-600 text-white">
                         <th className="border border-green px-2 py-1">Room</th>
                         <th className="border border-green px-2 py-1">
                           Patient
