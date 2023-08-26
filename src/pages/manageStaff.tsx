@@ -32,6 +32,7 @@ export function NurseForm() {
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm<IFormInput>();
 
 
@@ -44,6 +45,7 @@ export function NurseForm() {
   const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
     event?.preventDefault();
     makeAndAddNurseDataToLS(nurseData)
+    reset();
 
     console.log(nurseData);
   };
