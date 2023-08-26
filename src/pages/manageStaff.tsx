@@ -127,16 +127,102 @@ export function NurseForm() {
     );
 
     console.log("matching Data:", matchingData);
+
     return matchingData ? matchingData.data : null;
   }
+
+function retrieveStaffData(ShiftId: string): IFormInput[] {
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+  const matchingData = existingData.find(
+    (data: any) => data.ShiftId === ShiftId
+  );
+
+  return matchingData ? matchingData.staff : [];
+}
+
 
   if (ShiftId) {
     // Check if ShiftId is defined
     const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
 
-    if (shiftData) {
+    console.log(shiftData);
+    if (ShiftId) {
+      const staffData = retrieveStaffData(ShiftId);
+
       return (
         <div className="font-nunito bg-greygreen">
+          {/* ... rest of your component code */}
+          <div className="flex flex-row flex-wrap justify-evenly">
+            {staffData.map((nurseData: IFormInput, nurseIndex: number) => (
+              <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
+                <div key={nurseIndex} className="flex flex-col m-4">
+                  <table className="table-auto">
+                    <tbody>
+                      <tr className="flex flex-col justify-center items-center">
+                        <td className="text-center font-bold">
+                          {nurseData.nurseName}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold">Break:</td>
+                        <td>{nurseData.nurseBreak}</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold">Relief:</td>
+                        <td>{nurseData.reliefName}</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold">Extra Duties:</td>
+                        <td>{nurseData.extraDuties}</td>
+                      </tr>
+                      <tr>
+                        <td className="font-semibold">Fire Code:</td>
+                        <td>{nurseData.fireCode}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table>
+                    <thead>
+                      <tr className="border border-green bg-cyan-700 text-white">
+                        <th className="border border-green px-2 py-1">Room</th>
+                        <th className="border border-green px-2 py-1">
+                          Patient
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {nurseData.assignedPatient.map(
+                        (patient: IPatientData, patientIndex: number) => (
+                          <tr key={patientIndex}>
+                            <td className="border px-2 py-1">
+                              {patient.patientRoom}
+                            </td>
+                            <td className="border px-2 py-1">
+                              {patient.patientName}
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    } else {
+      console.log("ShiftId is undefined.");
+    }
+
+    if (shiftData) {
+      
+      return (
+        <div className="font-nunito bg-greygreen">
+          
           <div className="flex flex-col items-center justify-center ">
             <div className="text-nunito-900 font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
               <p>{shiftData.unitName}</p>
@@ -150,6 +236,7 @@ export function NurseForm() {
           <div className="font-nunito relative overflow-hidden pb-12">
             <div className="flex flex-row flex-wrap justify-evenly">
               <h1>Viewing Sheet for ID: {ShiftId}</h1>
+              
 
               <form
                 onSubmit={handleSubmit(onSubmit)}
