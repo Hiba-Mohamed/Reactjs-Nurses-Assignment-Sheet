@@ -51,7 +51,7 @@ function formatDate(dateString: string): string {
       (data: any) => data.ShiftId === ShiftId
     );
 
-    return matchingData ? matchingData.staff : [];
+    return matchingData.staff ?? [];
   }
 
 export function NurseForm() {

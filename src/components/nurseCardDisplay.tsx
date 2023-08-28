@@ -13,15 +13,15 @@ interface IFormInput {
   fireCode: string;
   assignedPatient: IPatientData[];
 }
-  const { ShiftId } = useParams();
 
 export function NurseCardDisplay() {
+    const { ShiftId } = useParams();
+
   if (ShiftId) {
     const staffData = retrieveStaffData(ShiftId);
     console.log("Fetched staffData:", staffData);
     return (
       <div className="flex flex-row flex-wrap justify-evenly">
-        console.log("Received staffData:", staffData); // Add this line
         {staffData.map((nurseData: IFormInput, nurseIndex: number) => (
           <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
             <div key={nurseIndex} className="flex flex-col m-4">
@@ -79,7 +79,7 @@ export function NurseCardDisplay() {
       </div>
     );
   } else {
-    console.log("no staff are found");
+    return null;
   }
 }
 
