@@ -1,5 +1,5 @@
 import { retrieveStaffData } from "../pages/manageStaff";
-import { useParams } from "@reach/router";
+import { useParams } from "react-router-dom";
 interface IPatientData {
   patientName: string;
   patientRoom: string;
