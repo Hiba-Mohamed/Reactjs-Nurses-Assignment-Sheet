@@ -1,5 +1,6 @@
 import { useForm, SubmitHandler, useFieldArray, Controller } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import NurseCardDisplay from "../components/nurseCardDisplay";
 
 interface IPatientData {
   patientName: string;
@@ -23,6 +24,35 @@ function formatDate(dateString: string): string {
   };
   return new Date(dateString).toLocaleDateString(undefined, options);
 }
+
+
+  function retriveShiftDataLSwithShiftId(ShiftId: string): any {
+    // Retrieve shift data array from localStorage
+    const existingDataJSON = localStorage.getItem("startShiftDataArray");
+    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+    console.log("existing Data", existingData);
+
+    // Find the shift data object with the matching shiftId
+    const matchingData = existingData.find(
+      (data: any) => data.ShiftId === ShiftId
+    );
+
+    console.log("matching Data:", matchingData);
+
+    return matchingData ? matchingData.data : null;
+  }
+
+  export function retrieveStaffData(ShiftId: string): IFormInput[] {
+    const existingDataJSON = localStorage.getItem("startShiftDataArray");
+    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+    const matchingData = existingData.find(
+      (data: any) => data.ShiftId === ShiftId
+    );
+
+    return matchingData ? matchingData.staff : [];
+  }
 
 export function NurseForm() {
   const { ShiftId } = useParams();
@@ -80,6 +110,7 @@ export function NurseForm() {
 
   // }
 
+
   function makeAndAddNurseDataToLS(nurseData:IFormInput){
     // Retrieve the existing shift data array from localStorage
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
@@ -116,34 +147,6 @@ export function NurseForm() {
     // then it will call show nurse data function to update the layout.
   }
 
-  function retriveShiftDataLSwithShiftId(ShiftId: string): any {
-    // Retrieve shift data array from localStorage
-    const existingDataJSON = localStorage.getItem("startShiftDataArray");
-    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-
-    console.log("existing Data", existingData);
-
-    // Find the shift data object with the matching shiftId
-    const matchingData = existingData.find(
-      (data: any) => data.ShiftId === ShiftId
-    );
-
-    console.log("matching Data:", matchingData);
-
-    return matchingData ? matchingData.data : null;
-  }
-
-function retrieveStaffData(ShiftId: string): IFormInput[] {
-  const existingDataJSON = localStorage.getItem("startShiftDataArray");
-  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-
-  const matchingData = existingData.find(
-    (data: any) => data.ShiftId === ShiftId
-  );
-
-  return matchingData ? matchingData.staff : [];
-}
-
 
   if (ShiftId) {
     // Check if ShiftId is defined
@@ -151,7 +154,7 @@ function retrieveStaffData(ShiftId: string): IFormInput[] {
 
     console.log(shiftData);
     if (ShiftId) {
-      const staffData = retrieveStaffData(ShiftId);
+       const staffData = retrieveStaffData(ShiftId);
 
       return (
         <div className="font-nunito bg-greygreen">
@@ -165,71 +168,15 @@ function retrieveStaffData(ShiftId: string): IFormInput[] {
               </div>
             </div>
           </div>
-          {/* ... rest of your component code */}
-          <div className="flex flex-row flex-wrap justify-evenly">
-            {staffData.map((nurseData: IFormInput, nurseIndex: number) => (
-              <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
-                <div key={nurseIndex} className="flex flex-col m-4">
-                  <div className="flex flex-col justify-center items-center text-center font-bold">
-                    {nurseData.nurseName}
-                  </div>
-                  <table className="table-auto">
-                    <tbody>
-                      <tr>
-                        <td className="font-semibold text-cyan-700">Break:</td>
-                        <td>{nurseData.nurseBreak}</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold text-cyan-700">Relief:</td>
-                        <td>{nurseData.reliefName}</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold text-cyan-700">
-                          Extra Duties:
-                        </td>
-                        <td>{nurseData.extraDuties}</td>
-                      </tr>
-                      <tr>
-                        <td className="font-semibold text-cyan-700">
-                          Fire Code:
-                        </td>
-                        <td className="text-red-500">{nurseData.fireCode}</td>
-                      </tr>
-                    </tbody>
-                  </table>
 
-                  <table>
-                    <thead>
-                      <tr className="border border-green bg-cyan-600 text-white">
-                        <th className="border border-green px-2 py-1">Room</th>
-                        <th className="border border-green px-2 py-1">
-                          Patient
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {nurseData.assignedPatient.map(
-                        (patient: IPatientData, patientIndex: number) => (
-                          <tr key={patientIndex}>
-                            <td className="border px-2 py-1">
-                              {patient.patientRoom}
-                            </td>
-                            <td className="border px-2 py-1">
-                              {patient.patientName}
-                            </td>
-                          </tr>
-                        )
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ))}
+          <div>
+            {" "}
+            <NurseCardDisplay />{" "}
           </div>
+
           <div className="font-nunito bg-greygreen">
             <div className="font-nunito relative overflow-hidden pb-12">
               <div className="flex flex-row flex-wrap justify-evenly">
-
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
@@ -429,221 +376,6 @@ function retrieveStaffData(ShiftId: string): IFormInput[] {
       console.log("ShiftId is undefined.");
     }
 
-    if (shiftData) {
-      
-      return (
-        <div className="font-nunito bg-greygreen">
-          
-          <div className="flex flex-col items-center justify-center ">
-            <div className="text-nunito-900 font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
-              <p>{shiftData.unitName}</p>
-              <div className="flex flex-row items-center">
-                {" "}
-                <p className="px-4">{formatDate(shiftData?.shiftDate)}</p>
-                <p className="px-4">{shiftData.shiftType}</p>
-              </div>
-            </div>
-          </div>
-          <div className="font-nunito relative overflow-hidden pb-12">
-            <div className="flex flex-row flex-wrap justify-evenly">
-              <h1>Viewing Sheet for ID: {ShiftId}</h1>
-              
-
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
-              >
-                <div className="mb-4">
-                  <label className="block text-gray-700 text-md font-bold mb-2">
-                    Nurse's name
-                  </label>
-                  <input
-                    {...register("nurseName", {
-                      required: true,
-                      maxLength: 30,
-                    })}
-                    type="text"
-                    className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                    id="nurse-name"
-                  ></input>
-                  {errors?.nurseName?.type === "required" && (
-                    <p className="text-peach">This field is required</p>
-                  )}
-                  {errors?.nurseName?.type === "maxLength" && (
-                    <p className="text-peach">
-                      Nurse's name cannot exceed 30 characters
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex flex-row">
-                  <div className="mb-6 basis-1/2 mr-2">
-                    <label className="block text-gray-700 text-md font-bold mb-2">
-                      Nurse's break
-                    </label>
-                    <select
-                      {...register("nurseBreak", { required: true })}
-                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                      id="nurse-break"
-                    >
-                      <option value=""></option>
-                      <option value="First">First</option>
-                      <option value="Second">Second</option>
-                      <option value="Third">Third</option>
-                    </select>{" "}
-                    {errors?.nurseBreak?.type === "required" && (
-                      <p className="text-peach">This field is required</p>
-                    )}
-                  </div>
-                  <div className="mb-6 basis-1/2 ml-2">
-                    <label className="block text-gray-700 text-md font-bold mb-2">
-                      Nurse's relief
-                    </label>
-                    <input
-                      {...register("reliefName", {
-                        required: true,
-                        maxLength: 20,
-                      })}
-                      type="text"
-                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                      id="relief-name"
-                    ></input>
-                    {errors?.reliefName?.type === "required" && (
-                      <p className="text-peach">This field is required</p>
-                    )}
-                    {errors?.reliefName?.type === "maxLength" && (
-                      <p className="text-peach">
-                        Nurse's relief cannot exceed 30 characters
-                      </p>
-                    )}
-                  </div>
-                </div>
-                <div className="flex flex-row">
-                  <div className="mb-6 basis-1/2 mr-2">
-                    <label className="block text-gray-700 text-md font-bold mb-2">
-                      Extra Duties
-                    </label>
-                    <input
-                      {...register("extraDuties", {
-                        required: false,
-                        maxLength: 40,
-                      })}
-                      type="text"
-                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                      id="extra-duties"
-                    ></input>
-                    {errors?.extraDuties?.type === "maxLength" && (
-                      <p className="text-peach">
-                        Extra Duties cannot exceed 40 characters
-                      </p>
-                    )}
-                  </div>
-                  <div className="mb-6 basis-1/2 ml-2">
-                    <label className="block text-gray-700 text-md font-bold mb-2">
-                      Fire Code
-                    </label>
-                    <select
-                      {...register("fireCode", { required: true })}
-                      className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
-                      id="fire-code"
-                    >
-                      <option value=""></option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                    </select>{" "}
-                    {errors?.fireCode?.type === "required" && (
-                      <p className="text-peach">This field is required</p>
-                    )}
-                  </div>
-                </div>
-
-                <div id="all-patients">
-                  <label className="block text-gray-700 text-md font-bold mb-2">
-                    Assigned Patients Details:
-                  </label>
-                  {fields.map((field, index) => (
-                    <div key={field.id} className="flex flex-row items-center">
-                      <div className=" flex flex-row items-center mx-2 my-2 mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
-                        <Controller
-                          name={`assignedPatient.${index}.patientRoom`}
-                          control={control}
-                          defaultValue=""
-                          rules={{ required: true, maxLength: 20 }}
-                          render={({ field: { onChange, value } }) => (
-                            <input
-                              className="w-24 appearance-none focus:outline-none w-full"
-                              type="text"
-                              value={value}
-                              onChange={onChange}
-                              placeholder="Room"
-                            />
-                          )}
-                        />
-                        <Controller
-                          name={`assignedPatient.${index}.patientName`}
-                          control={control}
-                          defaultValue=""
-                          rules={{ required: true, maxLength: 20 }}
-                          render={({ field: { onChange, value } }) => (
-                            <input
-                              className="w-24 appearance-none focus:outline-none "
-                              type="text"
-                              value={value}
-                              onChange={onChange}
-                              placeholder="Patient"
-                            />
-                          )}
-                        />
-                      </div>
-                      <div>
-                        {" "}
-                        <button
-                          type="button"
-                          onClick={() => remove(index)}
-                          className="bg-white px-2 border border-red-600 rounded-lg text-red-600"
-                        >
-                          -
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                  <div className="flex flex-col items-center">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        append({ patientName: "", patientRoom: "" })
-                      }
-                      className="bg-white px-2 border border-green rounded-lg text-green"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex justify-center items-center pt-4">
-                  <button
-                    className="bg-orange-300 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="flex flex-col items-center p-8">
-            <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-              Save Sheet
-            </button>
-          </div>
-        </div>
-      );
-      console.log("Shift Data:", shiftData);
-    } else {
-      console.log("Shift Data not found for the provided shiftId.");
-    }
   } else {
     console.log("ShiftId is undefined.");
   }
