@@ -46,7 +46,7 @@ export function NurseCardDisplay({staffData}:{staffData:IFormInput[]}) {
               </tbody>
             </table>
 
-            <table>
+            <table className="mb-4">
               <thead>
                 <tr className="border border-stone-700 bg-stone-400 text-white">
                   <th className="border border-stone-700 px-2 py-1">Room</th>
@@ -68,6 +68,14 @@ export function NurseCardDisplay({staffData}:{staffData:IFormInput[]}) {
                 )}
               </tbody>
             </table>
+            <div className="flex flex-row justify-evenly items-center">
+              <button className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                edit
+              </button>
+              <button className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                delete
+              </button>
+            </div>
           </div>
         </div>
       ))}

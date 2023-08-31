@@ -80,35 +80,15 @@ export function NurseForm() {
     console.log(nurseData);
   };
 
-  // function handleSubmittingNurseDataRelatedfunctions() {
-  //   preventDuplicateNurseNameAndPatientData();
-  //   displayNurseData();
-  // }
 
   function preventDuplicateNurseNameAndPatientData() {
-    // This function aims to validate the nurse date by comparing the newly entered user input with data in local storage.
-    // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening
-    // b- compare the new "patientName" with all the "patientName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening
-    // b- compare the new "patientRoom" with all the "patientRoom" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening
+    // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
+
+    // b- compare the new "patientName" with all the "patientName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
+    
+    // b- compare the new "patientRoom" with all the "patientRoom" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
   }
 
-  // function makeAndAddNurseDataToLS(nurseData: IFormInput) {
-  //   // after the nurseData had been validated and duplication is checked and cleared, each nurse data with be inserted into an array object called (staff) that will look like this:
-  //   //      This  "staff" object will be pushed to the "shiftData" object in local storage.
-  //   //      any new added nurses will be added to the "staff" array in local storage
-
-  //   const existingstaffJSON = localStorage.getItem("staff");
-  //   const existingStaff = existingstaffJSON
-  //     ? JSON.parse(existingstaffJSON)
-  //     : [];
-
-  //   // Add the new data to the array
-  //   existingStaff.push({ nurseData });
-
-  //   // Store the updated array back in localStorage
-  //   localStorage.setItem("staff", JSON.stringify(existingStaff));
-
-  // }
 
 
   function makeAndAddNurseDataToLS(nurseData:IFormInput){
