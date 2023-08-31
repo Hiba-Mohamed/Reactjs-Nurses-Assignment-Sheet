@@ -22,7 +22,7 @@ export function NurseCardDisplay({staffData}:{staffData:IFormInput[]}) {
       {staffData.map((nurseData:IFormInput, nurseIndex:number) => (
         <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
           <div key={nurseIndex} className="flex flex-col m-4">
-            <div className="flex flex-col justify-center items-center text-center font-bold">
+            <div className="flex flex-col justify-center items-center text-center font-bold lg:text-xl md:text-lg sm:text-md">
               {nurseData.nurseName}
             </div>
             <table className="table-auto">
