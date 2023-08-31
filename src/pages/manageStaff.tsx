@@ -171,7 +171,7 @@ export function NurseForm() {
 
           <div>
             {" "}
-            <NurseCardDisplay />{" "}
+            <NurseCardDisplay staffData={staffData} />{" "}
           </div>
 
           <div className="font-nunito bg-greygreen">
