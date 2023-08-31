@@ -19,7 +19,7 @@ export function NurseCardDisplay({staffData}:{staffData:IFormInput[]}) {
 
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
-      {staffData.map((nurseData:IFormInput, nurseIndex:number) => (
+      {staffData.map((nurseData: IFormInput, nurseIndex: number) => (
         <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
           <div key={nurseIndex} className="flex flex-col m-4">
             <div className="flex flex-col justify-center items-center text-center font-bold lg:text-xl md:text-lg sm:text-md">
@@ -48,9 +48,9 @@ export function NurseCardDisplay({staffData}:{staffData:IFormInput[]}) {
 
             <table>
               <thead>
-                <tr className="border border-green bg-cyan-600 text-white">
-                  <th className="border border-green px-2 py-1">Room</th>
-                  <th className="border border-green px-2 py-1">Patient</th>
+                <tr className="border border-stone-700 bg-stone-400 text-white">
+                  <th className="border border-stone-700 px-2 py-1">Room</th>
+                  <th className="border border-stone-700 px-2 py-1">Patient</th>
                 </tr>
               </thead>
               <tbody>
