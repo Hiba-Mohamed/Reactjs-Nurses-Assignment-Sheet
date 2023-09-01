@@ -72,23 +72,29 @@ export function NurseForm() {
     });
 
 
+    
   const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
     event?.preventDefault();
-    makeAndAddNurseDataToLS(nurseData)
+    makeAndAddNurseDataToLS(nurseData);
     reset();
 
     console.log(nurseData);
   };
 
 
-  function preventDuplicateNurseNameAndPatientData() {
-    // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
 
-    // b- compare the new "patientName" with all the "patientName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
-    
-    // b- compare the new "patientRoom" with all the "patientRoom" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
-  }
 
+  // function preventDuplicateNurseNameAndPatientData(nurseName:string, patientName:string, patientRoom:string) {
+  //   // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
+
+  //   // b-       *compare the all new "patientName"'s with each other
+  //   //          *compare all new "patientName"'s with all the "patientName" in local storage
+  //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
+
+  //   // c-       *compare the all new "patientRoom"'s with each other
+  //   //          *compare all new "patientRoom"'s with all the "patientRoom" in local storage
+  //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.  }
+  
 
 
   function makeAndAddNurseDataToLS(nurseData:IFormInput){
@@ -115,18 +121,15 @@ export function NurseForm() {
   }
 
 
-  function handleEditNurseData() {
-    // this function will autopopulate the nurse form with the specified nurse data index from local storage
-    // then will essentially call the delete function for the nurse data with the specified index
-    // then will call the display data function.
-    // when the user is done editing, the rest will be handled by the on-submit function
-  }
 
-  function HandleDeleteNurseData() {
-    // this function will splice the nurse data with the specified index from local storage
-    // then it will call show nurse data function to update the layout.
-  }
 
+
+
+
+
+
+
+  
 
   if (ShiftId) {
     // Check if ShiftId is defined
