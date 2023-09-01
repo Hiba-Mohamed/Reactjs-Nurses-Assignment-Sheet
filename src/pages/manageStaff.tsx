@@ -1,4 +1,9 @@
-import { useForm, SubmitHandler, useFieldArray, Controller } from "react-hook-form";
+import {
+  useForm,
+  SubmitHandler,
+  useFieldArray,
+  Controller,
+} from "react-hook-form";
 import { useParams } from "react-router-dom";
 import NurseCardDisplay from "../components/nurseCardDisplay";
 
@@ -25,34 +30,33 @@ function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString(undefined, options);
 }
 
+function retriveShiftDataLSwithShiftId(ShiftId: string): any {
+  // Retrieve shift data array from localStorage
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-  function retriveShiftDataLSwithShiftId(ShiftId: string): any {
-    // Retrieve shift data array from localStorage
-    const existingDataJSON = localStorage.getItem("startShiftDataArray");
-    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+  console.log("existing Data", existingData);
 
-    console.log("existing Data", existingData);
+  // Find the shift data object with the matching shiftId
+  const matchingData = existingData.find(
+    (data: any) => data.ShiftId === ShiftId
+  );
 
-    // Find the shift data object with the matching shiftId
-    const matchingData = existingData.find(
-      (data: any) => data.ShiftId === ShiftId
-    );
+  console.log("matching Data:", matchingData);
 
-    console.log("matching Data:", matchingData);
+  return matchingData ? matchingData.data : null;
+}
 
-    return matchingData ? matchingData.data : null;
-  }
+export function retrieveStaffData(ShiftId: string): IFormInput[] {
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-  export function retrieveStaffData(ShiftId: string): IFormInput[] {
-    const existingDataJSON = localStorage.getItem("startShiftDataArray");
-    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+  const matchingData = existingData.find(
+    (data: any) => data.ShiftId === ShiftId
+  );
 
-    const matchingData = existingData.find(
-      (data: any) => data.ShiftId === ShiftId
-    );
-
-    return matchingData.staff ?? [];
-  }
+  return matchingData.staff ?? [];
+}
 
 export function NurseForm() {
   const { ShiftId } = useParams();
@@ -65,39 +69,33 @@ export function NurseForm() {
     reset,
   } = useForm<IFormInput>();
 
+  const { fields, append, remove } = useFieldArray({
+    name: "assignedPatient",
+    control,
+  });
 
-    const { fields, append, remove } = useFieldArray({
-      name: "assignedPatient",
-      control,
-    });
-
-
-    
   const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
     event?.preventDefault();
     makeAndAddNurseDataToLS(nurseData);
+    preventDuplicateNurseNameAndPatientData(nurseData);
     reset();
 
     console.log(nurseData);
   };
 
+  function preventDuplicateNurseNameAndPatientData(nurseData: IFormInput) {
+    // retrieve existing data from local storage
+    // retrieve current data from the form
+    //   // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
+    //   // b-       *compare the all new "patientName"'s with each other
+    //   //          *compare all new "patientName"'s with all the "patientName" in local storage
+    //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
+    //   // c-       *compare the all new "patientRoom"'s with each other
+    //   //          *compare all new "patientRoom"'s with all the "patientRoom" in local storage
+    //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
+  }
 
-
-
-  // function preventDuplicateNurseNameAndPatientData(nurseName:string, patientName:string, patientRoom:string) {
-  //   // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
-
-  //   // b-       *compare the all new "patientName"'s with each other
-  //   //          *compare all new "patientName"'s with all the "patientName" in local storage
-  //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
-
-  //   // c-       *compare the all new "patientRoom"'s with each other
-  //   //          *compare all new "patientRoom"'s with all the "patientRoom" in local storage
-  //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.  }
-  
-
-
-  function makeAndAddNurseDataToLS(nurseData:IFormInput){
+  function makeAndAddNurseDataToLS(nurseData: IFormInput) {
     // Retrieve the existing shift data array from localStorage
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
     const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
@@ -120,24 +118,13 @@ export function NurseForm() {
     }
   }
 
-
-
-
-
-
-
-
-
-
-  
-
   if (ShiftId) {
     // Check if ShiftId is defined
     const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
 
     console.log(shiftData);
     if (ShiftId) {
-       const staffData = retrieveStaffData(ShiftId);
+      const staffData = retrieveStaffData(ShiftId);
 
       return (
         <div className="font-nunito bg-greygreen">
@@ -358,7 +345,6 @@ export function NurseForm() {
     } else {
       console.log("ShiftId is undefined.");
     }
-
   } else {
     console.log("ShiftId is undefined.");
   }
