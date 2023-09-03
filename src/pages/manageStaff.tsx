@@ -120,8 +120,16 @@ export function NurseForm() {
 
 
 
-const validateNurseName = (nurseName: string) => nurseName === 'Max';
+const validateNurseName = (nurseName: string, ShiftId: string) => {
+  // Retrieve existing staff data for the current shift from local storage
+  const staffData = retrieveStaffData(ShiftId);
 
+  // Check if nurseName already exists in the staff data
+  const isDuplicate = staffData.some((staff) => staff.nurseName === nurseName);
+
+  // Return true if nurseName is not a duplicate, false if it's a duplicate
+  return isDuplicate ? "Nurse name already exists in this shift" : true;
+};
 
 
 
@@ -166,7 +174,10 @@ const validateNurseName = (nurseName: string) => nurseName === 'Max';
                       {...register("nurseName", {
                         required: true,
                         maxLength: 30,
-                        validate: validateNurseName
+                        validate: {
+                          isNotDuplicate: (value) =>
+                            validateNurseName(value, ShiftId),
+                        },
                       })}
                       type="text"
                       className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
@@ -180,6 +191,10 @@ const validateNurseName = (nurseName: string) => nurseName === 'Max';
                         Nurse's name cannot exceed 30 characters
                       </p>
                     )}
+                    {errors.nurseName &&
+                      errors.nurseName.type === "isNotDuplicate" && (
+                        <p className="text-peach">{errors.nurseName.message}</p>
+                      )}
                   </div>
 
                   <div className="flex flex-row">
