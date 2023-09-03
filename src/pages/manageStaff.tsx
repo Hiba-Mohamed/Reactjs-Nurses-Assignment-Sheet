@@ -77,23 +77,22 @@ export function NurseForm() {
   const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
     event?.preventDefault();
     makeAndAddNurseDataToLS(nurseData);
-    preventDuplicateNurseNameAndPatientData(nurseData);
     reset();
 
     console.log(nurseData);
   };
 
-  function preventDuplicateNurseNameAndPatientData(nurseData: IFormInput) {
-    // retrieve existing data from local storage
-    // retrieve current data from the form
-    //   // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
-    //   // b-       *compare the all new "patientName"'s with each other
-    //   //          *compare all new "patientName"'s with all the "patientName" in local storage
-    //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
-    //   // c-       *compare the all new "patientRoom"'s with each other
-    //   //          *compare all new "patientRoom"'s with all the "patientRoom" in local storage
-    //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
-  }
+  // function preventDuplicateNurseNameAndPatientData(nurseData: IFormInput) {
+  //   // retrieve existing data from local storage
+  //   // retrieve current data from the form
+  //   //   // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
+  //   //   // b-       *compare the all new "patientName"'s with each other
+  //   //   //          *compare all new "patientName"'s with all the "patientName" in local storage
+  //   //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
+  //   //   // c-       *compare the all new "patientRoom"'s with each other
+  //   //   //          *compare all new "patientRoom"'s with all the "patientRoom" in local storage
+  //   //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
+  // }
 
   function makeAndAddNurseDataToLS(nurseData: IFormInput) {
     // Retrieve the existing shift data array from localStorage
@@ -117,6 +116,14 @@ export function NurseForm() {
       console.log("Matching shift data not found for the provided ShiftId.");
     }
   }
+
+
+
+
+const validateNurseName = (nurseName: string) => nurseName === 'Max';
+
+
+
 
   if (ShiftId) {
     // Check if ShiftId is defined
@@ -159,6 +166,7 @@ export function NurseForm() {
                       {...register("nurseName", {
                         required: true,
                         maxLength: 30,
+                        validate: validateNurseName
                       })}
                       type="text"
                       className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
