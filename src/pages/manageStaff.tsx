@@ -131,6 +131,30 @@ const validateNurseName = (nurseName: string, ShiftId: string) => {
   return isDuplicate ? "Nurse name already exists in this shift" : true;
 };
 
+const validatePatientName = (patientName: string, ShiftId: string) => {
+  // Retrieve existing staff data for the current shift from local storage
+  const staffData = retrieveStaffData(ShiftId);
+
+  // Check if the provided patientName already exists in the assignedPatient array
+  if (staffData) {
+    for (const formInput of staffData) {
+      if (formInput.assignedPatient) {
+        const isDuplicate = formInput.assignedPatient.some(
+          (patient) => patient.patientName === patientName
+        );
+
+        // If a duplicate is found, return the error message
+        if (isDuplicate) {
+          return "Patient name already exists in this shift";
+        }
+      }
+    }
+  }
+
+  // If no duplicate is found in any of the form inputs, return true
+  return true;
+};
+
 
 
   if (ShiftId) {
@@ -182,7 +206,7 @@ const validateNurseName = (nurseName: string, ShiftId: string) => {
                       type="text"
                       className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
                       id="nurse-name"
-                    ></input>
+                    />
                     {errors?.nurseName?.type === "required" && (
                       <p className="text-peach">This field is required</p>
                     )}
@@ -309,7 +333,12 @@ const validateNurseName = (nurseName: string, ShiftId: string) => {
                             name={`assignedPatient.${index}.patientName`}
                             control={control}
                             defaultValue=""
-                            rules={{ required: true, maxLength: 20 }}
+                            rules={{
+                              required: true,
+                              maxLength: 20,
+                              validate: (value) =>
+                                validatePatientName(value, ShiftId),
+                            }}
                             render={({ field: { onChange, value } }) => (
                               <input
                                 className="w-24 appearance-none focus:outline-none "
@@ -320,6 +349,15 @@ const validateNurseName = (nurseName: string, ShiftId: string) => {
                               />
                             )}
                           />
+                          {errors?.assignedPatient?.[index]?.patientName
+                            ?.type === "isNotDuplicate" && (
+                            <p className="text-peach">
+                              {
+                                errors?.assignedPatient?.[index]?.patientName
+                                  ?.message
+                              }
+                            </p>
+                          )}
                         </div>
                         <div>
                           {" "}
