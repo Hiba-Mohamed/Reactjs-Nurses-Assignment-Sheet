@@ -198,10 +198,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
                       {...register("nurseName", {
                         required: true,
                         maxLength: 30,
-                        validate: {
-                          isNotDuplicate: (value) =>
-                            validateNurseName(value, ShiftId),
-                        },
+                        validate: (value) => validateNurseName(value, ShiftId),
                       })}
                       type="text"
                       className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
