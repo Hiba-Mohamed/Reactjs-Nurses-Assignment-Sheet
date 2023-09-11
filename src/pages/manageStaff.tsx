@@ -145,7 +145,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
 
         // If a duplicate is found, return the error message
         if (isDuplicate) {
-          return "Patient name already exists in this shift";
+          return "Patient name already assigned in this shift";
         }
       }
     }
@@ -155,6 +155,29 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
   return true;
 };
 
+const validatePatientRoom = (patientRoom: string, ShiftId: string) => {
+  // Retrieve existing staff data for the current shift from local storage
+  const staffData = retrieveStaffData(ShiftId);
+
+  // Check if the provided patientName already exists in the assignedPatient array
+  if (staffData) {
+    for (const formInput of staffData) {
+      if (formInput.assignedPatient) {
+        const isDuplicate = formInput.assignedPatient.some(
+          (patient) => patient.patientRoom === patientRoom
+        );
+
+        // If a duplicate is found, return the error message
+        if (isDuplicate) {
+          return "Room number already assigned in this shift";
+        }
+      }
+    }
+  }
+
+  // If no duplicate is found in any of the form inputs, return true
+  return true;
+};
 console.log(errors);
 
 
@@ -319,7 +342,8 @@ console.log(errors);
                             rules={{
                               required: true,
                               maxLength: 20,
-                    
+                              validate: (value) =>
+                                validatePatientRoom(value, ShiftId),
                             }}
                             render={({ field: { onChange, value } }) => (
                               <input
@@ -331,6 +355,16 @@ console.log(errors);
                               />
                             )}
                           />
+
+                          {errors?.assignedPatient?.[index]?.patientRoom
+                            ?.type === "validate" && (
+                            <p className="text-peach">
+                              {
+                                errors?.assignedPatient?.[index]?.patientRoom
+                                  ?.message
+                              }
+                            </p>
+                          )}
 
                           <Controller
                             name={`assignedPatient.${index}.patientName`}
@@ -352,12 +386,7 @@ console.log(errors);
                               />
                             )}
                           />
-                          {/* {errors.patientName &&
-                            errors.patientName.type === "isNotDuplicate" && (
-                              <p className="text-peach">
-                                {errors.patientName.message}
-                              </p>
-                            )} */}
+
                           {errors?.assignedPatient?.[index]?.patientName
                             ?.type === "validate" && (
                             <p className="text-peach">
