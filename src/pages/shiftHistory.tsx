@@ -1,6 +1,7 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Controller, useForm, SubmitHandler } from "react-hook-form";
+import { Controller, useForm, SubmitHandler, useWatch } from "react-hook-form";
+
 
 interface IShiftSearch {
   shiftDate: Date;
@@ -10,6 +11,7 @@ interface IShiftSearch {
 export function ShiftHistory() {
   const {
     register,
+    watch,
     formState: { errors },
     handleSubmit,
     control,
@@ -19,6 +21,8 @@ export function ShiftHistory() {
     event?.preventDefault();
     console.log(data);
   };
+
+  console.log(watch("shiftType"));
 
   return (
     <div className="bg-slate-100 font-nunito">
@@ -50,7 +54,7 @@ export function ShiftHistory() {
                 <div className="basis-1/2 mr-2">
                   <select
                     {...register("shiftType", { required: true })}
-                    className="mx-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+                    className={`mx-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200 ${!watch("shiftType") && "opacity-50"}`}
                   >
                     <option
                       value=""
@@ -58,7 +62,7 @@ export function ShiftHistory() {
                       selected
                       className="text-slate-400"
                     >
-                      Enter shift date
+                      Enter shift type
                     </option>
                     <option value="Day Shift">Day Shift</option>
                     <option value="Night Shift">Night Shift</option>

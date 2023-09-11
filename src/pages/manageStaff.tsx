@@ -155,6 +155,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
   return true;
 };
 
+console.log(errors);
 
 
   if (ShiftId) {
@@ -213,7 +214,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
                       </p>
                     )}
                     {errors.nurseName &&
-                      errors.nurseName.type === "isNotDuplicate" && (
+                      errors.nurseName.type === "validate" && (
                         <p className="text-peach">{errors.nurseName.message}</p>
                       )}
                   </div>
@@ -315,7 +316,11 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
                             name={`assignedPatient.${index}.patientRoom`}
                             control={control}
                             defaultValue=""
-                            rules={{ required: true, maxLength: 20 }}
+                            rules={{
+                              required: true,
+                              maxLength: 20,
+                    
+                            }}
                             render={({ field: { onChange, value } }) => (
                               <input
                                 className="w-24 appearance-none focus:outline-none w-full"
@@ -326,6 +331,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
                               />
                             )}
                           />
+
                           <Controller
                             name={`assignedPatient.${index}.patientName`}
                             control={control}
@@ -346,8 +352,14 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
                               />
                             )}
                           />
+                          {/* {errors.patientName &&
+                            errors.patientName.type === "isNotDuplicate" && (
+                              <p className="text-peach">
+                                {errors.patientName.message}
+                              </p>
+                            )} */}
                           {errors?.assignedPatient?.[index]?.patientName
-                            ?.type === "isNotDuplicate" && (
+                            ?.type === "validate" && (
                             <p className="text-peach">
                               {
                                 errors?.assignedPatient?.[index]?.patientName
