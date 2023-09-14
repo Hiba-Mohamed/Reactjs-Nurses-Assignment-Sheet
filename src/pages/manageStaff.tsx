@@ -145,7 +145,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
 
         // If a duplicate is found, return the error message
         if (isDuplicate) {
-          return "Patient name already assigned in this shift";
+          return "Duplicate patient name";
         }
       }
     }
@@ -169,7 +169,7 @@ const validatePatientRoom = (patientRoom: string, ShiftId: string) => {
 
         // If a duplicate is found, return the error message
         if (isDuplicate) {
-          return "Room number already assigned in this shift";
+          return "Duplicate patient room";
         }
       }
     }
@@ -379,8 +379,8 @@ console.log(errors);
                             />
                           </div>
 
-                          <div className="flex flex-row justify-between mx-2 my-2 mt-2 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 sm:text-sm">
-                            {" "}
+                          <div className="flex flex-row justify-end justify-center mx-2 mb-4 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 sm:text-sm">
+                            
                             {errors?.assignedPatient?.[index]?.patientRoom
                               ?.type === "validate" && (
                               <p className="text-peach w-24 appearance-none focus:outline-none">
@@ -389,7 +389,7 @@ console.log(errors);
                                     ?.message
                                 }
                               </p>
-                            )}{" "}
+                            )}
                             {errors?.assignedPatient?.[index]?.patientName
                               ?.type === "validate" && (
                               <p className="text-peach w-24 appearance-none focus:outline-none">
