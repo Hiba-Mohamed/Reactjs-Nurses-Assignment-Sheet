@@ -379,7 +379,7 @@ console.log(errors);
                             />
                           </div>
 
-                          <div className="flex flex-row items-center mx-2 my-2 mt-2 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 sm:text-sm">
+                          <div className="flex flex-row justify-between mx-2 my-2 mt-2 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 sm:text-sm">
                             {" "}
                             {errors?.assignedPatient?.[index]?.patientRoom
                               ?.type === "validate" && (
