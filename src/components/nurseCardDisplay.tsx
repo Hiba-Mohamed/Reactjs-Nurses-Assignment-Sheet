@@ -44,6 +44,7 @@ export function NurseCardDisplay(
          "startShiftDataArray",
          JSON.stringify(existingData)
        );
+       window.location.reload();
      };
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
