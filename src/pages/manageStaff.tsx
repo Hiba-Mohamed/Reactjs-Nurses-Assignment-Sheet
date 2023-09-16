@@ -6,11 +6,32 @@ import {
 } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import NurseCardDisplay from "../components/nurseCardDisplay";
+import { useState } from "react";
 
 interface IPatientData {
   patientName: string;
   patientRoom: string;
 }
+
+
+// const useList = (id:string) =>{
+//   const [list, useList] = useState();
+//   const editNurse= (ShiftId:string, index:number) =>{
+//     const staffData = retrieveStaffData(ShiftId);
+
+//   }
+ 
+//   const deleteShift = () => {};
+//   const editShift = () => {};
+//   const viewShift = () => {};
+
+
+// deleteNurse("5d5f9143-a5f6-4ab2-97da-5b48cf35e391", 0);
+
+//   return {list, editNurse, deleteNurse, editShift, deleteShift, viewShift}
+// }
+
+// const { list, editNurse, deleteNurse, editShift, deleteShift, viewShift} = useList;
 
 interface IFormInput {
   nurseName: string;
@@ -119,7 +140,6 @@ export function NurseForm() {
 
 
 
-
 const validateNurseName = (nurseName: string, ShiftId: string) => {
   // Retrieve existing staff data for the current shift from local storage
   const staffData = retrieveStaffData(ShiftId);
@@ -161,6 +181,7 @@ const validatePatientRoom = (patientRoom: string, ShiftId: string) => {
 
   // Check if the provided patientName already exists in the assignedPatient array
   if (staffData) {
+    
     for (const formInput of staffData) {
       if (formInput.assignedPatient) {
         const isDuplicate = formInput.assignedPatient.some(
@@ -188,6 +209,7 @@ console.log(errors);
     console.log(shiftData);
     if (ShiftId) {
       const staffData = retrieveStaffData(ShiftId);
+      console.log("staffData", staffData);
 
       return (
         <div className="font-nunito bg-greygreen">
@@ -204,8 +226,9 @@ console.log(errors);
 
           <div>
             {" "}
-            <NurseCardDisplay staffData={staffData} />{" "}
+            <NurseCardDisplay staffData={staffData}/>{" "}
           </div>
+          
 
           <div className="font-nunito bg-greygreen">
             <div className="font-nunito relative overflow-hidden pb-12">

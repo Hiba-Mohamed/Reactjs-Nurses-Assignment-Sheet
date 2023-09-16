@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 
 interface IPatientData {
   patientName: string;
@@ -13,10 +14,37 @@ interface IFormInput {
   assignedPatient: IPatientData[];
 }
 
+export function NurseCardDisplay(
+  { staffData }: { staffData: IFormInput[] }) {
+  const { ShiftId } = useParams();
+     const deleteNurse = (ShiftId: any, nurseIndex: number) => {
+       // Retrieve shift data array from localStorage
+       const existingDataJSON = localStorage.getItem("startShiftDataArray");
+       const existingData = existingDataJSON
+         ? JSON.parse(existingDataJSON)
+         : [];
 
+       console.log("existing Data", existingData);
 
-export function NurseCardDisplay({staffData}:{staffData:IFormInput[]}) {
+       // Find the shift data object with the matching shiftId
+       const matchingData = existingData.find(
+         (data: any) => data.ShiftId === ShiftId
+       );
 
+       console.log("matching Data:", matchingData);
+
+       const exsitingNurseArray = matchingData.staff;
+       // get the index of the nurse card
+       const deletedNurse = exsitingNurseArray.splice(nurseIndex, 1);
+
+       const updatedNurseList = exsitingNurseArray;
+       console.log("Updated Nurse List", updatedNurseList);
+       //  update the local storage
+       localStorage.setItem(
+         "startShiftDataArray",
+         JSON.stringify(existingData)
+       );
+     };
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
       {staffData.map((nurseData: IFormInput, nurseIndex: number) => (
@@ -72,7 +100,10 @@ export function NurseCardDisplay({staffData}:{staffData:IFormInput[]}) {
               <button className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
               </button>
-              <button className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              <button
+                className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={() => deleteNurse(ShiftId, nurseIndex)}
+              >
                 Delete
               </button>
             </div>
