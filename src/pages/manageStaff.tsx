@@ -160,8 +160,8 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
     for (const formInput of staffData) {
       if (formInput.assignedPatient) {
         const isDuplicate = formInput.assignedPatient.some(
-          (patient) => patient.patientName === patientName
-        );
+          (patient) => { if (patient.patientName !== "") {patient.patientName  === patientName}
+      });
 
         // If a duplicate is found, return the error message
         if (isDuplicate) {
@@ -185,8 +185,8 @@ const validatePatientRoom = (patientRoom: string, ShiftId: string) => {
     for (const formInput of staffData) {
       if (formInput.assignedPatient) {
         const isDuplicate = formInput.assignedPatient.some(
-          (patient) => patient.patientRoom === patientRoom
-        );
+          (patient) =>{ if (patient.patientRoom !== "") {patient.patientRoom  === patientRoom}
+      });
 
         // If a duplicate is found, return the error message
         if (isDuplicate) {

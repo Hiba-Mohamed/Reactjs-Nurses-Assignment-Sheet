@@ -35,7 +35,7 @@ export function NurseCardDisplay(
 
        const exsitingNurseArray = matchingData.staff;
        // get the index of the nurse card
-       const deletedNurse = exsitingNurseArray.splice(nurseIndex, 1);
+      exsitingNurseArray.splice(nurseIndex, 1);
 
        const updatedNurseList = exsitingNurseArray;
        console.log("Updated Nurse List", updatedNurseList);
