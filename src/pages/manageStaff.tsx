@@ -155,8 +155,9 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
   // Retrieve existing staff data for the current shift from local storage
   const staffData = retrieveStaffData(ShiftId);
 
+
   // Check if the provided patientName already exists in the assignedPatient array
-  if (staffData) {
+  if (staffData && patientName !== "") {
     for (const formInput of staffData) {
       if (formInput.assignedPatient) {
         const isDuplicate = formInput.assignedPatient.some(
@@ -180,7 +181,7 @@ const validatePatientRoom = (patientRoom: string, ShiftId: string) => {
   const staffData = retrieveStaffData(ShiftId);
 
   // Check if the provided patientName already exists in the assignedPatient array
-  if (staffData) {
+  if (staffData && patientRoom !== "") {
     
     for (const formInput of staffData) {
       if (formInput.assignedPatient) {
