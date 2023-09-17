@@ -46,6 +46,26 @@ export function NurseCardDisplay(
        );
        window.location.reload();
      };
+
+    const editNurse = (ShiftId: any, nurseIndex: number) => {
+       const existingDataJSON = localStorage.getItem("startShiftDataArray");
+       const existingData = existingDataJSON
+         ? JSON.parse(existingDataJSON)
+         : [];
+
+       console.log("existing Data", existingData);
+
+       // Find the shift data object with the matching shiftId
+       const matchingData = existingData.find(
+         (data: any) => data.ShiftId === ShiftId
+       );
+
+       console.log("matching Data:", matchingData);
+
+       const exsitingNurseArray = matchingData.staff;
+       const targetNurse = exsitingNurseArray[nurseIndex]
+       console.log(targetNurse);
+    }
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
       {staffData.map((nurseData: IFormInput, nurseIndex: number) => (
@@ -75,30 +95,40 @@ export function NurseCardDisplay(
               </tbody>
             </table>
 
-            <table className="mb-4">
-              <thead>
-                <tr className="border border-stone-700 bg-stone-400 text-white">
-                  <th className="border border-stone-700 px-2 py-1">Room</th>
-                  <th className="border border-stone-700 px-2 py-1">Patient</th>
-                </tr>
-              </thead>
-              <tbody>
-                {nurseData.assignedPatient.map(
-                  (patient: IPatientData, patientIndex: number) => (
-                    <tr key={patientIndex}>
-                      <td className="border px-2 py-1">
-                        {patient.patientRoom}
-                      </td>
-                      <td className="border px-2 py-1">
-                        {patient.patientName}
-                      </td>
-                    </tr>
-                  )
-                )}
-              </tbody>
-            </table>
+            {nurseData.assignedPatient.map(
+              (patient: IPatientData, patientIndex: number) => (
+                <div>
+                  <table className="mb-4">
+                    <thead>
+                      <tr className="border border-stone-700 bg-stone-400 text-white">
+                        <th className="border border-stone-700 px-2 py-1">
+                          Room
+                        </th>
+                        <th className="border border-stone-700 px-2 py-1">
+                          Patient
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr key={patientIndex}>
+                        <td className="border px-2 py-1">
+                          {patient.patientRoom}
+                        </td>
+                        <td className="border px-2 py-1">
+                          {patient.patientName}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )
+            )}
+
             <div className="flex flex-row justify-evenly items-center">
-              <button className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              <button
+                className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={() => editNurse(ShiftId, nurseIndex)}
+              >
                 Edit
               </button>
               <button

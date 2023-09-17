@@ -172,7 +172,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
     }
   }
 
-  // If no duplicate is found in any of the form inputs, return true
+  // If no duplicate is found  or if the input is empty string in any of the form inputs, return true
   return true;
 };
 
