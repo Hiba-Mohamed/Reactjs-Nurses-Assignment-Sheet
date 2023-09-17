@@ -206,6 +206,8 @@ console.log(errors);
   if (ShiftId) {
     // Check if ShiftId is defined
     const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
+  
+console.log("shiftData", shiftData);
 
     console.log(shiftData);
     if (ShiftId) {

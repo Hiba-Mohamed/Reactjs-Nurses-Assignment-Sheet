@@ -1,6 +1,7 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm, SubmitHandler, useWatch } from "react-hook-form";
+import ShiftListComponent from "../components/shiftListComponent";
 
 
 interface IShiftSearch {
@@ -80,8 +81,10 @@ export function ShiftHistory() {
                   Search
                 </button>
               </form>
+
             </div>
           </div>
+          <ShiftListComponent />
         </div>
       </div>
     </div>
