@@ -27,13 +27,13 @@ export function ShiftHistory() {
 
   return (
     <div className="bg-slate-100 font-nunito">
-      <div className="relative h-screen">
-        <div className="space-y-4 flex flex-col items-center w-screen mb-8">
-          <h1 className="text-center mt-10 text-4xl font-bold">Shift Record</h1>
+      <div className="h-screen">
+        <div className="flex flex-col items-center">
+          <h1 className="text-center text-4xl font-bold">Shift Record</h1>
 
-          <div className="flex flex-col md:flex-col items-center p-4 md:p-6 space-y-4 md:space-y-0 md:space-x-6 bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 md:duration-500">
-            <div className="relative max-w-sm">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none"></div>
+          <div className="flex flex-col md:flex-col items-center p-4 bg-white rounded-xl shadow-lg">
+            <div className="relative">
+              <div className="flex items-center pointer-events-none"></div>
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-row items-center justify-center"
