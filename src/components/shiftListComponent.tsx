@@ -28,13 +28,13 @@ export const ShiftListComponent = () => {
 
             <div className="flex flex-row lg:flex-row items-center justify-evenly">
               {" "}
-              <button className="mx-2 bg-emerald-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              <button className="mx-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 View
               </button>
               <button className="mx-2 bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Edit
               </button>
-              <button className="mx-2 bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              <button className="mx-2 bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Delete
               </button>
             </div>
