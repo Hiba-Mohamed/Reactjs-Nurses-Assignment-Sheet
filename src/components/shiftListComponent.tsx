@@ -13,11 +13,16 @@ export const ShiftListComponent = () => {
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
   console.log(existingData[0].data.unitName);
   console.log("existing data from shift List :", existingData);
+  console.log(existingData[2].ShiftId);
+
   return (
     <div className="flex flex-col md:flex-col items-center">
       <div className="flex flex-col lg:flex-col md:flex-col items-center">
         {existingData.map((existingData: any) => (
-          <div className="my-4 p-4 flex lg:flex-row md:flex-col sm:flex-col items-center bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 md:duration-500">
+          <div
+            className="my-4 p-4 flex lg:flex-row md:flex-col sm:flex-col items-center bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 md:duration-500"
+            key={existingData.ShiftId}
+          >
             <div className="flex flex-row">
               <div className="p-2">{existingData.data.unitName}</div>
               <div className="p-2">
