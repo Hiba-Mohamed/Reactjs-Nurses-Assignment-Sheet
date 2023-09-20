@@ -7,6 +7,8 @@ import {
 import { useParams } from "react-router-dom";
 import NurseCardDisplay from "../components/nurseCardDisplay";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 
 interface IPatientData {
   patientName: string;
@@ -99,7 +101,7 @@ export function NurseForm() {
     event?.preventDefault();
     makeAndAddNurseDataToLS(nurseData);
     reset();
-
+    const nurseId = uuidv4()
     console.log(nurseData);
   };
 
@@ -213,6 +215,7 @@ console.log("shiftData", shiftData);
     if (ShiftId) {
       const staffData = retrieveStaffData(ShiftId);
       console.log("staffData", staffData);
+      const nurseId= uuidv4();
 
       return (
         <div className="font-nunito bg-greygreen">
@@ -229,7 +232,7 @@ console.log("shiftData", shiftData);
 
           <div>
             {" "}
-            <NurseCardDisplay staffData={staffData}/>{" "}
+            <NurseCardDisplay nurseId={nurseId} staffData={staffData}/>{" "}
           </div>
           
 
