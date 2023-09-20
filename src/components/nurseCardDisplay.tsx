@@ -15,9 +15,9 @@ interface IFormInput {
 }
 
 export function NurseCardDisplay(
-  { staffData }: { staffData: IFormInput[] }) {
+  { staffData, nurseId }: { staffData: IFormInput[], nurseId: string }) {
   const { ShiftId } = useParams();
-     const deleteNurse = (ShiftId: any, nurseIndex: number, nurseId:string) => {
+     const deleteNurse = (ShiftId: any, nurseIndex: number) => {
        // Retrieve shift data array from localStorage
        const existingDataJSON = localStorage.getItem("startShiftDataArray");
        const existingData = existingDataJSON
@@ -47,7 +47,7 @@ export function NurseCardDisplay(
        window.location.reload();
      };
 
-    const editNurse = (ShiftId: any, nurseIndex: number , nurseId:string) => {
+    const editNurse = (ShiftId: any, nurseIndex: number) => {
        const existingDataJSON = localStorage.getItem("startShiftDataArray");
        const existingData = existingDataJSON
          ? JSON.parse(existingDataJSON)
@@ -68,7 +68,7 @@ export function NurseCardDisplay(
     }
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
-      {staffData.map((nurseData: IFormInput, nurseIndex:number, nurseId:string) => (
+      {staffData.map((nurseData: IFormInput, nurseIndex:number) => (
         <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
           <div key={nurseIndex} id={nurseId} className="flex flex-col m-4">
             <div className="flex flex-col justify-center items-center text-center font-bold lg:text-xl md:text-lg sm:text-md">
