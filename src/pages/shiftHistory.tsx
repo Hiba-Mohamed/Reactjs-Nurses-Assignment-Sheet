@@ -27,7 +27,7 @@ export function ShiftHistory() {
 
   return (
     <div className="bg-slate-100 font-nunito">
-      <div className="h-screen">
+      <div className="">
         <div className="flex flex-col items-center">
           <h1 className="text-center text-5xl font-bold my-8">Shift Record</h1>
 
