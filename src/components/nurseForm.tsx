@@ -4,35 +4,11 @@ import {
   useFieldArray,
   Controller,
 } from "react-hook-form";
-import { useParams } from "react-router-dom";
-import NurseCardDisplay from "../components/nurseCardDisplay";
-import { v4 as uuidv4 } from "uuid";
-
 
 interface IPatientData {
   patientName: string;
   patientRoom: string;
 }
-
-
-// const useList = (id:string) =>{
-//   const [list, useList] = useState();
-//   const editNurse= (ShiftId:string, index:number) =>{
-//     const staffData = retrieveStaffData(ShiftId);
-
-//   }
- 
-//   const deleteShift = () => {};
-//   const editShift = () => {};
-//   const viewShift = () => {};
-
-
-// deleteNurse("5d5f9143-a5f6-4ab2-97da-5b48cf35e391", 0);
-
-//   return {list, editNurse, deleteNurse, editShift, deleteShift, viewShift}
-// }
-
-// const { list, editNurse, deleteNurse, editShift, deleteShift, viewShift} = useList;
 
 interface IFormInput {
   nurseName: string;
@@ -43,14 +19,6 @@ interface IFormInput {
   assignedPatient: IPatientData[];
 }
 
-function formatDate(dateString: string): string {
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "2-digit",
-  };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-}
 
 function retriveShiftDataLSwithShiftId(ShiftId: string): any {
   // Retrieve shift data array from localStorage
@@ -80,9 +48,13 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
   return matchingData.staff ?? [];
 }
 
-export function NurseForm() {
-  const { ShiftId } = useParams();
 
+
+
+
+export function NurseInfoForm(){
+
+let  ShiftId  = "54197cba-a0f2-4c67-a710-62d51b90bb6c";
   const {
     register,
     handleSubmit,
@@ -102,20 +74,7 @@ export function NurseForm() {
     reset();
     console.log(nurseData);
   };
-
-  // function preventDuplicateNurseNameAndPatientData(nurseData: IFormInput) {
-  //   // retrieve existing data from local storage
-  //   // retrieve current data from the form
-  //   //   // a- compare the new "nurseName" with all the "nurseName" in local storage, if there is duplication, the function will just stop excuting and prevent the folowing steps from happening.
-  //   //   // b-       *compare the all new "patientName"'s with each other
-  //   //   //          *compare all new "patientName"'s with all the "patientName" in local storage
-  //   //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
-  //   //   // c-       *compare the all new "patientRoom"'s with each other
-  //   //   //          *compare all new "patientRoom"'s with all the "patientRoom" in local storage
-  //   //   //     if there is duplication in any, the function will just stop excuting and prevent the folowing steps from happening.
-  // }
-
-  function makeAndAddNurseDataToLS(nurseData: IFormInput) {
+    function makeAndAddNurseDataToLS(nurseData: IFormInput) {
     // Retrieve the existing shift data array from localStorage
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
     const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
@@ -210,30 +169,18 @@ console.log(errors);
 console.log("shiftData", shiftData);
 
     console.log(shiftData);
+   if (ShiftId) {
+    // Check if ShiftId is defined
+    const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
+  
+console.log("shiftData", shiftData);
+
+    console.log(shiftData);
     if (ShiftId) {
       const staffData = retrieveStaffData(ShiftId);
       console.log("staffData", staffData);
-      const nurseId= uuidv4();
-
       return (
         <div className="font-nunito bg-greygreen">
-          <div className="flex flex-col items-center justify-center ">
-            <div className="text-nunito-900 font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
-              <p>{shiftData.unitName}</p>
-              <div className="flex flex-row items-center">
-                {" "}
-                <p className="px-4">{formatDate(shiftData?.shiftDate)}</p>
-                <p className="px-4">{shiftData.shiftType}</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            {" "}
-            <NurseCardDisplay nurseId={nurseId} staffData={staffData}/>{" "}
-          </div>
-          
-
           <div className="font-nunito bg-greygreen">
             <div className="font-nunito relative overflow-hidden pb-12">
               <div className="flex flex-row flex-wrap justify-evenly">
@@ -407,7 +354,6 @@ console.log("shiftData", shiftData);
                           </div>
 
                           <div className="flex flex-row justify-end justify-center mx-2 mb-4 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 sm:text-sm">
-                            
                             {errors?.assignedPatient?.[index]?.patientRoom
                               ?.type === "validate" && (
                               <p className="text-peach w-24 appearance-none focus:outline-none">
@@ -478,6 +424,6 @@ console.log("shiftData", shiftData);
   } else {
     console.log("ShiftId is undefined.");
   }
-}
+}}
 
-export default NurseForm;
+export default NurseInfoForm;

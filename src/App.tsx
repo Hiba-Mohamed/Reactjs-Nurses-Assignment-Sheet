@@ -9,6 +9,7 @@ import NurseForm from "./pages/manageStaff";
 import UnitNav from "./components/unitNav";
 import { ShiftHistory } from "./pages/shiftHistory";
 import { StartSheet } from "./pages/startSheet";
+import EditNursePage from "./pages/editNurse";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/unitNav" element={<UnitNav />} />
         <Route path="/shiftHistory" element={<ShiftHistory />} />
         <Route path="/startSheet" element={<StartSheet />} />
+        <Route path="/editNurse" element={<EditNursePage />} />
       </Routes>
 
       <Footer />
