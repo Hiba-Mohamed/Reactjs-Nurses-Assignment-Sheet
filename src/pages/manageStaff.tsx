@@ -101,7 +101,6 @@ export function NurseForm() {
     event?.preventDefault();
     makeAndAddNurseDataToLS(nurseData);
     reset();
-    const nurseId = uuidv4()
     console.log(nurseData);
   };
 

@@ -17,7 +17,7 @@ interface IFormInput {
 export function NurseCardDisplay(
   { staffData, nurseId }: { staffData: IFormInput[], nurseId: string }) {
   const { ShiftId } = useParams();
-     const deleteNurse = (ShiftId: any, nurseIndex: number) => {
+     const deleteNurse = (ShiftId: any, nurseId: string) => {
        // Retrieve shift data array from localStorage
        const existingDataJSON = localStorage.getItem("startShiftDataArray");
        const existingData = existingDataJSON
@@ -35,7 +35,7 @@ export function NurseCardDisplay(
 
        const exsitingNurseArray = matchingData.staff;
        // get the index of the nurse card
-      exsitingNurseArray.splice(nurseIndex, 1);
+       exsitingNurseArray.splice(nurseId, 1);
 
        const updatedNurseList = exsitingNurseArray;
        console.log("Updated Nurse List", updatedNurseList);
@@ -47,25 +47,23 @@ export function NurseCardDisplay(
        window.location.reload();
      };
 
-    const editNurse = (ShiftId: any, nurseIndex: number) => {
-       const existingDataJSON = localStorage.getItem("startShiftDataArray");
-       const existingData = existingDataJSON
-         ? JSON.parse(existingDataJSON)
-         : [];
+    const editNurse = (ShiftId: any, nurseId: string) => {
+      const existingDataJSON = localStorage.getItem("startShiftDataArray");
+      const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-       console.log("existing Data", existingData);
+      console.log("existing Data", existingData);
 
-       // Find the shift data object with the matching shiftId
-       const matchingData = existingData.find(
-         (data: any) => data.ShiftId === ShiftId
-       );
+      // Find the shift data object with the matching shiftId
+      const matchingData = existingData.find(
+        (data: any) => data.ShiftId === ShiftId
+      );
 
-       console.log("matching Data:", matchingData);
+      console.log("matching Data:", matchingData);
 
-       const exsitingNurseArray = matchingData.staff;
-       const targetNurse = exsitingNurseArray[nurseIndex]
-       console.log(targetNurse);
-    }
+      const exsitingNurseArray = matchingData.staff;
+    
+    };
+    console.log(nurseId);
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
       {staffData.map((nurseData: IFormInput, nurseIndex:number) => (
@@ -127,13 +125,13 @@ export function NurseCardDisplay(
             <div className="flex flex-row justify-evenly items-center">
               <button
                 className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onClick={() => editNurse(ShiftId, nurseIndex)}
+                onClick={() => editNurse(ShiftId, nurseId)}
               >
                 Edit
               </button>
               <button
                 className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onClick={() => deleteNurse(ShiftId, nurseIndex)}
+                onClick={() => deleteNurse(ShiftId, nurseId)}
               >
                 Delete
               </button>
