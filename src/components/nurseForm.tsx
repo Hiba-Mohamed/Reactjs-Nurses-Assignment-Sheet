@@ -410,11 +410,7 @@ console.log("shiftData", shiftData);
                 </form>
               </div>
             </div>
-            <div className="flex flex-col items-center p-8">
-              <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Save Sheet
-              </button>
-            </div>
+
           </div>
         </div>
       );
