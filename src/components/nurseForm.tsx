@@ -52,7 +52,7 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
 
 
 
-export function NurseInfoForm({onSubmitForm, Shifturl}:{onSubmitForm:SubmitHandler<IFormInput>, Shifturl:string}){
+export const  NurseInfoForm = ({onSubmitForm, Shifturl}:{onSubmitForm:SubmitHandler<IFormInput>, Shifturl:string}) =>{
 
   const ShiftId = {Shifturl}
   const {
