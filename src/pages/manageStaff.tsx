@@ -148,7 +148,7 @@ console.log("shiftData", shiftData);
           </div>
           <div>
             {" "}
-            <NurseInfoForm onSubmitForm={onSubmitForm} Shifturl={ShiftId} />
+            <NurseInfoForm onSubmit={onSubmitForm} Shifturl={ShiftId} />
           </div>
 
           <div className="flex flex-col items-center p-8">

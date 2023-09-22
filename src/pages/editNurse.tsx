@@ -10,7 +10,7 @@ export function EditNursePage(){
     
       <div className="bg-greygreen font-nunito">
         <h1 className="text-center text-5xl font-bold p-8">You are editing a nurse</h1>{" "}
-        <NurseInfoForm onSubmitForm={onSubmitEdit} Shifturl=""/>
+        <NurseInfoForm onSubmit={onSubmitEdit} Shifturl=""/>
       </div>
     );
 

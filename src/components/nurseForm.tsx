@@ -52,9 +52,10 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
 
 
 
-export const  NurseInfoForm = ({onSubmitForm, Shifturl}:{onSubmitForm:SubmitHandler<IFormInput>, Shifturl:string}) =>{
+export const  NurseInfoForm = ({onSubmit, Shifturl}:{onSubmit:SubmitHandler<IFormInput>, Shifturl:string}) =>{
 
-  const ShiftId = {Shifturl}
+  const ShiftId = Shifturl;
+
   const {
     register,
     handleSubmit,
@@ -154,7 +155,7 @@ console.log("shiftData", shiftData);
             <div className="font-nunito relative overflow-hidden pb-12">
               <div className="flex flex-row flex-wrap justify-evenly">
                 <form
-                  onSubmit={handleSubmit({onSubmitForm})}
+                  onSubmit={handleSubmit(onSubmit)}
                   className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
                 >
                   <div className="mb-4">
