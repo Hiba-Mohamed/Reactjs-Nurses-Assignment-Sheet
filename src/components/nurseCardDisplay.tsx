@@ -48,6 +48,13 @@ export function NurseCardDisplay(
      };
 
     // const editNurse = (ShiftId: any, nurseId: string) => {
+
+// 1- navigate to editnurse page 
+// 2- have the form autopopulated with the nurse info using nurseId
+// 3- on form submission is handled through the onSubmitEdit function that is in the editNurse page.
+// 4- have to find a way to send the  ShiftId to the editNurse page to be passed in as a prop there.
+
+
     //   const existingDataJSON = localStorage.getItem("startShiftDataArray");
     //   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
