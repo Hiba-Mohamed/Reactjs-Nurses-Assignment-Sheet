@@ -2,6 +2,10 @@ import NurseInfoForm from "../components/nurseForm";
 import { useParams } from "react-router-dom";
 import NurseCardDisplay from "../components/nurseCardDisplay";
 import { v4 as uuidv4 } from "uuid";
+import {
+  useForm,
+  SubmitHandler,
+} from "react-hook-form";
 
 
 interface IPatientData {
@@ -78,7 +82,40 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
 export function NurseForm() {
   const { ShiftId } = useParams();
 
+const {
+  reset,
+} = useForm<IFormInput>();
 
+
+const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
+  event?.preventDefault();
+  makeAndAddNurseDataToLS(nurseData);
+  reset();
+  console.log(nurseData);
+};
+
+function makeAndAddNurseDataToLS(nurseData: IFormInput) {
+  // Retrieve the existing shift data array from localStorage
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+  // Find the shift data object with the matching ShiftId
+  const matchingDataIndex = existingData.findIndex(
+    (data: any) => data.ShiftId === ShiftId
+  );
+
+  if (matchingDataIndex !== -1) {
+    // If a matching shift data is found, update its "staff" property
+    existingData[matchingDataIndex].staff =
+      existingData[matchingDataIndex].staff || [];
+    existingData[matchingDataIndex].staff.push(nurseData);
+
+    // Update the localStorage with the modified data
+    localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
+  } else {
+    console.log("Matching shift data not found for the provided ShiftId.");
+  }
+}
 
   if (ShiftId) {
     // Check if ShiftId is defined
@@ -107,17 +144,19 @@ console.log("shiftData", shiftData);
 
           <div>
             {" "}
-            <NurseCardDisplay nurseId={nurseId} staffData={staffData}/>{" "}
+            <NurseCardDisplay nurseId={nurseId} staffData={staffData} />{" "}
           </div>
-          <div>  <NurseInfoForm />
-</div>
+          <div>
+            {" "}
+            <NurseInfoForm onSubmitForm={onSubmitForm} Shifturl={ShiftId} />
+          </div>
 
-            <div className="flex flex-col items-center p-8">
-              <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Save Sheet
-              </button>
-            </div>
+          <div className="flex flex-col items-center p-8">
+            <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Save Sheet
+            </button>
           </div>
+        </div>
       );
     } else {
       console.log("ShiftId is undefined.");

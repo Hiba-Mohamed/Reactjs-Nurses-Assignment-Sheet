@@ -47,22 +47,22 @@ export function NurseCardDisplay(
        window.location.reload();
      };
 
-    const editNurse = (ShiftId: any, nurseId: string) => {
-      const existingDataJSON = localStorage.getItem("startShiftDataArray");
-      const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+    // const editNurse = (ShiftId: any, nurseId: string) => {
+    //   const existingDataJSON = localStorage.getItem("startShiftDataArray");
+    //   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-      console.log("existing Data", existingData);
+    //   console.log("existing Data", existingData);
 
-      // Find the shift data object with the matching shiftId
-      const matchingData = existingData.find(
-        (data: any) => data.ShiftId === ShiftId
-      );
+    //   // Find the shift data object with the matching shiftId
+    //   const matchingData = existingData.find(
+    //     (data: any) => data.ShiftId === ShiftId
+    //   );
 
-      console.log("matching Data:", matchingData);
+    //   console.log("matching Data:", matchingData);
 
-      const exsitingNurseArray = matchingData.staff;
+    //   const exsitingNurseArray = matchingData.staff;
     
-    };
+    // };
     console.log(nurseId);
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
@@ -125,7 +125,7 @@ export function NurseCardDisplay(
             <div className="flex flex-row justify-evenly items-center">
               <button
                 className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onClick={() => editNurse(ShiftId, nurseId)}
+                // onClick={() => editNurse(ShiftId, nurseId)}
               >
                 Edit
               </button>

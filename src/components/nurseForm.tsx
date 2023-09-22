@@ -52,51 +52,20 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
 
 
 
-export function NurseInfoForm(){
+export function NurseInfoForm({onSubmitForm, Shifturl}:{onSubmitForm:SubmitHandler<IFormInput>, Shifturl:string}){
 
-let  ShiftId  = "54197cba-a0f2-4c67-a710-62d51b90bb6c";
+  const ShiftId = {Shifturl}
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-    reset,
   } = useForm<IFormInput>();
 
   const { fields, append, remove } = useFieldArray({
     name: "assignedPatient",
     control,
   });
-
-  const onSubmit: SubmitHandler<IFormInput> = (nurseData, event) => {
-    event?.preventDefault();
-    makeAndAddNurseDataToLS(nurseData);
-    reset();
-    console.log(nurseData);
-  };
-    function makeAndAddNurseDataToLS(nurseData: IFormInput) {
-    // Retrieve the existing shift data array from localStorage
-    const existingDataJSON = localStorage.getItem("startShiftDataArray");
-    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-
-    // Find the shift data object with the matching ShiftId
-    const matchingDataIndex = existingData.findIndex(
-      (data: any) => data.ShiftId === ShiftId
-    );
-
-    if (matchingDataIndex !== -1) {
-      // If a matching shift data is found, update its "staff" property
-      existingData[matchingDataIndex].staff =
-        existingData[matchingDataIndex].staff || [];
-      existingData[matchingDataIndex].staff.push(nurseData);
-
-      // Update the localStorage with the modified data
-      localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
-    } else {
-      console.log("Matching shift data not found for the provided ShiftId.");
-    }
-  }
-
 
 
 const validateNurseName = (nurseName: string, ShiftId: string) => {
@@ -185,7 +154,7 @@ console.log("shiftData", shiftData);
             <div className="font-nunito relative overflow-hidden pb-12">
               <div className="flex flex-row flex-wrap justify-evenly">
                 <form
-                  onSubmit={handleSubmit(onSubmit)}
+                  onSubmit={handleSubmit({onSubmitForm})}
                   className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
                 >
                   <div className="mb-4">
@@ -410,7 +379,6 @@ console.log("shiftData", shiftData);
                 </form>
               </div>
             </div>
-
           </div>
         </div>
       );
