@@ -92,6 +92,7 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
   makeAndAddNurseDataToLS(nurseData);
   reset();
   console.log(nurseData);
+ window.location.reload();
 };
 
 function makeAndAddNurseDataToLS(nurseData: IFormInput) {
