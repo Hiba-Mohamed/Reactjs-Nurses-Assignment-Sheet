@@ -39,7 +39,7 @@ export function AboutPage() {
       </div>
 
       <div className="font-nunito flex flex-col items-start mb-14">
-        <div className="flex w-auto lg:flex-row items-center md:flex-col sm:flex-col">
+        <div className="flex lg:flex-row items-center md:flex-col sm:flex-col">
           <img
             className="lg:h-96 md:h-48 sm:h-56"
             src="./images/about2.png"
@@ -96,8 +96,8 @@ export function AboutPage() {
       </div>
 
       <div>
-        <div className="font-nunito flex flex-col items-start mb-14">
-          <div className="flex w-auto lg:flex-row md:flex-col sm:flex-col items-start">
+        <div className="font-nunito flex flex-col items-start mb-14 items-start">
+          <div className="flex w-auto lg:flex-row md:flex-col sm:flex-col items-center">
             <img
               className="lg:h-96 md:h-48 sm:h-56"
               src="./images/about3.png"
