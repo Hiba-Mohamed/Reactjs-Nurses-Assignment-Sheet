@@ -2,12 +2,20 @@ export function AboutPage() {
   return (
     <div className="lg:px-40 md:px-10 sm:px-10 lg:text-2xl md:text-xl sm:text-lg">
       <div className="flex justify-center w-auto">
-        <img src="./images/NAS-logo.png" alt="Nurses Assignment Sheet logo" className="w-auto" />
+        <img
+          src="./images/NAS-logo.png"
+          alt="Nurses Assignment Sheet logo"
+          className="h-20 w-20 m-12"
+        />
       </div>
       <div className="font-nunito flex flex-col items-start">
-        <div className="flex w-auto flex-row items-center">
-          <img className="w-44" src="./images/about1.png" alt="" />
-          <h3 className="font-extrabold tracking-tight text-center">
+        <div className="flex w-auto lg:flex-row items-center md:flex-col sm:flex-col">
+          <img
+            className="lg:h-96 md:h-48 sm:h-56"
+            src="./images/about1.png"
+            alt=""
+          />
+          <h3 className="font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
             {" "}
             What is the NAS?
           </h3>
@@ -31,13 +39,13 @@ export function AboutPage() {
       </div>
 
       <div className="font-nunito flex flex-col items-start">
-        <div className="flex flex-row items-center">
+        <div className="flex w-auto lg:flex-row items-center md:flex-col sm:flex-col">
           <img
-            className="w-44"
+            className="lg:h-96 md:h-48 sm:h-56"
             src="./images/about2.png"
             alt="A picture of question marks"
           />
-          <h3 className="text-nunito-900 font-extrabold tracking-tight text-center">
+          <h3 className="text-nunito-900 font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
             Why Use the NAS?
           </h3>
         </div>
@@ -89,13 +97,13 @@ export function AboutPage() {
 
       <div>
         <div className="font-nunito flex flex-col items-start">
-          <div className="flex flex-row items-center">
+          <div className="flex w-auto lg:flex-row items-center md:flex-col sm:flex-col">
             <img
-              className="w-44"
+              className="lg:h-96 md:h-48 sm:h-56"
               src="./images/about3.png"
               alt="A picture of a light bulb"
             />
-            <h3 className="text-nunito-900 font-extrabold tracking-tight text-center">
+            <h3 className="text-nunito-900 font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
               The unique features of the NAS:
             </h3>
           </div>
