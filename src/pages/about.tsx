@@ -1,19 +1,19 @@
 export function AboutPage() {
   return (
-    <div className="bg-repeat bg-opacity-10">
-      <div className="flex justify-center">
-        <img src="./images/NAS-logo.png" alt="Nurses Assignment Sheet logo" />
+    <div className="lg:px-40 md:px-10 sm:px-10 lg:text-2xl md:text-xl sm:text-lg">
+      <div className="flex justify-center w-auto">
+        <img src="./images/NAS-logo.png" alt="Nurses Assignment Sheet logo" className="w-auto" />
       </div>
-      <div className="font-nunito flex flex-row items-start">
-        <div className="flex flex-row items-center shrink">
+      <div className="font-nunito flex flex-col items-start">
+        <div className="flex w-auto flex-row items-center">
           <img className="w-44" src="./images/about1.png" alt="" />
-        </div>
-
-        <div className="text-nunito-400 tracking-tight p-4">
           <h3 className="font-extrabold tracking-tight text-center">
             {" "}
             What is the NAS?
           </h3>
+        </div>
+
+        <div className="text-nunito-400 tracking-tight p-4">
           <p className="my-4">
             The NAS (Nurses Assignment Sheet) is an electronic document that
             replaces the paper based nurses assignment sheet used in some
@@ -30,19 +30,19 @@ export function AboutPage() {
         </div>
       </div>
 
-      <div className="font-nunito flex flex-row items-start">
-        <div className="flex flex-row items-start">
+      <div className="font-nunito flex flex-col items-start">
+        <div className="flex flex-row items-center">
           <img
             className="w-44"
             src="./images/about2.png"
             alt="A picture of question marks"
           />
-        </div>
-
-        <div className="text-nunito-400 tracking-tight p-4 text-grey">
           <h3 className="text-nunito-900 font-extrabold tracking-tight text-center">
             Why Use the NAS?
           </h3>
+        </div>
+
+        <div className="text-nunito-400 tracking-tight p-4 text-grey">
           <p className="my-4">
             Using the NAS offers several advantages including, but not limited
             to:
@@ -88,19 +88,19 @@ export function AboutPage() {
       </div>
 
       <div>
-        <div className="font-nunito flex flex-row items-start">
+        <div className="font-nunito flex flex-col items-start">
           <div className="flex flex-row items-center">
             <img
               className="w-44"
               src="./images/about3.png"
               alt="A picture of a light bulb"
             />
-          </div>
-
-          <div className="flex flex-col">
             <h3 className="text-nunito-900 font-extrabold tracking-tight text-center">
               The unique features of the NAS:
             </h3>
+          </div>
+
+          <div className="flex flex-col">
             <div className="text-nunito-400 tracking-tight p-4 text-grey">
               <h4 className="text-green font-bold my-4">Regulated access</h4>
               <p className="">
