@@ -97,7 +97,7 @@ export function AboutPage() {
 
       <div>
         <div className="font-nunito flex flex-col items-start">
-          <div className="flex w-auto lg:flex-row items-center md:flex-col sm:flex-col">
+          <div className="flex w-auto lg:flex-row md:flex-col sm:flex-col items-start">
             <img
               className="lg:h-96 md:h-48 sm:h-56"
               src="./images/about3.png"
