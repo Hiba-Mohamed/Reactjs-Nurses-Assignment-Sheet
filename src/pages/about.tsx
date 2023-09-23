@@ -110,7 +110,7 @@ export function AboutPage() {
 
           <div className="flex flex-col">
             <div className="text-nunito-400 tracking-tight p-4 text-grey">
-              <h4 className="text-green font-bold my-4">Regulated access</h4>
+              <h4 className="text-green font-bold my-4">Regulated Access</h4>
               <p className="">
                 Electronic nurses' assignment sheets offer regulated access,
                 ensuring that only authorized users can view and make changes to
