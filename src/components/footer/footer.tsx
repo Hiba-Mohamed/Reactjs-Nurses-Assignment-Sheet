@@ -1,7 +1,7 @@
 export function Footer() {
   return (
-    <footer className="bg-green font-nunito py-8">
-      <div className="text-white">
+    <footer className="bg-slate-100 font-nunito py-8">
+      <div className="text-cyan-700">
         <p className="block text-center">NAS Created by Hiba Mohamed</p>
         <p className="block text-center">
           NAS Created using Vite, Node.js, and Canva

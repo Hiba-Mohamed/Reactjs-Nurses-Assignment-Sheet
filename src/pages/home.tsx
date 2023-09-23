@@ -23,14 +23,14 @@ export function Home() {
 
           <div className="flex items-center">
             <a
-              className="bg-cyan-800 hover:bg-cyan-700 text-white font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
+              className="bg-slate-100 hover:bg-slate-100 text-cyan-700 font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
               href="/account"
             >
               Create Account
             </a>
             <a
               href="/login"
-              className="bg-cyan-800 hover:bg-cyan-700 text-white font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
+              className="bg-cyan-700 hover:bg-cyan-700 text-white font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
             >
               Login
             </a>

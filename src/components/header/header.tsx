@@ -3,7 +3,7 @@ import { useState } from "react";
 export function Heading() {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="border-gray-200 bg-gray-50 font-nunito">
+    <nav className="border-slate-50 bg-slate-50 font-nunito">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
         <a href="/home" className="flex items-center">
           <img
