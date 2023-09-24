@@ -4,7 +4,7 @@ export function Home() {
       className="bg-cover bg-repeat bg-opacity-10 h-screen"
       style={{ backgroundImage: `url('images/banner-pic.png')` }}
     >
-      <div className="font-nunito flex flex-row relative max-w-5xl mx-auto mb-16 pt-4">
+      <div className="font-nunito flex flex-row relative max-w-5xl mx-auto mb-16 pt-4 pt-24">
         <div className="flex flex-col items-center w-screen mb-8">
           <img
             src="./images/NAS-logo.png"
