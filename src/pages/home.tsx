@@ -1,7 +1,7 @@
 export function Home() {
   return (
     <div
-      className="bg-cover bg-repeat bg-opacity-10"
+      className="bg-cover bg-repeat bg-opacity-10 h-screen"
       style={{ backgroundImage: `url('images/banner-pic.png')` }}
     >
       <div className="font-nunito flex flex-row relative max-w-5xl mx-auto mb-16 pt-4">
@@ -23,14 +23,14 @@ export function Home() {
 
           <div className="flex items-center">
             <a
-              className="bg-slate-100 hover:bg-slate-100 text-cyan-700 font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
+              className="bg-slate-200 hover:bg-slate-100 text-cyan-700 font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
               href="/account"
             >
               Create Account
             </a>
             <a
               href="/login"
-              className="bg-cyan-700 hover:bg-cyan-700 text-white font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
+              className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold py-4 px-8 rounded m-10 lg:text-xl sm:text-l"
             >
               Login
             </a>
