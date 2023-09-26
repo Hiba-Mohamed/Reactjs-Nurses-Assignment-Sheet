@@ -24,6 +24,9 @@ const form = useForm<IFormInput>();
   console.log(nurseId)
     const onSubmitEdit: SubmitHandler<IFormInput> = () => {
       console.log("I am edited");
+
+      // set the form default values to the values of the fields from the nurse in local storage that matches 
+
       // 1- find nurse with nurse id in storage
       // 2- update the nurse info with the new inputs.
       // 3- it is expected that the form validation be implemented from the form component itself.
