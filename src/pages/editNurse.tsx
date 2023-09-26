@@ -17,7 +17,7 @@ interface IFormInput {
 }
 
 export function EditNursePage(){
-  const {nurseId} = useParams();
+  const {ShiftId, nurseId} = useParams();
 const form = useForm<IFormInput>();
 
 
@@ -28,15 +28,18 @@ const form = useForm<IFormInput>();
       // 2- update the nurse info with the new inputs.
       // 3- it is expected that the form validation be implemented from the form component itself.
     };
-
+if (ShiftId && nurseId){
     return (
 
     
       <div className="bg-greygreen font-nunito">
         <h1 className="text-center text-5xl font-bold p-8">You are editing a nurse</h1>{" "}
-        <NurseInfoForm onSubmit={onSubmitEdit} Shifturl="" form={form}/>
+        <NurseInfoForm onSubmit={onSubmitEdit} Shifturl= {ShiftId} form={form}/>
       </div>
-    );
+    );}
+    else{
+      console.log("shift Id and/or nurse Id not found")
+    }
 
 }
 
