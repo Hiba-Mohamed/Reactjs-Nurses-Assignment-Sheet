@@ -14,25 +14,6 @@ interface IPatientData {
 }
 
 
-// const useList = (id:string) =>{
-//   const [list, useList] = useState();
-//   const editNurse= (ShiftId:string, index:number) =>{
-//     const staffData = retrieveStaffData(ShiftId);
-
-//   }
- 
-//   const deleteShift = () => {};
-//   const editShift = () => {};
-//   const viewShift = () => {};
-
-
-// deleteNurse("5d5f9143-a5f6-4ab2-97da-5b48cf35e391", 0);
-
-//   return {list, editNurse, deleteNurse, editShift, deleteShift, viewShift}
-// }
-
-// const { list, editNurse, deleteNurse, editShift, deleteShift, viewShift} = useList;
-
 interface IFormInput {
   nurseName: string;
   nurseBreak: string;
@@ -82,17 +63,14 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
 export function NurseForm() {
   const { ShiftId } = useParams();
 
-const {
-  reset,
-} = useForm<IFormInput>();
+const form = useForm<IFormInput>();
 
 
 const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
   event?.preventDefault();
   makeAndAddNurseDataToLS(nurseData);
-  reset();
+  form.reset();
   console.log(nurseData);
- window.location.reload();
 };
 
 function makeAndAddNurseDataToLS(nurseData: IFormInput) {
@@ -149,7 +127,7 @@ console.log("shiftData", shiftData);
           </div>
           <div>
             {" "}
-            <NurseInfoForm onSubmit={onSubmitForm} Shifturl={ShiftId} />
+            <NurseInfoForm onSubmit={onSubmitForm} Shifturl={ShiftId} form={form} />
           </div>
 
           <div className="flex flex-col items-center p-8">

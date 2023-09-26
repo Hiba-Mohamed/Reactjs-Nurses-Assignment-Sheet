@@ -1,5 +1,4 @@
 import {
-  useForm,
   SubmitHandler,
   useFieldArray,
   Controller,
@@ -52,7 +51,7 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
 
 
 
-export const  NurseInfoForm = ({onSubmit, Shifturl}:{onSubmit:SubmitHandler<IFormInput>, Shifturl:string}) =>{
+export const  NurseInfoForm = ({onSubmit, Shifturl, form}:{onSubmit:SubmitHandler<IFormInput>, Shifturl:string, form:any}) =>{
 
   const ShiftId = Shifturl;
 
@@ -61,7 +60,7 @@ export const  NurseInfoForm = ({onSubmit, Shifturl}:{onSubmit:SubmitHandler<IFor
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<IFormInput>();
+  } = form;
 
   const { fields, append, remove } = useFieldArray({
     name: "assignedPatient",
@@ -86,7 +85,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
 
 
   // Check if the provided patientName already exists in the assignedPatient array
-  if (staffData && patientName !== "") {
+  if (staffData && patientName !== "" || patientName === undefined) {
     for (const formInput of staffData) {
       if (formInput.assignedPatient) {
         const isDuplicate = formInput.assignedPatient.some(
@@ -110,13 +109,12 @@ const validatePatientRoom = (patientRoom: string, ShiftId: string) => {
   const staffData = retrieveStaffData(ShiftId);
 
   // Check if the provided patientName already exists in the assignedPatient array
-  if (staffData && patientRoom !== "") {
-    
+  if ((staffData && patientRoom !== "") || patientRoom === undefined) {
     for (const formInput of staffData) {
       if (formInput.assignedPatient) {
         const isDuplicate = formInput.assignedPatient.some(
-          (patient) => patient.patientRoom  === patientRoom
-      );
+          (patient) => patient.patientRoom === patientRoom
+        );
 
         // If a duplicate is found, return the error message
         if (isDuplicate) {
@@ -166,7 +164,7 @@ console.log("shiftData", shiftData);
                       {...register("nurseName", {
                         required: true,
                         maxLength: 30,
-                        validate: (value) => validateNurseName(value, ShiftId),
+                        validate: (value:any) => validateNurseName(value, ShiftId),
                       })}
                       type="text"
                       className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"

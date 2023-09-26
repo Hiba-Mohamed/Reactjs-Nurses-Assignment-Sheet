@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface IPatientData {
   patientName: string;
@@ -17,6 +18,8 @@ interface IFormInput {
 export function NurseCardDisplay(
   { staffData, nurseId }: { staffData: IFormInput[], nurseId: string }) {
   const { ShiftId } = useParams();
+     const navigate = useNavigate();
+
      const deleteNurse = (ShiftId: any, nurseId: string) => {
        // Retrieve shift data array from localStorage
        const existingDataJSON = localStorage.getItem("startShiftDataArray");
@@ -47,29 +50,14 @@ export function NurseCardDisplay(
        window.location.reload();
      };
 
-    // const editNurse = (ShiftId: any, nurseId: string) => {
+    const editNurse = (ShiftId: any, nurseId: string) => {
+    navigate(`/editNurse/${nurseId}`);
 
-// 1- navigate to editnurse page 
 // 2- have the form autopopulated with the nurse info using nurseId
 // 3- on form submission is handled through the onSubmitEdit function that is in the editNurse page.
 // 4- have to find a way to send the  ShiftId to the editNurse page to be passed in as a prop there.
-
-
-    //   const existingDataJSON = localStorage.getItem("startShiftDataArray");
-    //   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-
-    //   console.log("existing Data", existingData);
-
-    //   // Find the shift data object with the matching shiftId
-    //   const matchingData = existingData.find(
-    //     (data: any) => data.ShiftId === ShiftId
-    //   );
-
-    //   console.log("matching Data:", matchingData);
-
-    //   const exsitingNurseArray = matchingData.staff;
-    
-    // };
+  
+    };
     console.log(nurseId);
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
@@ -132,7 +120,7 @@ export function NurseCardDisplay(
             <div className="flex flex-row justify-evenly items-center">
               <button
                 className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                // onClick={() => editNurse(ShiftId, nurseId)}
+                onClick={() => editNurse(ShiftId, nurseId)}
               >
                 Edit
               </button>
