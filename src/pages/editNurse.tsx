@@ -16,13 +16,37 @@ interface IFormInput {
   assignedPatient: IPatientData[];
 }
 
+
 export function EditNursePage(){
-  const {ShiftId, nurseId} = useParams();
-const form = useForm<IFormInput>();
 
 
-  console.log(nurseId)
-    const onSubmitEdit: SubmitHandler<IFormInput> = () => {
+const {ShiftId, nurseId} = useParams();
+
+
+const setFormDefaultValuesToTargetNurseUsingNurseId = (nurseId: string) => {
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+         const matchingData = existingData.find(
+           (data: any) => data.ShiftId === ShiftId
+         );
+const matchingNurse = matchingData.find((data:any) => data.staff.nurseId === nurseId);
+console.log("matching Nurse:", matchingNurse);
+};
+
+
+if (ShiftId && nurseId){
+const form = useForm<IFormInput>()
+
+console.log("You are editing the nurse with nurseId:",nurseId);
+
+
+
+
+
+ 
+
+
+const onSubmitEdit: SubmitHandler<IFormInput> = () => {
       console.log("I am edited");
 
       // set the form default values to the values of the fields from the nurse in local storage that matches 
@@ -30,8 +54,12 @@ const form = useForm<IFormInput>();
       // 1- find nurse with nurse id in storage
       // 2- update the nurse info with the new inputs.
       // 3- it is expected that the form validation be implemented from the form component itself.
-    };
-if (ShiftId && nurseId){
+};
+
+
+
+
+
     return (
 
     
