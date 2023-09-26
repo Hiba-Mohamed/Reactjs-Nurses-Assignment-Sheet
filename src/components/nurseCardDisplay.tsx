@@ -51,7 +51,7 @@ export function NurseCardDisplay(
      };
 
     const editNurse = (ShiftId: any, nurseId: string) => {
-    navigate(`/editNurse/${nurseId}`);
+    navigate(`/editNurse/${ShiftId}/${nurseId}`);
 
 // 2- have the form autopopulated with the nurse info using nurseId
 // 3- on form submission is handled through the onSubmitEdit function that is in the editNurse page.

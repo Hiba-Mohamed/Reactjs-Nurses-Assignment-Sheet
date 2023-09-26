@@ -26,7 +26,7 @@ function App() {
         <Route path="/unitNav" element={<UnitNav />} />
         <Route path="/shiftHistory" element={<ShiftHistory />} />
         <Route path="/startSheet" element={<StartSheet />} />
-        <Route path="/editNurse/:nurseId" element={<EditNursePage />} />
+        <Route path="/editNurse/:ShiftId/:nurseId" element={<EditNursePage />} />
       </Routes>
 
       <Footer />
