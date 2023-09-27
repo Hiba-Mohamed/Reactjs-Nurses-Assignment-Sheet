@@ -26,18 +26,19 @@ export function ShiftHistory() {
   console.log(watch("shiftType"));
 
   return (
-    
-    <div className="bg-slate-100 font-nunito">
+    <div className="bg-slate-100 font-nunito min-h-screen">
       <div className="">
         <div className="flex flex-col items-center">
-          <h1 className="text-center text-5xl font-bold my-8">Shift Record</h1>
+          <h1 className="text-center text-2xl sm:text-4xl font-bold py-8">
+            Shift Record
+          </h1>
 
-          <div className="flex flex-col md:flex-col items-center p-4 bg-white rounded-xl shadow-lg my-6">
-            <div className="relative">
+          <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg my-6 max-w-sm sm:max-w-xl">
+            <div className="">
               <div className="flex items-center pointer-events-none"></div>
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-row items-center justify-center"
+                className="flex flex-col sm:flex-row items-center justify-center gap-4"
               >
                 <div>
                   <Controller
@@ -47,9 +48,8 @@ export function ShiftHistory() {
                       <DatePicker
                         placeholderText="Enter shift date"
                         onChange={(date) => field.onChange(date)}
-                        className="w-full px-4 py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="pl-2 py-2 rounded-md border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-sm sm:max-w-md"
                         selected={field.value}
-
                       />
                     )}
                   />
@@ -57,7 +57,7 @@ export function ShiftHistory() {
                 <div className="basis-1/2 mr-2">
                   <select
                     {...register("shiftType", { required: true })}
-                    className={`mx-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200 ${
+                    className={`px-4 py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500  ${
                       !watch("shiftType") && "opacity-50"
                     }`}
                   >
