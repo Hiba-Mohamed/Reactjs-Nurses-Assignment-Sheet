@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="bg-slate-100 font-nunito py-8">
+    <footer className="bg-slate-100 font-nunito py-4 sm:py-8 text-sm sm:text-lg">
       <div className="text-cyan-700">
         <p className="block text-center">NAS Created by Hiba Mohamed</p>
         <p className="block text-center">
