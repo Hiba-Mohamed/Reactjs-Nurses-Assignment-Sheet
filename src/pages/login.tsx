@@ -5,17 +5,21 @@ export function Login() {
       style={{ backgroundImage: `url('images/banner-pic.png')` }}
     >
       <div className="">
-        <form action="" className="w-screen max-w-sm">
-          <div className="">
+        <form action="" className="max-w-sm">
+          <div className="max-w-2xl">
             <div className="flex flex-col items-center">
-              <img src="./images/NAS-logo.png" className="w-24" alt="" />
-              <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.04em] text-black sm:text-5xl sm:leading-[3.5rem]">
-                Log In
+              <img
+                src="./images/NAS-logo.png"
+                className="sm:w-24 w-20 mt-12 sm:mt-18"
+                alt=""
+              />
+              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold tracking-[-0.04em] text-black sm:text-5xl sm:leading-[3.5rem]">
+                Login
               </h2>
             </div>
 
-            <div className="mb-4">
-              <label className="block font-semibold leading-6 text-gray-900 lg:text-xl sm:text-l">
+            <div className="mb-4 mt-6">
+              <label className="block font-semibold leading-6 text-gray-900 lg:text-lg text-md sm:text-md">
                 Email address
               </label>
               <input
@@ -25,7 +29,7 @@ export function Login() {
               ></input>
             </div>
             <div className="">
-              <label className="block font-semibold leading-6 text-gray-900 lg:text-xl sm:text-l">
+              <label className="block font-semibold leading-6 text-gray-900 lg:text-lg text-md sm:text-md">
                 Password
               </label>
               <input
@@ -36,20 +40,20 @@ export function Login() {
             </div>
             <div className="">
               <a
-                className="inline-flex justify-center rounded-lg border border-green font-semibold py-2.5 px-4 bg-nunito-900 text-green hover:bg-nunito-700 w-full bg-white mt-6 mb-2 lg:text-xl sm:text-l"
+                className="inline-flex justify-center rounded-lg border border-green font-semibold py-2.5 px-4 bg-nunito-900 text-green hover:bg-nunito-700 w-full bg-white mt-6 mb-2 lg:text-lg text-md sm:text-md"
                 href="/unitNav"
               >
                 Login
               </a>
 
               <a
-                className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-xl sm:text-l"
+                className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-lg text-md sm:text-md"
                 href="/unitNav"
               >
                 Login as a guest
               </a>
             </div>
-            <div className="flex items-center flex-col">
+            <div className="flex items-center flex-col lg:text-lg text-md sm:text-md">
               <a className="hover:text-green" href="#">
                 Forgot password?
               </a>
