@@ -11,9 +11,10 @@ export const ShiftListComponent = () => {
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-  console.log(existingData[0].data.unitName);
-  console.log("existing data from shift List :", existingData);
-  console.log(existingData[2].ShiftId);
+  // console.log(existingData[0].data.unitName);
+  // console.log("existing data from shift List :", existingData);
+  // console.log(existingData[2].ShiftId);
+  if (existingData.length !== 0){
 
   return (
     <div className="flex flex-col md:flex-col items-center">
@@ -48,6 +49,10 @@ export const ShiftListComponent = () => {
       </div>
     </div>
   );
+        }
+        else{
+          console.log("no shifts entered yet")
+        }
 };
 
 export default ShiftListComponent;
