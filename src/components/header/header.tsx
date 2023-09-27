@@ -8,7 +8,7 @@ export function Heading() {
         <a href="/home" className="flex items-center">
           <img
             src="./images/NAS-logo.png"
-            className="h-16 mr-3"
+            className="sm:h-12 mr-3 h-6"
             alt="Nurses Assignment Sheet logo"
           />
         </a>
