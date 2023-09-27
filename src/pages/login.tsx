@@ -10,7 +10,7 @@ export function Login() {
             <div className="flex flex-col items-center">
               <img
                 src="./images/NAS-logo.png"
-                className="sm:w-24 w-20 mt-12 sm:mt-18"
+                className="sm:h-24 h-20 mt-12 sm:mt-18"
                 alt=""
               />
               <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold tracking-[-0.04em] text-black sm:text-5xl sm:leading-[3.5rem]">
