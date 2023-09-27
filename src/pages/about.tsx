@@ -10,11 +10,7 @@ export function AboutPage() {
       </div>
       <div className="font-nunito flex flex-col items-start mb-48">
         <div className="flex w-auto lg:flex-row items-center md:flex-col sm:flex-col">
-          <img
-            className="lg:h-96 md:h-48 sm:h-56"
-            src="./images/about1.png"
-            alt=""
-          />
+          <img className="h-40 sm:h-56" src="./images/about1.png" alt="" />
           <h3 className="font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
             {" "}
             What is the NAS?
@@ -41,7 +37,7 @@ export function AboutPage() {
       <div className="font-nunito flex flex-col items-start mb-48">
         <div className="flex lg:flex-row items-center md:flex-col sm:flex-col">
           <img
-            className="lg:h-96 md:h-48 sm:h-56"
+            className="h-40 sm:h-56"
             src="./images/about2.png"
             alt="A picture of question marks"
           />
@@ -97,9 +93,9 @@ export function AboutPage() {
 
       <div>
         <div className="font-nunito flex flex-col mb-48 items-start">
-          <div className="flex w-auto lg:flex-row md:flex-col sm:flex-col items-start">
+          <div className="flex w-auto lg:flex-row md:flex-col sm:flex-col items-center">
             <img
-              className="lg:h-96 md:h-48 sm:h-56"
+              className="h-40 sm:h-56"
               src="./images/about3.png"
               alt="A picture of a light bulb"
             />
