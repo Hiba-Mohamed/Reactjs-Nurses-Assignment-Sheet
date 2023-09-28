@@ -35,7 +35,16 @@ console.log("matching Nurse:", matchingNurse);
 
 
 if (ShiftId && nurseId){
-const form = useForm<IFormInput>()
+const form = useForm<IFormInput>({
+  defaultValues: {
+    nurseName: "Nurse",
+    nurseBreak: "First",
+    reliefName: "relief",
+    extraDuties: "relief",
+    fireCode: "A",
+  assignedPatient:[{patientName:"ASD", patientRoom: "123"
+  }]}
+});
 
 console.log("You are editing the nurse with nurseId:",nurseId);
 
@@ -63,8 +72,8 @@ const onSubmitEdit: SubmitHandler<IFormInput> = () => {
     return (
 
     
-      <div className="bg-greygreen font-nunito">
-        <h1 className="text-center text-5xl font-bold p-8">You are editing a nurse</h1>{" "}
+      <div className="bg-greygreen font-nunito min-h-screen">
+        <h1 className="text-center text-5xl font-bold p-8 pt-16">You are editing a nurse</h1>{" "}
         <NurseInfoForm onSubmit={onSubmitEdit} Shifturl= {ShiftId} form={form}/>
       </div>
     );}
