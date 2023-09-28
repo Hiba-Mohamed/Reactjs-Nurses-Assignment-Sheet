@@ -17,7 +17,7 @@ export function Home() {
             alt="A picture of two pictures, on the left two nurses in nursing station, and on the right a picture of a nurse caring for a patient"
           />
 
-          <p className="text-nunito-900 font-extrabold text-lg sm:text-4xl lg:text-6xl tracking-tight text-center p-4 max-w-sm sm:max-w-2xl">
+          <p className="text-nunito-900 font-extrabold text-lg sm:text-4xl lg:text-5xl tracking-tight text-center p-4 max-w-sm sm:max-w-2xl">
             Generate electronic Nurses Assignment Sheets now using NAS
           </p>
 
@@ -30,7 +30,7 @@ export function Home() {
             </a>
             <a
               href="/login"
-              className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold py-2 px-4 sm:py-4 sm:px-8 rounded lg:text-xl text-sm sm:text-lg"
+              className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold sm:py-4 sm:px-8 py-2 px-4 rounded lg:text-xl text-sm"
             >
               Login
             </a>
