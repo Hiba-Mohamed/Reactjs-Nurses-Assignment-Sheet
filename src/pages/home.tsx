@@ -1,8 +1,8 @@
 export function Home() {
   return (
     <div
-      className="bg-cover bg-repeat bg-opacity-10 h-screen mx-auto"
-      style={{ backgroundImage: `url('images/banner-pic.png')` }}
+      className="bg-cover bg-repeat bg-opacity-10 h-screen mx-auto dark:bg-black"
+      // style={{ backgroundImage: `url('images/banner-pic.png')` }}
     >
       <div className="font-nunito flex flex-row relative max-w-2xl sm:max-w-5xl mx-auto mb-16 pt-20">
         <div className="flex flex-col items-center w-screen mb-8">

@@ -2,7 +2,7 @@ export function Account() {
   return (
     <div
       className="font-nunito relative flex flex-1 flex-col overflow-hidden justify-center items-center mb-12 sm:max-w-screen h-screen"
-      style={{ backgroundImage: `url('images/banner-pic.png')` }}
+      // style={{ backgroundImage: `url('images/banner-pic.png')` }}
     >
       <div className="flex flex-col items-center">
         <img
