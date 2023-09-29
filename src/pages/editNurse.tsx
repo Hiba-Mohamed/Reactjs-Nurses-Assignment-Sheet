@@ -29,10 +29,11 @@ const setFormDefaultValuesToTargetNurseUsingNurseId = (nurseId: string) => {
          const matchingData = existingData.find(
            (data: any) => data.ShiftId === ShiftId
          );
-const matchingNurse = matchingData.find((data:any) => data.staff.nurseId === nurseId);
+         console.log("matching data from edit nurse page", matchingData);
+const matchingNurse = matchingData.staff.id === nurseId;
 console.log("matching Nurse:", matchingNurse);
 };
-
+setFormDefaultValuesToTargetNurseUsingNurseId("f274fa08-d8bc-4899-a2ad-333ce1f014e9");
 
 if (ShiftId && nurseId){
 const form = useForm<IFormInput>({
@@ -42,8 +43,11 @@ const form = useForm<IFormInput>({
     reliefName: "relief",
     extraDuties: "relief",
     fireCode: "A",
-  assignedPatient:[{patientName:"ASD", patientRoom: "123"
-  }]}
+    assignedPatient: [
+      { patientName: "ASD", patientRoom: "123" },
+      { patientName: "ASD", patientRoom: "123" },
+    ],
+  },
 });
 
 console.log("You are editing the nurse with nurseId:",nurseId);
