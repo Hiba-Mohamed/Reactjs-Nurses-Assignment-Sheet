@@ -104,8 +104,9 @@ console.log("shiftData", shiftData);
     (data: any) => data.ShiftId === ShiftId)
 
     const staffData =  matchingData.staff ?? [];
-    
+
    console.log("staffData", staffData);
+   console.log("nurseId for first nurse", staffData[0].nurseId);
 
       return (
         <div className="font-nunito bg-greygreen">

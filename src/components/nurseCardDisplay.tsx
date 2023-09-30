@@ -15,7 +15,7 @@ interface IFormInput {
   assignedPatient: IPatientData[];
 }
 
-export function NurseCardDisplay(staffData: any) {
+export function NurseCardDisplay({staffData}:{staffData: any}) {
   const { ShiftId } = useParams();
      const navigate = useNavigate();
 
