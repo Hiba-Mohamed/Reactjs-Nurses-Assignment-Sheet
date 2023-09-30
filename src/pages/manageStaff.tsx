@@ -49,16 +49,7 @@ function retriveShiftDataLSwithShiftId(ShiftId: string): any {
   return matchingData ? matchingData.data : null;
 }
 
-export function retrieveStaffData(ShiftId: string) : any {
-  const existingDataJSON = localStorage.getItem("startShiftDataArray");
-  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-  const matchingData = existingData.find(
-    (data: any) => data.ShiftId === ShiftId
-  );
-
-  return matchingData.staff ?? [];
-}
 
 export function NurseForm() {
   const { ShiftId } = useParams();
@@ -106,8 +97,15 @@ console.log("shiftData", shiftData);
 
     console.log(shiftData);
     if (ShiftId) {
-      const staffData = retrieveStaffData(ShiftId);
-      console.log("staffData", staffData);
+
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+  const matchingData = existingData.find(
+    (data: any) => data.ShiftId === ShiftId)
+
+    const staffData =  matchingData.staff ?? [];
+    
+   console.log("staffData", staffData);
 
       return (
         <div className="font-nunito bg-greygreen">

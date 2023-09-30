@@ -57,7 +57,7 @@ export function NurseCardDisplay(staffData: any) {
 // 4- have to find a way to send the  ShiftId to the editNurse page to be passed in as a prop there.
   
     };
-
+    if (ShiftId && staffData.length !==0){
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
       {staffData?.map((nurseData: IFormInput, nurseIndex: number) => (
@@ -139,6 +139,14 @@ export function NurseCardDisplay(staffData: any) {
       ))}
     </div>
   );
+
+    }
+    else {
+      console.log("no nurses added yet for this shift");
+      
+    }
+
+
 }
 
 export default NurseCardDisplay;
