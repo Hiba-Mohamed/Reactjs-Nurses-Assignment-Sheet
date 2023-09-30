@@ -106,37 +106,41 @@ console.log("shiftData", shiftData);
     const staffData =  matchingData.staff ?? [];
 
    console.log("staffData", staffData);
-   console.log("nurseId for first nurse", staffData[0].nurseId);
+  
+     return (
+       <div className="font-nunito bg-greygreen">
+         <div className="flex flex-col items-center justify-center ">
+           <div className="text-nunito-900 font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
+             <p>{shiftData.unitName}</p>
+             <div className="flex flex-row items-center">
+               {" "}
+               <p className="px-4">{formatDate(shiftData?.shiftDate)}</p>
+               <p className="px-4">{shiftData.shiftType}</p>
+             </div>
+           </div>
+         </div>
 
-      return (
-        <div className="font-nunito bg-greygreen">
-          <div className="flex flex-col items-center justify-center ">
-            <div className="text-nunito-900 font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-center p-4 bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 py-4 m-8 text-green">
-              <p>{shiftData.unitName}</p>
-              <div className="flex flex-row items-center">
-                {" "}
-                <p className="px-4">{formatDate(shiftData?.shiftDate)}</p>
-                <p className="px-4">{shiftData.shiftType}</p>
-              </div>
-            </div>
-          </div>
+         <div>
+           {" "}
+           <NurseCardDisplay staffData={staffData} />{" "}
+         </div>
+         <div>
+           {" "}
+           <NurseInfoForm
+             onSubmit={onSubmitForm}
+             Shifturl={ShiftId}
+             form={form}
+           />
+         </div>
 
-          <div>
-            {" "}
-            <NurseCardDisplay staffData={staffData} />{" "}
-          </div>
-          <div>
-            {" "}
-            <NurseInfoForm onSubmit={onSubmitForm} Shifturl={ShiftId} form={form} />
-          </div>
+         <div className="flex flex-col items-center p-8">
+           <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+             Save Sheet
+           </button>
+         </div>
+       </div>
+     );
 
-          <div className="flex flex-col items-center p-8">
-            <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-              Save Sheet
-            </button>
-          </div>
-        </div>
-      );
     } else {
       console.log("ShiftId is undefined.");
     }
