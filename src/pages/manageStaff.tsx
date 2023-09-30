@@ -49,7 +49,7 @@ function retriveShiftDataLSwithShiftId(ShiftId: string): any {
   return matchingData ? matchingData.data : null;
 }
 
-export function retrieveStaffData(ShiftId: string): IFormInput[] {
+export function retrieveStaffData(ShiftId: string) : any {
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
@@ -62,6 +62,8 @@ export function retrieveStaffData(ShiftId: string): IFormInput[] {
 
 export function NurseForm() {
   const { ShiftId } = useParams();
+  const nurseId = uuidv4();
+
 
 const form = useForm<IFormInput>();
 
@@ -87,7 +89,7 @@ function makeAndAddNurseDataToLS(nurseData: IFormInput) {
     // If a matching shift data is found, update its "staff" property
     existingData[matchingDataIndex].staff =
       existingData[matchingDataIndex].staff || [];
-    existingData[matchingDataIndex].staff.push(nurseData);
+    existingData[matchingDataIndex].staff.push({nurseId, nurseData});
 
     // Update the localStorage with the modified data
     localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
@@ -106,7 +108,6 @@ console.log("shiftData", shiftData);
     if (ShiftId) {
       const staffData = retrieveStaffData(ShiftId);
       console.log("staffData", staffData);
-      const nurseId= uuidv4();
 
       return (
         <div className="font-nunito bg-greygreen">
@@ -123,7 +124,7 @@ console.log("shiftData", shiftData);
 
           <div>
             {" "}
-            <NurseCardDisplay nurseId={nurseId} staffData={staffData} />{" "}
+            <NurseCardDisplay staffData={staffData} />{" "}
           </div>
           <div>
             {" "}

@@ -15,8 +15,7 @@ interface IFormInput {
   assignedPatient: IPatientData[];
 }
 
-export function NurseCardDisplay(
-  { staffData, nurseId }: { staffData: IFormInput[], nurseId: string }) {
+export function NurseCardDisplay(staffData: any) {
   const { ShiftId } = useParams();
      const navigate = useNavigate();
 
@@ -58,12 +57,12 @@ export function NurseCardDisplay(
 // 4- have to find a way to send the  ShiftId to the editNurse page to be passed in as a prop there.
   
     };
-    console.log(nurseId);
+
   return (
     <div className="flex flex-row flex-wrap justify-evenly">
-      {staffData.map((nurseData: IFormInput, nurseIndex:number) => (
+      {staffData?.map((nurseData: IFormInput, nurseIndex: number) => (
         <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
-          <div key={nurseIndex} id={nurseId} className="flex flex-col m-4">
+          <div key={nurseIndex} className="flex flex-col m-4">
             <div className="flex flex-col justify-center items-center text-center font-bold lg:text-xl md:text-lg sm:text-md">
               {nurseData.nurseName}
             </div>
@@ -120,13 +119,17 @@ export function NurseCardDisplay(
             <div className="flex flex-row justify-evenly items-center">
               <button
                 className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onClick={() => editNurse(ShiftId, nurseId)}
+                onClick={() =>
+                  editNurse(ShiftId, staffData[nurseIndex].nurseId)
+                }
               >
                 Edit
               </button>
               <button
                 className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onClick={() => deleteNurse(ShiftId, nurseId)}
+                onClick={() =>
+                  deleteNurse(ShiftId, staffData[nurseIndex].nurseId)
+                }
               >
                 Delete
               </button>
