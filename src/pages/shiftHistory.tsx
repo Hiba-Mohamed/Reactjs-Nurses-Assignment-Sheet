@@ -26,7 +26,7 @@ export function ShiftHistory() {
   console.log(watch("shiftType"));
 
   return (
-    <div className="bg-slate-100 font-nunito min-h-screen">
+    <div className="bg-slate-100 font-nunito min-h-screen text-sm smm:text-md">
       <div className="">
         <div className="flex flex-col items-center">
           <h1 className="text-center text-2xl sm:text-4xl font-bold py-8">
