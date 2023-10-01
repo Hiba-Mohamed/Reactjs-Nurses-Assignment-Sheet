@@ -26,6 +26,8 @@ export const ShiftListComponent = () => {
 
   function editShift(shiftId: string) {
     console.log("edit Shift", shiftId);
+        navigate(`/manageStaff/${shiftId}`);
+
   }
 
   function deleteShift(shiftId: string) {
