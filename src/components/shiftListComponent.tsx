@@ -15,9 +15,6 @@ export const ShiftListComponent = () => {
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-  // console.log(existingData[0].data.unitName);
-  // console.log("existing data from shift List :", existingData);
-  // console.log(existingData[2].ShiftId);
 
   function viewShift(shiftId: string) {
     console.log("View shift", shiftId);
@@ -32,6 +29,12 @@ export const ShiftListComponent = () => {
 
   function deleteShift(shiftId: string) {
     console.log("delete Shift", shiftId);
+    existingData.splice(shiftId, 1);
+           localStorage.setItem(
+             "startShiftDataArray",
+             JSON.stringify(existingData)
+           );
+                  window.location.reload();
   }
 
   if (existingData.length !== 0) {
