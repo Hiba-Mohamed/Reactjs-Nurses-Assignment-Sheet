@@ -63,7 +63,7 @@ export function EditNursePage() {
     };
 
     return (
-      <div className="bg-greygreen font-nunito min-h-screen">
+      <div className="bg-greygreen font-nunito min-h-screen lg:px-40 md:px-10 sm:px-10">
         <h1 className="text-center text-2xl sm:text-3xl font-bold p-8 pt-16">
           You are editing nurse {matchingName}'s assignment info
         </h1>{" "}

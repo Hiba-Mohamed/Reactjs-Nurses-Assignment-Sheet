@@ -67,9 +67,9 @@ console.log(staffData);
         return (
           <div className="flex flex-row flex-wrap justify-evenly">
             {staffData?.map((staffData: any, nurseIndex: number) => (
-              <div className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4">
+              <div className="bg-white shadow-lg rounded-lg sm:px-8 sm:pt-6 sm:pb-8 my-4  max-w-sm mx-2 text-sm  lg:text-l sm:text-md">
                 <div key={nurseIndex} className="flex flex-col m-4">
-                  <div className="flex flex-col justify-center items-center text-center font-bold lg:text-xl md:text-lg sm:text-md">
+                  <div className="flex flex-col justify-center items-center text-center font-bold">
                     {staffData.nurseData.nurseName}
                   </div>
                   <table className="table-auto">
