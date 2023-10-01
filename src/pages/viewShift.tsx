@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import ViewNurseCard from "../components/viewNursesComponent";
 
 
-
 function formatDate(dateString: string): string {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -52,7 +51,7 @@ export function ViewShift() {
       console.log("staffData", staffData);
 
       return (
-        <div className="font-nunito bg-greygreen sm:max-w-full">
+        <div className="font-nunito bg-greygreen sm:max-w-full min-h-screen">
           <div className="flex flex-col items-center justify-center">
             <div className="text-nunito-900 font-extrabold text-md sm:text-xl lg:text-3xl tracking-tight text-center p-2 bg-white shadow-lg rounded-lg sm:px-8 sm:pt-6 sm:pb-8 sm:py-4 m-8 text-green">
               <p>{shiftData.unitName}</p>
