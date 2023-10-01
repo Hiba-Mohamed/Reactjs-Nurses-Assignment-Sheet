@@ -10,6 +10,7 @@ import UnitNav from "./components/unitNav";
 import { ShiftHistory } from "./pages/shiftHistory";
 import { StartSheet } from "./pages/startSheet";
 import EditNursePage from "./pages/editNurse";
+import ViewShift from "./pages/viewShift";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/viewShift/:ShiftId" element={<ViewShift />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<Login />} />
@@ -26,7 +28,10 @@ function App() {
         <Route path="/unitNav" element={<UnitNav />} />
         <Route path="/shiftHistory" element={<ShiftHistory />} />
         <Route path="/startSheet" element={<StartSheet />} />
-        <Route path="/editNurse/:ShiftId/:nurseId" element={<EditNursePage />} />
+        <Route
+          path="/editNurse/:ShiftId/:nurseId"
+          element={<EditNursePage />}
+        />
       </Routes>
 
       <Footer />

@@ -1,22 +1,7 @@
-import NurseInfoForm from "../components/nurseForm";
 import { useParams } from "react-router-dom";
-import NurseCardDisplay from "../components/nurseCardDisplay";
-import { v4 as uuidv4 } from "uuid";
-import { useForm, SubmitHandler } from "react-hook-form";
+import ViewNurseCard from "../components/viewNursesComponent";
 
-interface IPatientData {
-  patientName: string;
-  patientRoom: string;
-}
 
-interface IFormInput {
-  nurseName: string;
-  nurseBreak: string;
-  reliefName: string;
-  extraDuties: string;
-  fireCode: string;
-  assignedPatient: IPatientData[];
-}
 
 function formatDate(dateString: string): string {
   const options: Intl.DateTimeFormatOptions = {
@@ -46,39 +31,7 @@ function retriveShiftDataLSwithShiftId(ShiftId: string): any {
 
 export function ViewShift() {
   const { ShiftId } = useParams();
-  const nurseId = uuidv4();
 
-  const form = useForm<IFormInput>();
-
-  const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
-    event?.preventDefault();
-    makeAndAddNurseDataToLS(nurseData);
-    form.reset();
-    console.log(nurseData);
-  };
-
-  function makeAndAddNurseDataToLS(nurseData: IFormInput) {
-    // Retrieve the existing shift data array from localStorage
-    const existingDataJSON = localStorage.getItem("startShiftDataArray");
-    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-
-    // Find the shift data object with the matching ShiftId
-    const matchingDataIndex = existingData.findIndex(
-      (data: any) => data.ShiftId === ShiftId
-    );
-
-    if (matchingDataIndex !== -1) {
-      // If a matching shift data is found, update its "staff" property
-      existingData[matchingDataIndex].staff =
-        existingData[matchingDataIndex].staff || [];
-      existingData[matchingDataIndex].staff.push({ nurseId, nurseData });
-
-      // Update the localStorage with the modified data
-      localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
-    } else {
-      console.log("Matching shift data not found for the provided ShiftId.");
-    }
-  }
 
   if (ShiftId) {
     // Check if ShiftId is defined
@@ -113,15 +66,7 @@ export function ViewShift() {
 
           <div>
             {" "}
-            <NurseCardDisplay staffData={staffData} />{" "}
-          </div>
-          <div>
-            {" "}
-            <NurseInfoForm
-              onSubmit={onSubmitForm}
-              Shifturl={ShiftId}
-              form={form}
-            />
+            <ViewNurseCard staffData={staffData} />{" "}
           </div>
         </div>
       );
