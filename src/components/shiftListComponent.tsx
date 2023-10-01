@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 export const ShiftListComponent = () => {
+       const navigate = useNavigate();
+
   function formatDate(dateString: string): string {
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
@@ -16,7 +20,8 @@ export const ShiftListComponent = () => {
   // console.log(existingData[2].ShiftId);
 
   function viewShift(shiftId: string) {
-    console.log("View shift",shiftId)
+    console.log("View shift", shiftId);
+    navigate(`/viewShift/${shiftId}`);
   }
 
   function editShift(shiftId: string) {
@@ -25,7 +30,6 @@ export const ShiftListComponent = () => {
 
   function deleteShift(shiftId: string) {
     console.log("delete Shift", shiftId);
-    
   }
 
   if (existingData.length !== 0) {
