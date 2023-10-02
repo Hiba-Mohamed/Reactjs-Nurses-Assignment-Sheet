@@ -57,7 +57,7 @@ export function NurseForm() {
   const nurseId = uuidv4();
 
 
-const form = useForm<IFormInput>();
+const form = useForm<IFormInput>({defaultValues: {assignedPatient: []}});
 
 
 const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
@@ -68,6 +68,7 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
 };
 
 function makeAndAddNurseDataToLS(nurseData: IFormInput) {
+  console.log("nurse data manage staff", nurseData);
   // Retrieve the existing shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
