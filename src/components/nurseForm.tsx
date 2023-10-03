@@ -77,6 +77,8 @@ const validateNurseName = (nurseName: string) => {
   return isDuplicate ? "Nurse name already exists in this shift" : true;
 };
 
+
+
 const validatePatientName = (patientName: string) => {
   // Retrieve existing staff data for the current shift from local storage
 

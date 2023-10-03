@@ -48,27 +48,28 @@ export function NurseForm() {
   const { ShiftId } = useParams();
   const nurseId = uuidv4();
 
-  const form = useForm<IFormInput>({ defaultValues: { assignedPatient: [] } });
+const form = useForm<IFormInput>({ defaultValues: { assignedPatient: [] } });
 const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
-  event?.preventDefault();
-
-  // Call the validation function
-  const isDataValid = validatePatientsfieldsAgainstEachOther(nurseData);
-
-  if (isDataValid) {
-    // If data is valid, make and add nurse data to local storage
+    event?.preventDefault();
+    const isnotDuplicate = validatePatientsfieldsAgainstEachOther(nurseData);
+    if (isnotDuplicate){
     makeAndAddNurseDataToLS(nurseData);
     form.reset();
     console.log(nurseData);
-  }
+    }
+    else alert("duplicate patient name and/or room is being assigned to the same nurse");
+   
+  
 };
 
   const validatePatientsfieldsAgainstEachOther = (nurseData: IFormInput) => {
     console.log("validate");
     console.log("nurse data validation", nurseData);
     const patientsArray = nurseData.assignedPatient;
+    console.log("patients objects array",patientsArray);
     const patientNamesArray: string[] = [];
     const patientRoomsArray: string[] = [];
+
     for (const patient of patientsArray) {
       // Add patient names to the patientNames array
       patientNamesArray.push(patient.patientName);
@@ -78,23 +79,22 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
 
       console.log("Patient Names:", patientNamesArray);
       console.log("Patient Rooms:", patientRoomsArray);
-
-      // Check for duplicate names
-      const isDuplicateName = patientNamesArray.some(
-        (name, index) => patientNamesArray.indexOf(name) !== index
-      );
-
-      // Check for duplicate rooms
-      const isDuplicateRoom = patientRoomsArray.some(
-        (room, index) => patientRoomsArray.indexOf(room) !== index
-      );
-
-      if ( isDuplicateName || isDuplicateRoom) {
-        return false;
-      }
     }
-    return true
+
+    const isDuplicateName = patientNamesArray.some(
+            (name, index) => patientNamesArray.indexOf(name) !== index
+          );
+          const isDuplicateRoom = patientRoomsArray.some(
+            (room, index) => patientRoomsArray.indexOf(room) !== index
+          );
+
+          if (!isDuplicateName && !isDuplicateRoom) {
+            return true;
+          }
+          else return false
+    
   };
+
 
   function makeAndAddNurseDataToLS(nurseData: IFormInput) {
     console.log("nurse data manage staff", nurseData);
