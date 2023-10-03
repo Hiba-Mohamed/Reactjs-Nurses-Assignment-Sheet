@@ -129,7 +129,7 @@ console.log("shiftData", shiftData);
     if (ShiftId) {
       console.log("staffData", staffData);
       return (
-        <div className="bg-greygreen font-nunito relative pb-12 flex flex-row flex-wrap justify-evenly text-sm sm:text-lg">
+        <div className="bg-greygreen font-nunito relative pb-12 flex flex-row flex-wrap justify-evenly text-sm sm:text-md">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mx-2 max-w-sm sm:max-w-xl"

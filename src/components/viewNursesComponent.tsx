@@ -46,34 +46,26 @@ export function ViewNurseCard({ staffData }: { staffData: any }) {
                 </tbody>
               </table>
 
-              {staffData.nurseData.assignedPatient.map(
-                (patient: IPatientData, patientIndex: number) => (
-                  <div>
-                    <table className="mb-4">
-                      <thead>
-                        <tr className="border border-stone-700 bg-stone-400 text-white">
-                          <th className="border border-stone-700 px-2">
-                            Room
-                          </th>
-                          <th className="border border-stone-700 px-2">
-                            Patient
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
+              <div>
+                <table className="mb-4">
+                  <thead>
+                    <tr className="border border-stone-700 bg-stone-400 text-white">
+                      <th className="border border-stone-700 px-2">Room</th>
+                      <th className="border border-stone-700 px-2">Patient</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {staffData.nurseData.assignedPatient.map(
+                      (patient: IPatientData, patientIndex: number) => (
                         <tr key={patientIndex}>
-                          <td className="border px-2">
-                            {patient.patientRoom}
-                          </td>
-                          <td className="border px-2">
-                            {patient.patientName}
-                          </td>
+                          <td className="border px-2">{patient.patientRoom}</td>
+                          <td className="border px-2">{patient.patientName}</td>
                         </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                )
-              )}
+                      )
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         ))}
