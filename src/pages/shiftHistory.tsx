@@ -9,6 +9,21 @@ interface IShiftSearch {
   shiftType: string;
 }
 
+
+
+function NoShiftFound(){
+  return (
+    <div className="flex flex-col bg-slate-100 items-center min-h-screen">
+      <h1 className="font-nunito text-center text-2xl sm:text-4xl font-bold py-8 items-center">
+        Shift Record
+      </h1>{" "}
+      <div className="items-center flex w-full justify-evenly">
+        <img src="./images/shifthistory.png" alt="" />
+      </div>
+    </div>
+  );
+}
+
 export function ShiftHistory() {
   const {
     register,
@@ -24,6 +39,12 @@ export function ShiftHistory() {
   };
 
   console.log(watch("shiftType"));
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+  
+  if (existingData.length === 0 || existingData == undefined) {
+    return <NoShiftFound />;
+  }
 
   return (
     <div className="bg-slate-100 font-nunito min-h-screen text-sm smm:text-md">
@@ -86,6 +107,7 @@ export function ShiftHistory() {
                 </button>
               </form>
             </div>
+
           </div>
           <ShiftListComponent />
         </div>
