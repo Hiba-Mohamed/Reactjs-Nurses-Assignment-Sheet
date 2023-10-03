@@ -19,41 +19,39 @@ interface IFormInput {
 }
 
 
-function retriveShiftDataLSwithShiftId(ShiftId: string): any {
+
+
+
+
+export const  NurseInfoForm = ({onSubmit, Shifturl, form}:{onSubmit:SubmitHandler<IFormInput>, Shifturl:string, form:any}) =>{
+  const ShiftId = Shifturl;
+  
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
   console.log("existing Data", existingData);
+    console.log("existing Data", existingData);
+
+
 
   // Find the shift data object with the matching shiftId
   const matchingData = existingData.find(
     (data: any) => data.ShiftId === ShiftId
   );
 
-  console.log("matching Data:", matchingData);
+const shiftData = matchingData;
+    console.log("matching Data:", matchingData);
+    console.log("matching staff:", matchingData.staff);
 
-  return matchingData ? matchingData.data : null;
-}
 
-export function retrieveStaffData(ShiftId: string): IFormInput[] {
-  const existingDataJSON = localStorage.getItem("startShiftDataArray");
-  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+  const staffData = matchingData.staff;
 
-  const matchingData = existingData.find(
-    (data: any) => data.ShiftId === ShiftId
-  );
-
-  return matchingData.staff ?? [];
-}
+  console.log("matching Staff:", staffData);
 
 
 
 
-
-export const  NurseInfoForm = ({onSubmit, Shifturl, form}:{onSubmit:SubmitHandler<IFormInput>, Shifturl:string, form:any}) =>{
-
-  const ShiftId = Shifturl;
 
   const {
     register,
@@ -68,21 +66,19 @@ export const  NurseInfoForm = ({onSubmit, Shifturl, form}:{onSubmit:SubmitHandle
   });
 
 
-const validateNurseName = (nurseName: string, ShiftId: string) => {
+const validateNurseName = (nurseName: string) => {
   // Retrieve existing staff data for the current shift from local storage
-  const staffData = retrieveStaffData(ShiftId);
+  console.log(staffData);
 
   // Check if nurseName already exists in the staff data
-  const isDuplicate = staffData.some((staff) => staff.nurseName === nurseName);
+  const isDuplicate = staffData.some((nurse:any) => nurse.nurseData.nurseName === nurseName);
 
   // Return true if nurseName is not a duplicate, false if it's a duplicate
   return isDuplicate ? "Nurse name already exists in this shift" : true;
 };
 
-const validatePatientName = (patientName: string, ShiftId: string) => {
+const validatePatientName = (patientName: string) => {
   // Retrieve existing staff data for the current shift from local storage
-  const staffData = retrieveStaffData(ShiftId);
-
 
   // Check if the provided patientName already exists in the assignedPatient array
   if (staffData && patientName !== "" || patientName === undefined) {
@@ -104,9 +100,7 @@ const validatePatientName = (patientName: string, ShiftId: string) => {
   return true;
 };
 
-const validatePatientRoom = (patientRoom: string, ShiftId: string) => {
-  // Retrieve existing staff data for the current shift from local storage
-  const staffData = retrieveStaffData(ShiftId);
+const validatePatientRoom = (patientRoom: string) => {
 
   // Check if the provided patientName already exists in the assignedPatient array
   if ((staffData && patientRoom !== "") || patientRoom === undefined) {
@@ -132,20 +126,17 @@ console.log(errors);
 
   if (ShiftId) {
     // Check if ShiftId is defined
-    const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
   
 console.log("shiftData", shiftData);
 
     console.log(shiftData);
    if (ShiftId) {
     // Check if ShiftId is defined
-    const shiftData = retriveShiftDataLSwithShiftId(ShiftId);
   
 console.log("shiftData", shiftData);
 
     console.log(shiftData);
     if (ShiftId) {
-      const staffData = retrieveStaffData(ShiftId);
       console.log("staffData", staffData);
       return (
         <div className="bg-greygreen font-nunito relative pb-12 flex flex-row flex-wrap justify-evenly text-sm sm:text-lg">
@@ -161,7 +152,7 @@ console.log("shiftData", shiftData);
                 {...register("nurseName", {
                   required: true,
                   maxLength: 30,
-                  validate: (value: any) => validateNurseName(value, ShiftId),
+                  validate: (value: any) => validateNurseName(value),
                 })}
                 type="text"
                 className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
@@ -281,7 +272,7 @@ console.log("shiftData", shiftData);
                           required: true,
                           maxLength: 20,
                           validate: (value) =>
-                            validatePatientRoom(value, ShiftId),
+                            validatePatientRoom(value),
                         }}
                         render={({ field: { onChange, value } }) => (
                           <input
@@ -302,7 +293,7 @@ console.log("shiftData", shiftData);
                           required: true,
                           maxLength: 20,
                           validate: (value) =>
-                            validatePatientName(value, ShiftId),
+                            validatePatientName(value),
                         }}
                         render={({ field: { onChange, value } }) => (
                           <input
