@@ -6,18 +6,6 @@ interface IPatientData {
   patientRoom: string;
 }
 
-interface IFormInput {
-  nurseName: string;
-  nurseBreak: string;
-  reliefName: string;
-  extraDuties: string;
-  fireCode: string;
-  assignedPatient: IPatientData[];
-}
-interface IstaffData{
-  nurseId:string;
-  nurseData: IFormInput[];
-}
 
 export function NurseCardDisplay({staffData}:{staffData: any}) {
   const { ShiftId } = useParams();
