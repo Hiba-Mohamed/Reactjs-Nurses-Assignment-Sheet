@@ -81,21 +81,13 @@ const validatePatientName = (patientName: string) => {
   // Retrieve existing staff data for the current shift from local storage
 
   // Check if the provided patientName already exists in the assignedPatient array
-  if (staffData && patientName !== "" || patientName === undefined) {
-    for (const formInput of staffData) {
-      if (formInput.assignedPatient) {
-        const isDuplicate = formInput.assignedPatient.some(
-          (patient) => patient.patientName === patientName
-        );
-
-        // If a duplicate is found, return the error message
-        if (isDuplicate) {
-          return "Duplicate patient name";
-        }
-      }
+  if (staffData && patientName !== "" && patientName !== undefined) {
+    const isDuplicate = staffData.some((nurse:any)=> nurse.nurseData.assignedPatient.some((patient:any)=>patient.patientName === patientName));
+    if (isDuplicate) {
+      return "patient assigned to different nurse";
     }
+    return true;
   }
-
   // If no duplicate is found  or if the input is empty string in any of the form inputs, return true
   return true;
 };
@@ -103,20 +95,16 @@ const validatePatientName = (patientName: string) => {
 const validatePatientRoom = (patientRoom: string) => {
 
   // Check if the provided patientName already exists in the assignedPatient array
-  if ((staffData && patientRoom !== "") || patientRoom === undefined) {
-    for (const formInput of staffData) {
-      if (formInput.assignedPatient) {
-        const isDuplicate = formInput.assignedPatient.some(
-          (patient) => patient.patientRoom === patientRoom
-        );
-
-        // If a duplicate is found, return the error message
-        if (isDuplicate) {
-          return "Duplicate patient room";
-        }
-      }
-    }
-  }
+  if (staffData && patientRoom !== "" && patientRoom !== undefined) {
+   const isDuplicate = staffData.some((nurse: any) =>
+     nurse.nurseData.assignedPatient.some(
+       (patient: any) => patient.patientRoom === patientRoom
+     )
+   );
+   if (isDuplicate) {
+     return "room assigned to different nurse";
+   }
+   return true;  }
 
   // If no duplicate is found in any of the form inputs, return true
   return true;
