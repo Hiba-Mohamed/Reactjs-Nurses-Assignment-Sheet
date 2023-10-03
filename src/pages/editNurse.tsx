@@ -60,11 +60,17 @@ export function EditNursePage() {
     };
 
     return (
-      <div className="bg-greygreen font-nunito min-h-screen lg:px-40 md:px-10 sm:px-10">
+      <div className="bg-greygreen font-nunito min-h-screen lg:px-40 md:px-10 sm:px-10 flex flex-col items-center">
         <h1 className="text-center text-2xl sm:text-3xl p-8 pt-16">
           Editing nurse below
         </h1>{" "}
         <NurseInfoForm onSubmit={onSubmitEdit} Shifturl={ShiftId} form={form} />
+        <a
+          href={`/manageStaff/${ShiftId}`}
+          className="bg-cyan-400 hover:bg-cyan-500 text-white font-bold py-2 px-4 mb-6 rounded focus:outline-none focus:shadow-outline"
+        >
+          Cancel
+        </a>
       </div>
     );
   } else {
