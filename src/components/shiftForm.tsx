@@ -76,6 +76,7 @@ const ShiftForm = () => {
             <Controller
               control={control}
               name="shiftDate"
+              rules={{ required: true }}
               render={({ field }) => (
                 <DatePicker
                   placeholderText=""
@@ -86,6 +87,11 @@ const ShiftForm = () => {
                 />
               )}
             />
+            {errors?.shiftDate?.type === "required" && (
+              <p className="text-peach">
+                {errors?.shiftDate?.message || "This field is required"}
+              </p>
+            )}
           </div>
         </div>
         <div className="mb-6 basis-1/2 mr-2">
