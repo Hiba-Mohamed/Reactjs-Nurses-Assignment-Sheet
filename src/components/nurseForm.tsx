@@ -71,10 +71,16 @@ const validateNurseName = (nurseName: string) => {
   console.log(staffData);
 
   // Check if nurseName already exists in the staff data
-  const isDuplicate = staffData.some((nurse:any) => nurse.nurseData.nurseName === nurseName);
+  if (staffData !== 0 && staffData !== undefined){
+    const isDuplicate = staffData.some(
+      (nurse: any) => nurse.nurseData.nurseName === nurseName
+    );
 
-  // Return true if nurseName is not a duplicate, false if it's a duplicate
-  return isDuplicate ? "Nurse name already exists in this shift" : true;
+    // Return true if nurseName is not a duplicate, false if it's a duplicate
+    return isDuplicate ? "Nurse name already exists in this shift" : true;
+  }
+
+
 };
 
 
@@ -142,7 +148,7 @@ console.log("shiftData", shiftData);
                 {...register("nurseName", {
                   required: true,
                   maxLength: 30,
-                  validate: (value: any) => validateNurseName(value),
+                  validate: (value: string) => validateNurseName(value),
                 })}
                 type="text"
                 className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
