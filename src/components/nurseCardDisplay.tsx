@@ -30,9 +30,13 @@ export function NurseCardDisplay({staffData}:{staffData: any}) {
 
        const exsitingNurseArray = matchingData.staff;
        // get the index of the nurse card
-       exsitingNurseArray.splice(nurseId, 1);
 
-       const updatedNurseList = exsitingNurseArray;
+       const updatedNurseList = exsitingNurseArray.filter((item: any) => {
+         return item.nurseId !== nurseId;
+       });
+       
+       matchingData.staff = updatedNurseList;
+
        console.log("Updated Nurse List", updatedNurseList);
        //  update the local storage
        localStorage.setItem(
