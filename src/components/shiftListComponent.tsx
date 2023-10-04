@@ -44,6 +44,7 @@ existingData.sort((a: any, b: any) => {
 });
 
 console.log(existingData)
+
   function viewShift(shiftId: string) {
     console.log("View shift", shiftId);
     navigate(`/viewShift/${shiftId}`);
