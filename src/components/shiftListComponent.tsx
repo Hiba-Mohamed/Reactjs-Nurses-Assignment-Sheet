@@ -37,6 +37,13 @@ function getMonthName(month: string): string {
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
+existingData.sort((a: any, b: any) => {
+  const dateA = (a.data.shiftDate);
+  const dateB = (b.data.shiftDate);
+  return dateB - dateA;
+});
+
+console.log(existingData)
   function viewShift(shiftId: string) {
     console.log("View shift", shiftId);
     navigate(`/viewShift/${shiftId}`);
