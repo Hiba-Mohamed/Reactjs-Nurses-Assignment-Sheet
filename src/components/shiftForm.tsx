@@ -20,25 +20,41 @@ const ShiftForm = () => {
     formState: { errors },
   } = useForm<IUnitShiftData>();
 
+
   const onSubmit: SubmitHandler<IUnitShiftData> = (data, event) => {
+    // Format the date as "YYYYMMDD"
+    const formattedDate = data.shiftDate
+      .toISOString()
+      .slice(0, 10)
+      .replace(/-/g, "");
+
+        const modifiedData = {
+          ...data,
+          shiftDate: formattedDate,
+        };
+
     event?.preventDefault();
     console.log(data);
-
     const ShiftId = uuidv4(); // Generate a unique ID using uuid
 
     // Retrieve existing data from localStorage or create an empty array
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
     const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+    const existingDatesWithTypes = existingData.map((item: any) => {
+      const { shiftDate, shiftType } = item.data; // Remove the first property (unitName)
+      return { shiftDate, shiftType }; // Create a new object without the first property
+    });
+    console.log("existingDatesWithTypes", existingDatesWithTypes);
 
-    // Add the new data to the array
-    existingData.push({ ShiftId, data });
+    existingData.push({ ShiftId, data: modifiedData });
 
     // Store the updated array back in localStorage
     localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
 
     // Redirect to the new page with the unique ID
     navigate(`/manageStaff/${ShiftId}`);
-  };
+  }
+   
 
   // Function to disable past dates (including today)
   const disablePastDates = (date: Date) => {
@@ -46,6 +62,7 @@ const ShiftForm = () => {
     currentDate.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate comparison
     return date >= currentDate;
   };
+
 
   return (
     <div className="flex flex-col justify-evenly">

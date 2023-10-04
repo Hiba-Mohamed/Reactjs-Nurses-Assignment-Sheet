@@ -3,14 +3,24 @@ import { useNavigate } from "react-router-dom";
 export const ShiftListComponent = () => {
        const navigate = useNavigate();
 
-  function formatDate(dateString: string): string {
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "2-digit",
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  }
+function formatDate(dateString: string): string {
+  // Parse the input date string as "yyyymmdd"
+  const year = dateString.slice(0, 4);
+  const month = dateString.slice(4, 6);
+  const day = dateString.slice(6, 8);
+
+  // Create a JavaScript Date object with the parsed components
+  const date = new Date(`${year}-${month}-${day}`);
+
+  // Format the date as "dd month, yyyy"
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  };
+
+  return date.toLocaleDateString(undefined, options);
+}
 
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
