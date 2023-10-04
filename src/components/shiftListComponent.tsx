@@ -58,10 +58,12 @@ console.log(existingData)
 
   function deleteShift(shiftId: string) {
     console.log("delete Shift", shiftId);
-    existingData.splice(shiftId, 1);
-           localStorage.setItem(
+    const updatedShiftList = existingData.filter((items:any)=>{return items.ShiftId !== shiftId});
+
+
+    localStorage.setItem(
              "startShiftDataArray",
-             JSON.stringify(existingData)
+             JSON.stringify(updatedShiftList)
            );
                   window.location.reload();
   }
