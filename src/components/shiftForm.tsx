@@ -46,6 +46,19 @@ const ShiftForm = () => {
     });
     console.log("existingDatesWithTypes", existingDatesWithTypes);
 
+const currentShift = {
+  shiftDate: formattedDate,
+  shiftType: data.shiftType,
+};
+
+console.log("currentShift", currentShift);
+
+const isDuplicateShift = existingDatesWithTypes.some(
+  (item: any) =>
+    item.shiftDate === currentShift.shiftDate &&
+    item.shiftType === currentShift.shiftType
+);
+if(!isDuplicateShift){
     existingData.push({ ShiftId, data: modifiedData });
 
     // Store the updated array back in localStorage
@@ -53,6 +66,10 @@ const ShiftForm = () => {
 
     // Redirect to the new page with the unique ID
     navigate(`/manageStaff/${ShiftId}`);
+}
+else{alert("Duplicate shift, please select a different date, or shift Type")}
+
+
   }
    
 

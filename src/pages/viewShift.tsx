@@ -3,22 +3,33 @@ import ViewNurseCard from "../components/viewNursesComponent";
 
 
 function formatDate(dateString: string): string {
-  // Parse the input date string as "yyyymmdd"
   const year = dateString.slice(0, 4);
   const month = dateString.slice(4, 6);
   const day = dateString.slice(6, 8);
 
-  // Create a JavaScript Date object with the parsed components
-  const date = new Date(`${year}-${month}-${day}`);
+  return `${day} ${getMonthName(month)}, ${year}`;
+}
 
-  // Format the date as "dd month, yyyy"
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "2-digit",
-  };
+function getMonthName(month: string): string {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-  return date.toLocaleDateString(undefined, options);
+  // Subtract 1 from the month because JavaScript Date months are zero-based
+  const monthIndex = parseInt(month, 10) - 1;
+
+  return months[monthIndex];
 }
 
 function retriveShiftDataLSwithShiftId(ShiftId: string): any {
