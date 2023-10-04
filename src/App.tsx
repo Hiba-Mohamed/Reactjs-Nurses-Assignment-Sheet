@@ -11,6 +11,7 @@ import { ShiftHistory } from "./pages/shiftHistory";
 import { StartSheet } from "./pages/startSheet";
 import EditNursePage from "./pages/editNurse";
 import ViewShift from "./pages/viewShift";
+import SearchResults from "./pages/searchResult";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/viewShift/:ShiftId" element={<ViewShift />} />
+        <Route path="/searchResult/:shiftDate/:shiftType" element={<SearchResults />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<Login />} />

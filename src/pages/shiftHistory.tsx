@@ -2,6 +2,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import ShiftListComponent from "../components/shiftListComponent";
+import { useNavigate } from "react-router-dom";
 
 
 interface IShiftSearch {
@@ -25,6 +26,8 @@ function NoShiftFound(){
 }
 
 export function ShiftHistory() {
+
+ const  navigate = useNavigate();
   const {
     register,
     watch,
@@ -36,6 +39,13 @@ export function ShiftHistory() {
   const onSubmit: SubmitHandler<IShiftSearch> = (data, event) => {
     event?.preventDefault();
     console.log(data);
+      const formattedDate = data.shiftDate
+        .toISOString()
+        .slice(0, 10)
+        .replace(/-/g, "");
+
+        navigate(`/searchResult/${formattedDate}/${data.shiftType}`);
+
   };
 
   console.log(watch("shiftType"));
