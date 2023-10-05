@@ -82,18 +82,18 @@ else{alert("Duplicate shift, please select a different date, or shift Type")}
 
 
   return (
-    <div className="flex flex-col justify-evenly">
+    <div className="flex flex-col">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 my-4"
+        className="bg-white sm:px-8 px-auto shadow-lg rounded-lg pt-6 pb-8 max-w-sm m-4 sm:max-w-2xl text-sm px-2 px-4 sm:text-lg flex sm:flex-row flex-col gap-4"
         id="unitData-form"
       >
-        <div className="mb-4 flex flex-col justify-center">
-          <label className="font-bold text-xl">Unit's name:</label>
+        <div className="mb-6  flex flex-col justify-center">
+          <label className="font-bold">Unit's name:</label>
           <input
             {...register("unitName", { required: true, maxLength: 30 })}
             type="text"
-            className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10 shadow-sm sm:text-md focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+            className="w-full px-2 appearance-none py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></input>
           {errors?.unitName?.type === "required" && (
             <p className="text-peach">This field is required</p>
@@ -104,9 +104,9 @@ else{alert("Duplicate shift, please select a different date, or shift Type")}
             </p>
           )}
         </div>
-        <div className="mb-14">
+        <div className="mb-6">
           <div>
-            <h3 className="text-xl font-bold mb-4">Shift Date:</h3>
+            <h3 className="font-bold">Shift Date:</h3>
             <Controller
               control={control}
               name="shiftDate"
@@ -115,7 +115,7 @@ else{alert("Duplicate shift, please select a different date, or shift Type")}
                 <DatePicker
                   placeholderText=""
                   onChange={(date) => field.onChange(date)}
-                  className="w-full px-4 py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-2 py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   filterDate={disablePastDates} // Apply the validation function
                   selected={field.value}
                 />
@@ -129,10 +129,10 @@ else{alert("Duplicate shift, please select a different date, or shift Type")}
           </div>
         </div>
         <div className="mb-6 basis-1/2 mr-2">
-          <label className="font-bold text-xl">Shift Type:</label>
+          <label className="font-bold">Shift Type:</label>
           <select
             {...register("shiftType", { required: true })}
-            className="mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200"
+            className="w-full px-2 appearance-none py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value=""></option>
             <option value="Day Shift">Day Shift</option>
@@ -144,12 +144,15 @@ else{alert("Duplicate shift, please select a different date, or shift Type")}
             </p>
           )}
         </div>
-        <button
-          className="flex justify-center items-center mx-auto bg-green hover:bg-green text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          Submit
-        </button>
+        <div className="flex  items-center">
+          {" "}
+          <button
+            className="mx-auto bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

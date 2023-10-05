@@ -3,10 +3,8 @@ import ShiftForm from "../components/shiftForm";
 
 export function StartSheet(){
     return (
-      <div className="flex flex-wrap justify-evenly font-nunito my-14">
-        <p className="w-screen flex flex-col items-center justify-center text-nunito-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center m-4">
-          Start filling the shift info below to start creating a new shift
-        </p>
+      <div className="flex flex-col items-center sm:pt-32 pt-14 gap-8 font-nunito min-h-screen bg-slate-50">
+        <p className="w-screen flex flex-col items-center justify-center text-nunito-900 font-extrabold text-lg sm:text-3xl tracking-tight text-center">Start a New Shift</p>
         <ShiftForm />
       </div>
     );
