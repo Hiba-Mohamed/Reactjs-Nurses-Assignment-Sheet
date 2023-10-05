@@ -69,6 +69,22 @@ export function Heading() {
             </li>
             <li>
               <a
+                href="./startSheet"
+                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
+              >
+                Create New Shift
+              </a>
+            </li>
+            <li>
+              <a
+                href="./shiftHistory"
+                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
+              >
+                Shift Record
+              </a>
+            </li>
+            <li>
+              <a
                 href="./about"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
