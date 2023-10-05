@@ -44,7 +44,7 @@ export function Heading() {
           <ul className="flex flex-col items-center font-medium mt-4 rounded-lg bg-gray-50">
             <li>
               <a
-                href="./home"
+                href="/home"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
                 aria-current="page"
               >
@@ -53,7 +53,7 @@ export function Heading() {
             </li>
             <li>
               <a
-                href="./account"
+                href="/account"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Create an Account
@@ -61,7 +61,7 @@ export function Heading() {
             </li>
             <li>
               <a
-                href="./login"
+                href="/login"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Login
@@ -69,7 +69,7 @@ export function Heading() {
             </li>
             <li>
               <a
-                href="./startSheet"
+                href="/startSheet"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Create New Shift
@@ -77,7 +77,7 @@ export function Heading() {
             </li>
             <li>
               <a
-                href="./shiftHistory"
+                href="/shiftHistory"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Shift Record
@@ -85,7 +85,7 @@ export function Heading() {
             </li>
             <li>
               <a
-                href="./about"
+                href="/about"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 About NAS
