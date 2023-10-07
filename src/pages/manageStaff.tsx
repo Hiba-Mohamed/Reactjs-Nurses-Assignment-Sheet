@@ -162,7 +162,7 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
       return (
         <div className="font-nunito bg-greygreen sm:max-w-full">
           <div className="flex flex-col items-center justify-center">
-            <div className="text-nunito-900 font-extrabold text-sm sm:text-lg lg:text-2xl tracking-tight text-center py-1 bg-white shadow-lg rounded-lg sm:px-8 sm:pt-6 sm:pb-8 sm:py-4 m-8 text-green">
+            <div className="text-nunito-900 font-extrabold text-sm sm:text-lg lg:text-xl tracking-tight text-center py-1 bg-white shadow-lg rounded-lg sm:px-4 sm:pt-3 sm:pb-4 sm:py-2 m-8 text-green">
               <p>{shiftData.unitName}</p>
               <div className="flex sm:flex-row items-center flex-col">
                 {" "}
