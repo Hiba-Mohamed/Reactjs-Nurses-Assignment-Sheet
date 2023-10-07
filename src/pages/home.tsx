@@ -30,7 +30,7 @@ export function Home() {
             </a>
             <a
               href="/login"
-              className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold sm:py-4 sm:px-8 py-2 px-4 rounded lg:text-xl text-sm"
+              className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold sm:py-4 sm:px-8 py-2 px-12 rounded lg:text-xl text-sm"
             >
               Login
             </a>
