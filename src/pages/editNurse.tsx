@@ -25,7 +25,8 @@ export const NurseInfoForm = ({
   Shifturl: string;
   form: any;
 }) => {
-  const ShiftId = Shifturl;
+    const { ShiftId, nurseId } = useParams();
+
 
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
@@ -59,6 +60,9 @@ export const NurseInfoForm = ({
     control,
   });
 
+const validationArray = staffData.filter((nurse:any)=>nurse.nurseId !== nurseId);
+console.log("validationArray", validationArray);
+
   const validateNurseName = (nurseName: string) => {
     // Retrieve existing staff data for the current shift from local storage
     console.log(staffData);
@@ -68,14 +72,15 @@ export const NurseInfoForm = ({
       const isDuplicate = staffData.filter(
         (nurse: any) => nurse.nurseData.nurseName === nurseName
       );
-console.log("isDuplicate:", isDuplicate)
-const DuplicateArrayLength = isDuplicate.length;
+      console.log("isDuplicate:", isDuplicate);
+      const DuplicateArrayLength = isDuplicate.length;
 
-console.log("isDuplicate length:", DuplicateArrayLength);
+      console.log("isDuplicate length:", DuplicateArrayLength);
 
       // Return true if nurseName is not a duplicate, false if it's a duplicate
-      if (isDuplicate.length > 1)  {return "Nurse name already exists in this shift"} 
-      else{
+      if (isDuplicate.length > 1) {
+        return "Nurse name already exists in this shift";
+      } else {
         return true;
       }
     }
@@ -85,25 +90,24 @@ console.log("isDuplicate length:", DuplicateArrayLength);
     // Retrieve existing staff data for the current shift from local storage
 
     // Check if the provided patientName already exists in the assignedPatient array
-    if (staffData && patientName !== "" && patientName !== undefined) {
-      const isDuplicate = staffData.filter((nurse: any) =>
-        nurse.nurseData.assignedPatient.filter(
-          (patient: any) => patient.patientName === patientName
-        )
-      );
-      if (isDuplicate) {
-        return "patient assigned to different nurse";
-      }
-      return true;
-    }
-    // If no duplicate is found  or if the input is empty string in any of the form inputs, return true
-    return true;
-  };
+        if (staffData && patientName !== "" && patientName !== undefined) {
+          const isDuplicate = validationArray.some((nurse: any) =>
+            nurse.nurseData.assignedPatient.some(
+              (patient: any) =>
+                patient.patientName.toLowerCase() === patientName.toLowerCase()
+            )
+          );
+          if (isDuplicate) {
+            return "patient's Name assigned to different nurse";
+          }
+          return true;
+        }
+      };
 
   const validatePatientRoom = (patientRoom: string) => {
     // Check if the provided patientName already exists in the assignedPatient array
     if (staffData && patientRoom !== "" && patientRoom !== undefined) {
-      const isDuplicate = staffData.some((nurse: any) =>
+      const isDuplicate = validationArray.some((nurse: any) =>
         nurse.nurseData.assignedPatient.some(
           (patient: any) => patient.patientRoom === patientRoom
         )
@@ -113,9 +117,6 @@ console.log("isDuplicate length:", DuplicateArrayLength);
       }
       return true;
     }
-
-    // If no duplicate is found in any of the form inputs, return true
-    return true;
   };
   console.log(errors);
 
@@ -154,15 +155,15 @@ console.log("isDuplicate length:", DuplicateArrayLength);
                   id="nurse-name"
                 />
                 {errors?.nurseName?.type === "required" && (
-                  <p className=" text-sm text-peach">This field is required</p>
+                  <p className=" text-xs text-peach">This field is required</p>
                 )}
                 {errors?.nurseName?.type === "maxLength" && (
-                  <p className=" text-sm text-peach">
+                  <p className=" text-xs text-peach">
                     Nurse's name cannot exceed 30 characters
                   </p>
                 )}
                 {errors.nurseName && errors.nurseName.type === "validate" && (
-                  <p className=" text-sm text-peach">
+                  <p className=" text-xs text-peach">
                     {errors.nurseName.message}
                   </p>
                 )}
@@ -184,7 +185,7 @@ console.log("isDuplicate length:", DuplicateArrayLength);
                     <option value="Third">Third</option>
                   </select>{" "}
                   {errors?.nurseBreak?.type === "required" && (
-                    <p className="text-peach text-sm">This field is required</p>
+                    <p className="text-peach text-xs">This field is required</p>
                   )}
                 </div>
                 <div className="mb-6 basis-1/2 ml-2">
@@ -201,12 +202,12 @@ console.log("isDuplicate length:", DuplicateArrayLength);
                     id="relief-name"
                   ></input>
                   {errors?.reliefName?.type === "required" && (
-                    <p className=" text-sm text-peach">
+                    <p className=" text-xs text-peach">
                       This field is required
                     </p>
                   )}
                   {errors?.reliefName?.type === "maxLength" && (
-                    <p className=" text-sm text-peach">
+                    <p className=" text-xs text-peach">
                       Nurse's relief cannot exceed 30 characters
                     </p>
                   )}
@@ -227,7 +228,7 @@ console.log("isDuplicate length:", DuplicateArrayLength);
                     id="extra-duties"
                   ></input>
                   {errors?.extraDuties?.type === "maxLength" && (
-                    <p className=" text-sm text-peach">
+                    <p className=" text-xs text-peach">
                       Extra Duties cannot exceed 40 characters
                     </p>
                   )}
@@ -248,7 +249,7 @@ console.log("isDuplicate length:", DuplicateArrayLength);
                     <option value="D">D</option>
                   </select>{" "}
                   {errors?.fireCode?.type === "required" && (
-                    <p className=" text-sm text-peach">
+                    <p className=" text-xs text-peach">
                       This field is required
                     </p>
                   )}
@@ -307,7 +308,7 @@ console.log("isDuplicate length:", DuplicateArrayLength);
                       <div className="flex flex-row justify-end justify-center mx-2 mb-4 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10">
                         {errors?.assignedPatient?.[index]?.patientRoom?.type ===
                           "validate" && (
-                          <p className=" text-sm text-peach w-24 appearance-none focus:outline-none">
+                          <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
                             {
                               errors?.assignedPatient?.[index]?.patientRoom
                                 ?.message
@@ -316,7 +317,7 @@ console.log("isDuplicate length:", DuplicateArrayLength);
                         )}
                         {errors?.assignedPatient?.[index]?.patientName?.type ===
                           "validate" && (
-                          <p className=" text-sm text-peach w-24 appearance-none focus:outline-none">
+                          <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
                             {
                               errors?.assignedPatient?.[index]?.patientName
                                 ?.message
@@ -367,7 +368,6 @@ console.log("isDuplicate length:", DuplicateArrayLength);
     }
   }
 };
-
 
 export function EditNursePage() {
   const { ShiftId, nurseId } = useParams();
