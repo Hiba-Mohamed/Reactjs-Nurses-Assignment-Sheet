@@ -267,8 +267,7 @@ console.log("shiftData", shiftData);
                         rules={{
                           required: true,
                           maxLength: 20,
-                          validate: (value) =>
-                            validatePatientRoom(value),
+                          validate: (value) => validatePatientRoom(value),
                         }}
                         render={({ field: { onChange, value } }) => (
                           <input
@@ -288,8 +287,7 @@ console.log("shiftData", shiftData);
                         rules={{
                           required: true,
                           maxLength: 20,
-                          validate: (value) =>
-                            validatePatientName(value),
+                          validate: (value) => validatePatientName(value),
                         }}
                         render={({ field: { onChange, value } }) => (
                           <input
@@ -303,26 +301,28 @@ console.log("shiftData", shiftData);
                       />
                     </div>
 
-                    <div className="flex flex-row justify-end justify-center mx-2 mb-4 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10">
-                      {errors?.assignedPatient?.[index]?.patientRoom?.type ===
-                        "validate" && (
-                        <p className=" text-sm text-peach w-24 appearance-none focus:outline-none">
-                          {
-                            errors?.assignedPatient?.[index]?.patientRoom
-                              ?.message
-                          }
-                        </p>
-                      )}
-                      {errors?.assignedPatient?.[index]?.patientName?.type ===
-                        "validate" && (
-                        <p className=" text-sm text-peach w-24 appearance-none focus:outline-none">
-                          {
-                            errors?.assignedPatient?.[index]?.patientName
-                              ?.message
-                          }
-                        </p>
-                      )}
-                    </div>
+                    {errors?.assignedPatient?.[index] && (
+                      <div className="flex flex-row justify-between justify-center my-auto mx-2 mb-2 w-full appearance-none text-nunito-900 bg-white rounded-md block h-10">
+                        {errors?.assignedPatient?.[index]?.patientRoom?.type ===
+                          "validate" && (
+                          <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
+                            {
+                              errors?.assignedPatient?.[index]?.patientRoom
+                                ?.message
+                            }
+                          </p>
+                        )}
+                        {errors?.assignedPatient?.[index]?.patientName?.type ===
+                          "validate" && (
+                          <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
+                            {
+                              errors?.assignedPatient?.[index]?.patientName
+                                ?.message
+                            }
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div>
                     {" "}

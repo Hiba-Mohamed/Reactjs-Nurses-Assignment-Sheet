@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useFieldArray, Controller } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 interface IPatientData {
   patientName: string;
@@ -17,15 +18,12 @@ interface IFormInput {
 }
 
 export const NurseInfoForm = ({
-  onSubmit,
-  Shifturl,
   form,
 }: {
-  onSubmit: SubmitHandler<IFormInput>;
-  Shifturl: string;
   form: any;
 }) => {
     const { ShiftId, nurseId } = useParams();
+     const navigate = useNavigate();
 
 
   // Retrieve shift data array from localStorage
@@ -59,6 +57,16 @@ export const NurseInfoForm = ({
     name: "assignedPatient",
     control,
   });
+
+      const onSubmitEdit: SubmitHandler<IFormInput> = (data) => {
+        console.log("data of the edited nurse", data);
+       const targetNurse = staffData.find((nurse:any)=>nurse.nurseId === nurseId);
+       console.log("target nurse", targetNurse);
+       targetNurse.nurseData = data;
+      localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
+      };
+
+    navigate(`/manageStaff/${ShiftId}`);
 
 const validationArray = staffData.filter((nurse:any)=>nurse.nurseId !== nurseId);
 console.log("validationArray", validationArray);
@@ -135,7 +143,7 @@ console.log("validationArray", validationArray);
         return (
           <div className="bg-greygreen font-nunito relative pb-12 flex flex-row flex-wrap justify-evenly text-sm sm:text-md">
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(onSubmitEdit)}
               className="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mx-2 max-w-sm sm:max-w-xl"
             >
               <div className="mb-4">
@@ -406,19 +414,13 @@ export function EditNursePage() {
 
     console.log("You are editing the nurse with nurseId:", nurseId);
 
-    const onSubmitEdit: SubmitHandler<IFormInput> = () => {
-      console.log("I am edited");
-      // 1- find nurse with nurse id in storage
-      // 2- update the nurse info with the new inputs.
-      // 3- it is expected that the form validation be implemented from the form component itself.
-    };
 
     return (
       <div className="bg-greygreen font-nunito min-h-screen lg:px-40 md:px-10 sm:px-10 flex flex-col items-center">
         <h1 className="text-center text-2xl sm:text-3xl p-8 pt-16">
           Editing nurse below
         </h1>{" "}
-        <NurseInfoForm onSubmit={onSubmitEdit} Shifturl={ShiftId} form={form} />
+        <NurseInfoForm form={form} />
         <a
           href={`/manageStaff/${ShiftId}`}
           className="bg-cyan-400 hover:bg-cyan-500 text-white font-bold py-2 px-4 mb-6 rounded focus:outline-none focus:shadow-outline"
