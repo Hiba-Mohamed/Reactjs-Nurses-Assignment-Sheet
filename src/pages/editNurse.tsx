@@ -261,66 +261,69 @@ console.log("validationArray", validationArray);
                 {fields.map((field, index) => (
                   <div key={field.id} className="flex flex-row items-center">
                     <div className="flex flex-col">
-                      <div className="flex flex-row items-center mx-2 my-2 mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
-                        <Controller
-                          name={`assignedPatient.${index}.patientRoom`}
-                          control={control}
-                          defaultValue=""
-                          rules={{
-                            required: true,
-                            maxLength: 20,
-                            validate: (value) => validatePatientRoom(value),
-                          }}
-                          render={({ field: { onChange, value } }) => (
-                            <input
-                              className="w-24 appearance-none focus:outline-none w-full"
-                              type="text"
-                              value={value}
-                              onChange={onChange}
-                              placeholder="Room"
-                            />
-                          )}
-                        />
+                      <div className="flex flex-col">
+                        <div className="flex flex-row items-center mx-2 my-2 mt-2 appearance-none text-nunito-900 bg-white rounded-md block w-full p-3 h-10 shadow-sm focus:outline-none placeholder:text-nunito-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-nunito-200">
+                          <Controller
+                            name={`assignedPatient.${index}.patientRoom`}
+                            control={control}
+                            defaultValue=""
+                            rules={{
+                              required: true,
+                              maxLength: 20,
+                              validate: (value) => validatePatientRoom(value),
+                            }}
+                            render={({ field: { onChange, value } }) => (
+                              <input
+                                className="w-24 appearance-none focus:outline-none w-full"
+                                type="text"
+                                value={value}
+                                onChange={onChange}
+                                placeholder="Room"
+                              />
+                            )}
+                          />
 
-                        <Controller
-                          name={`assignedPatient.${index}.patientName`}
-                          control={control}
-                          defaultValue=""
-                          rules={{
-                            required: true,
-                            maxLength: 20,
-                            validate: (value) => validatePatientName(value),
-                          }}
-                          render={({ field: { onChange, value } }) => (
-                            <input
-                              className="w-24 appearance-none focus:outline-none"
-                              type="text"
-                              value={value}
-                              onChange={onChange}
-                              placeholder="Patient"
-                            />
-                          )}
-                        />
-                      </div>
-
-                      <div className="flex flex-row justify-end justify-center mx-2 mb-4 w-full appearance-none text-nunito-900 bg-white rounded-md block p-3 h-10">
-                        {errors?.assignedPatient?.[index]?.patientRoom?.type ===
-                          "validate" && (
-                          <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
-                            {
-                              errors?.assignedPatient?.[index]?.patientRoom
-                                ?.message
-                            }
-                          </p>
-                        )}
-                        {errors?.assignedPatient?.[index]?.patientName?.type ===
-                          "validate" && (
-                          <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
-                            {
-                              errors?.assignedPatient?.[index]?.patientName
-                                ?.message
-                            }
-                          </p>
+                          <Controller
+                            name={`assignedPatient.${index}.patientName`}
+                            control={control}
+                            defaultValue=""
+                            rules={{
+                              required: true,
+                              maxLength: 20,
+                              validate: (value) => validatePatientName(value),
+                            }}
+                            render={({ field: { onChange, value } }) => (
+                              <input
+                                className="w-24 appearance-none focus:outline-none"
+                                type="text"
+                                value={value}
+                                onChange={onChange}
+                                placeholder="Patient"
+                              />
+                            )}
+                          />
+                        </div>
+                        {errors?.assignedPatient?.[index] && (
+                          <div className="flex flex-row justify-between justify-center my-auto mx-2 mb-2 w-full appearance-none text-nunito-900 bg-white rounded-md block h-10">
+                            {errors?.assignedPatient?.[index]?.patientRoom
+                              ?.type === "validate" && (
+                              <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
+                                {
+                                  errors?.assignedPatient?.[index]?.patientRoom
+                                    ?.message
+                                }
+                              </p>
+                            )}
+                            {errors?.assignedPatient?.[index]?.patientName
+                              ?.type === "validate" && (
+                              <p className=" text-xs text-peach w-24 appearance-none focus:outline-none">
+                                {
+                                  errors?.assignedPatient?.[index]?.patientName
+                                    ?.message
+                                }
+                              </p>
+                            )}
+                          </div>
                         )}
                       </div>
                     </div>
