@@ -69,16 +69,13 @@ console.log("validationArray", validationArray);
 
     // Check if nurseName already exists in the staff data
     if (staffData !== 0 && staffData !== undefined) {
-      const isDuplicate = staffData.filter(
-        (nurse: any) => nurse.nurseData.nurseName === nurseName
+      const isDuplicate = validationArray.some(
+        (nurse: any) =>
+          nurse.nurseData.nurseName.toLowerCase() === nurseName.toLowerCase()
       );
-      console.log("isDuplicate:", isDuplicate);
-      const DuplicateArrayLength = isDuplicate.length;
-
-      console.log("isDuplicate length:", DuplicateArrayLength);
 
       // Return true if nurseName is not a duplicate, false if it's a duplicate
-      if (isDuplicate.length > 1) {
+      if (isDuplicate) {
         return "Nurse name already exists in this shift";
       } else {
         return true;
@@ -109,7 +106,8 @@ console.log("validationArray", validationArray);
     if (staffData && patientRoom !== "" && patientRoom !== undefined) {
       const isDuplicate = validationArray.some((nurse: any) =>
         nurse.nurseData.assignedPatient.some(
-          (patient: any) => patient.patientRoom === patientRoom
+          (patient: any) =>
+            patient.patientRoom.toLowerCase() === patientRoom.toLowerCase()
         )
       );
       if (isDuplicate) {
