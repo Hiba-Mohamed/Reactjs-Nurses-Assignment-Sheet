@@ -182,6 +182,7 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
               onSubmit={onSubmitForm}
               Shifturl={ShiftId}
               form={form}
+              validationArray={staffData}
             />
           </div>
         </div>

@@ -23,7 +23,7 @@ interface IFormInput {
 
 
 
-export const  NurseInfoForm = ({onSubmit, Shifturl, form}:{onSubmit:SubmitHandler<IFormInput>, Shifturl:string, form:any}) =>{
+export const  NurseInfoForm = ({onSubmit, Shifturl, form, validationArray}:{onSubmit:SubmitHandler<IFormInput>, Shifturl:string, form:any, validationArray:any}) =>{
   const ShiftId = Shifturl;
   
   // Retrieve shift data array from localStorage
@@ -72,8 +72,9 @@ const validateNurseName = (nurseName: string) => {
 
   // Check if nurseName already exists in the staff data
   if (staffData !== 0 && staffData !== undefined){
-    const isDuplicate = staffData.some(
-      (nurse: any) => nurse.nurseData.nurseName === nurseName
+    const isDuplicate = validationArray.some(
+      (nurse: any) =>
+        nurse.nurseData.nurseName.toLowerCase() === nurseName.toLowerCase()
     );
 
     // Return true if nurseName is not a duplicate, false if it's a duplicate
@@ -90,7 +91,12 @@ const validatePatientName = (patientName: string) => {
 
   // Check if the provided patientName already exists in the assignedPatient array
   if (staffData && patientName !== "" && patientName !== undefined) {
-    const isDuplicate = staffData.some((nurse:any)=> nurse.nurseData.assignedPatient.some((patient:any)=>patient.patientName === patientName));
+    const isDuplicate = validationArray.some((nurse: any) =>
+      nurse.nurseData.assignedPatient.some(
+        (patient: any) =>
+          patient.patientName.toLowerCase() === patientName.toLowerCase()
+      )
+    );
     if (isDuplicate) {
       return "patient assigned to different nurse";
     }
@@ -104,9 +110,10 @@ const validatePatientRoom = (patientRoom: string) => {
 
   // Check if the provided patientName already exists in the assignedPatient array
   if (staffData && patientRoom !== "" && patientRoom !== undefined) {
-   const isDuplicate = staffData.some((nurse: any) =>
+   const isDuplicate = validationArray.some((nurse: any) =>
      nurse.nurseData.assignedPatient.some(
-       (patient: any) => patient.patientRoom === patientRoom
+       (patient: any) =>
+         patient.patientRoom.toLowerCase() === patientRoom.toLowerCase()
      )
    );
    if (isDuplicate) {
