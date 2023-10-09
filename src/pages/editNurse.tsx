@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import NurseInfoForm from "../components/nurseForm";
+import { useState } from "react";
 
 interface IPatientData {
   patientName: string;
@@ -21,20 +22,60 @@ interface IFormInput {
 export function EditNursePage() {
   const { ShiftId, nurseId } = useParams();
   const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
 
         const onSubmitEdit: SubmitHandler<IFormInput> = (data) => {
-          console.log("data of the edited nurse", data);
-          const targetNurse = staffData.find(
-            (nurse: any) => nurse.nurseId === nurseId
-          );
-          console.log("target nurse", targetNurse);
-          targetNurse.nurseData = data;
-          localStorage.setItem(
-            "startShiftDataArray",
-            JSON.stringify(existingData)
-          );
-          navigate(`/manageStaff/${ShiftId}`);
+          const isnotDuplicate = validatePatientsfieldsAgainstEachOther(data);
+    if (isnotDuplicate) {
+      console.log("data of the edited nurse", data);
+      const targetNurse = staffData.find(
+        (nurse: any) => nurse.nurseId === nurseId
+      );
+      console.log("target nurse", targetNurse);
+      targetNurse.nurseData = data;
+      localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
+      navigate(`/manageStaff/${ShiftId}`);
+      setErrorMessage(null);
+    } else
+      setErrorMessage(
+        "Error: duplicate patient name and/or room is being assigned to the same nurse"
+      );
+   
         };
+
+          const validatePatientsfieldsAgainstEachOther = (
+            nurseData: IFormInput
+          ) => {
+            console.log("validate");
+            console.log("nurse data validation", nurseData);
+            const patientsArray = nurseData.assignedPatient;
+            console.log("patients objects array", patientsArray);
+            const patientNamesArray: string[] = [];
+            const patientRoomsArray: string[] = [];
+
+            for (const patient of patientsArray) {
+              // Add patient names to the patientNames array
+              patientNamesArray.push(patient.patientName);
+
+              // Add patient rooms to the patientRooms array
+              patientRoomsArray.push(patient.patientRoom);
+
+              console.log("Patient Names:", patientNamesArray);
+              console.log("Patient Rooms:", patientRoomsArray);
+            }
+
+            const isDuplicateName = patientNamesArray.some(
+              (name, index) => patientNamesArray.indexOf(name) !== index
+            );
+            const isDuplicateRoom = patientRoomsArray.some(
+              (room, index) => patientRoomsArray.indexOf(room) !== index
+            );
+
+            if (!isDuplicateName && !isDuplicateRoom) {
+              return true;
+            } else return false;
+          };
 
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
@@ -102,6 +143,11 @@ export function EditNursePage() {
             form={form}
             validationArray={validationArray}
           />
+          {errorMessage && (
+            <div className="text-peach bg-peach text-white shadow-lg rounded-lg max-w-sm m-4 p-4">
+              {errorMessage}
+            </div>
+          )}
         </div>{" "}
         <a
           href={`/manageStaff/${ShiftId}`}
