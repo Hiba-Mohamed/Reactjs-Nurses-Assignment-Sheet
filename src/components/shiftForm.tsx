@@ -86,9 +86,11 @@ else{
 
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-white sm:px-8 shadow-lg rounded-lg max-w-xsm  sm:max-w-xl text-xsm p-4 sm:text-sm text-center mx-4">
-        {errorMessage && <p className="text-peach ">{errorMessage}</p>}{" "}
-      </div>
+      {errorMessage && (
+        <div className="bg-white sm:px-8 shadow-lg rounded-lg max-w-xsm  sm:max-w-xl text-xsm p-4 sm:text-sm text-center mx-4">
+          <p className="text-peach ">{errorMessage}</p>
+        </div>
+      )}{" "}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white sm:px-8 px-auto shadow-lg rounded-lg pt-6 pb-8 max-w-sm m-4 sm:max-w-2xl text-sm px-2 px-4 sm:text-lg flex sm:flex-row flex-col gap-4"
@@ -102,10 +104,10 @@ else{
             className="w-full px-2 appearance-none py-2 rounded-md border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></input>
           {errors?.unitName?.type === "required" && (
-            <p className="text-peach">This field is required</p>
+            <p className="text-peach text-sm">This field is required</p>
           )}
           {errors?.unitName?.type === "maxLength" && (
-            <p className="text-peach">
+            <p className="text-peach text-sm">
               Unit's name cannot exceed 30 characters
             </p>
           )}
@@ -128,7 +130,7 @@ else{
               )}
             />
             {errors?.shiftDate?.type === "required" && (
-              <p className="text-peach">
+              <p className="text-peach text-sm">
                 {errors?.shiftDate?.message || "This field is required"}
               </p>
             )}
@@ -145,7 +147,7 @@ else{
             <option value="Night Shift">Night Shift</option>
           </select>{" "}
           {errors?.shiftType?.type === "required" && (
-            <p className="text-peach">
+            <p className="text-peach text-sm">
               {errors?.shiftType?.message || "This field is required"}
             </p>
           )}

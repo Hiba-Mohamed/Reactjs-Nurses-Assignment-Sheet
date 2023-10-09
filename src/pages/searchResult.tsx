@@ -71,6 +71,7 @@ const navigate = useNavigate();
       </div>
     </div>
   );
+  
   }
 
   else{
