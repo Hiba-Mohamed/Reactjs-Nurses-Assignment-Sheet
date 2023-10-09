@@ -3,6 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import {useState } from "react";
 
 interface IUnitShiftData {
   unitName: string;
@@ -20,6 +21,7 @@ const ShiftForm = () => {
     formState: { errors },
   } = useForm<IUnitShiftData>();
 
+const [errorMessage, setErrorMessage] = useState<string| null> (null);
 
   const onSubmit: SubmitHandler<IUnitShiftData> = (data, event) => {
     // Format the date as "YYYYMMDD"
@@ -67,7 +69,8 @@ if(!isDuplicateShift){
     // Redirect to the new page with the unique ID
     navigate(`/manageStaff/${ShiftId}`);
 }
-else{alert("Duplicate shift, please select a different date, or shift Type")}
+else{
+  setErrorMessage("Duplicate shift, please select a different date, or shift Type");}
 
 
   }
@@ -82,7 +85,10 @@ else{alert("Duplicate shift, please select a different date, or shift Type")}
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center">
+      <div className="bg-white sm:px-8 shadow-lg rounded-lg max-w-xsm  sm:max-w-xl text-xsm p-4 sm:text-sm text-center mx-4">
+        {errorMessage && <p className="text-peach ">{errorMessage}</p>}{" "}
+      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white sm:px-8 px-auto shadow-lg rounded-lg pt-6 pb-8 max-w-sm m-4 sm:max-w-2xl text-sm px-2 px-4 sm:text-lg flex sm:flex-row flex-col gap-4"
@@ -156,6 +162,6 @@ else{alert("Duplicate shift, please select a different date, or shift Type")}
       </form>
     </div>
   );
-};
+}
 
 export default ShiftForm;
