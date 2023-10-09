@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import NurseCardDisplay from "../components/nurseCardDisplay";
 import { v4 as uuidv4 } from "uuid";
 import { useForm, SubmitHandler } from "react-hook-form";
+import {useState} from "react"
 
 interface IPatientData {
   patientName: string;
@@ -66,8 +67,10 @@ function retriveShiftDataLSwithShiftId(ShiftId: string): any {
 }
 
 export function NurseForm() {
+
   const { ShiftId } = useParams();
   const nurseId = uuidv4();
+  const [errorMessage, setErrorMessage] = useState<string|null>(null);
 
 const form = useForm<IFormInput>({ defaultValues: { assignedPatient: [] } });
 const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
@@ -77,8 +80,9 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
     makeAndAddNurseDataToLS(nurseData);
     form.reset();
     console.log(nurseData);
+    setErrorMessage(null);
     }
-    else alert("duplicate patient name and/or room is being assigned to the same nurse");
+    else setErrorMessage("Error: duplicate patient name and/or room is being assigned to the same nurse");
    
   
 };
@@ -176,7 +180,7 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
             {" "}
             <NurseCardDisplay staffData={staffData} />{" "}
           </div>
-          <div>
+          <div className="flex flex-col items-center">
             {" "}
             <NurseInfoForm
               onSubmit={onSubmitForm}
@@ -184,6 +188,7 @@ const onSubmitForm: SubmitHandler<IFormInput> = (nurseData, event) => {
               form={form}
               validationArray={staffData}
             />
+            {errorMessage && <div className="text-peach bg-peach text-white shadow-lg rounded-lg max-w-sm m-4 p-4">{errorMessage}</div>}
           </div>
         </div>
       );
