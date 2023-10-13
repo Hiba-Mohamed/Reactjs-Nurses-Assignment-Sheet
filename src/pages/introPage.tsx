@@ -1,6 +1,6 @@
 export function LandingPage (){
     return (
-      <div className="min-h-screen items-center bg-neutral-50 font-nunito pt-12 flex flex-col max-w-sm sm:max-w-full">
+      <div className="min-h-screen items-center bg-neutral-50 font-nunito pt-12 flex flex-col max-w-xl sm:max-w-full">
         <div className="rounded bg-white flex flex-col items-center mx-4 shadow-lg p-4 text-lg max-w-sm sm:max-w-2xl sm:text-2xl text-center font-bold">
           Welcome to the Electronic NAS (Nurses Assignment Sheet)
         </div>
