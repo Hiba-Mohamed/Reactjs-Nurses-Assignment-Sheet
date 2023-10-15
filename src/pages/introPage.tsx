@@ -16,7 +16,18 @@ export function LandingPage (){
           Coding coach Clark Oake, who guided me through the introductory module
           of the program, and UI/UX Get Coding coach Mat Kennedy for providing
           invaluable UI/UX instructions.
+          <p className="py-4">
+            To learn nore about the NAS, click below to go to the "About" page.
+          </p>
+          <a
+            href="/about"
+            className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline"
+          >
+            {" "}
+            Learn More
+          </a>
         </div>
+
         <div className="flex flex-row rounded-3xl bg-white flex flex-row items-center gap-4 sm:mt-28 max-w-sm mx-4 shadow-lg p-4 text-start text-lg my-4">
           <img src="/images/NAS-logo.png" alt="NAS logo" className="h-12" />
           <p className="font-bold text-xl">
