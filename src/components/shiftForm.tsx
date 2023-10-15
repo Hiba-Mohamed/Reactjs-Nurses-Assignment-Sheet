@@ -3,7 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import {useState } from "react";
+import { useState } from "react";
 
 interface IUnitShiftData {
   unitName: string;
@@ -21,7 +21,7 @@ const ShiftForm = () => {
     formState: { errors },
   } = useForm<IUnitShiftData>();
 
-const [errorMessage, setErrorMessage] = useState<string| null> (null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const onSubmit: SubmitHandler<IUnitShiftData> = (data, event) => {
     // Format the date as "YYYYMMDD"
@@ -30,10 +30,10 @@ const [errorMessage, setErrorMessage] = useState<string| null> (null);
       .slice(0, 10)
       .replace(/-/g, "");
 
-        const modifiedData = {
-          ...data,
-          shiftDate: formattedDate,
-        };
+    const modifiedData = {
+      ...data,
+      shiftDate: formattedDate,
+    };
 
     event?.preventDefault();
     console.log(data);
@@ -48,33 +48,32 @@ const [errorMessage, setErrorMessage] = useState<string| null> (null);
     });
     console.log("existingDatesWithTypes", existingDatesWithTypes);
 
-const currentShift = {
-  shiftDate: formattedDate,
-  shiftType: data.shiftType,
-};
+    const currentShift = {
+      shiftDate: formattedDate,
+      shiftType: data.shiftType,
+    };
 
-console.log("currentShift", currentShift);
+    console.log("currentShift", currentShift);
 
-const isDuplicateShift = existingDatesWithTypes.some(
-  (item: any) =>
-    item.shiftDate === currentShift.shiftDate &&
-    item.shiftType === currentShift.shiftType
-);
-if(!isDuplicateShift){
-    existingData.push({ ShiftId, data: modifiedData });
+    const isDuplicateShift = existingDatesWithTypes.some(
+      (item: any) =>
+        item.shiftDate === currentShift.shiftDate &&
+        item.shiftType === currentShift.shiftType
+    );
+    if (!isDuplicateShift) {
+      existingData.push({ ShiftId, data: modifiedData });
 
-    // Store the updated array back in localStorage
-    localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
+      // Store the updated array back in localStorage
+      localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
 
-    // Redirect to the new page with the unique ID
-    navigate(`/manageStaff/${ShiftId}`);
-}
-else{
-  setErrorMessage("Duplicate shift, please select a different date, or shift Type");}
-
-
-  }
-   
+      // Redirect to the new page with the unique ID
+      navigate(`/manageStaff/${ShiftId}`);
+    } else {
+      setErrorMessage(
+        "Duplicate shift, please select a different date, or shift Type"
+      );
+    }
+  };
 
   // Function to disable past dates (including today)
   const disablePastDates = (date: Date) => {
@@ -82,7 +81,6 @@ else{
     currentDate.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate comparison
     return date >= currentDate;
   };
-
 
   return (
     <div className="flex flex-col items-center">
@@ -164,6 +162,6 @@ else{
       </form>
     </div>
   );
-}
+};
 
 export default ShiftForm;

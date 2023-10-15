@@ -1,49 +1,49 @@
 import { useNavigate } from "react-router-dom";
 
 export const ShiftListComponent = () => {
-       const navigate = useNavigate();
+  const navigate = useNavigate();
 
-function formatDate(dateString: string): string {
-  const year = dateString.slice(0, 4);
-  const month = dateString.slice(4, 6);
-  const day = dateString.slice(6, 8);
+  function formatDate(dateString: string): string {
+    const year = dateString.slice(0, 4);
+    const month = dateString.slice(4, 6);
+    const day = dateString.slice(6, 8);
 
-  return `${day} ${getMonthName(month)}, ${year}`;
-}
+    return `${day} ${getMonthName(month)}, ${year}`;
+  }
 
-function getMonthName(month: string): string {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  function getMonthName(month: string): string {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
 
-  // Subtract 1 from the month because JavaScript Date months are zero-based
-  const monthIndex = parseInt(month, 10) - 1;
+    // Subtract 1 from the month because JavaScript Date months are zero-based
+    const monthIndex = parseInt(month, 10) - 1;
 
-  return months[monthIndex];
-}
+    return months[monthIndex];
+  }
 
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
 
-existingData.sort((a: any, b: any) => {
-  const dateA = (a.data.shiftDate);
-  const dateB = (b.data.shiftDate);
-  return dateB - dateA;
-});
+  existingData.sort((a: any, b: any) => {
+    const dateA = a.data.shiftDate;
+    const dateB = b.data.shiftDate;
+    return dateB - dateA;
+  });
 
-console.log(existingData)
+  console.log(existingData);
 
   function viewShift(shiftId: string) {
     console.log("View shift", shiftId);
@@ -52,20 +52,20 @@ console.log(existingData)
 
   function editShift(shiftId: string) {
     console.log("edit Shift", shiftId);
-        navigate(`/manageStaff/${shiftId}`);
-
+    navigate(`/manageStaff/${shiftId}`);
   }
 
   function deleteShift(shiftId: string) {
     console.log("delete Shift", shiftId);
-    const updatedShiftList = existingData.filter((items:any)=>{return items.ShiftId !== shiftId});
-
+    const updatedShiftList = existingData.filter((items: any) => {
+      return items.ShiftId !== shiftId;
+    });
 
     localStorage.setItem(
-             "startShiftDataArray",
-             JSON.stringify(updatedShiftList)
-           );
-                  window.location.reload();
+      "startShiftDataArray",
+      JSON.stringify(updatedShiftList)
+    );
+    window.location.reload();
   }
 
   if (existingData.length !== 0) {

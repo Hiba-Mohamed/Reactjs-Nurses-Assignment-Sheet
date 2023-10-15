@@ -5,11 +5,9 @@ interface IPatientData {
   patientRoom: string;
 }
 
-
 export function ViewNurseCard({ staffData }: { staffData: any }) {
   const { ShiftId } = useParams();
   console.log(staffData);
-
 
   console.log(staffData);
   if (ShiftId && staffData.length !== 0) {

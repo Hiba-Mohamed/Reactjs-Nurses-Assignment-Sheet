@@ -18,15 +18,13 @@ interface IFormInput {
   assignedPatient: IPatientData[];
 }
 
-
 export function EditNursePage() {
   const { ShiftId, nurseId } = useParams();
   const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-
-        const onSubmitEdit: SubmitHandler<IFormInput> = (data) => {
-          const isnotDuplicate = validatePatientsfieldsAgainstEachOther(data);
+  const onSubmitEdit: SubmitHandler<IFormInput> = (data) => {
+    const isnotDuplicate = validatePatientsfieldsAgainstEachOther(data);
     if (isnotDuplicate) {
       console.log("data of the edited nurse", data);
       const targetNurse = staffData.find(
@@ -41,41 +39,38 @@ export function EditNursePage() {
       setErrorMessage(
         "Error: duplicate patient name and/or room is being assigned to the same nurse"
       );
-   
-        };
+  };
 
-          const validatePatientsfieldsAgainstEachOther = (
-            nurseData: IFormInput
-          ) => {
-            console.log("validate");
-            console.log("nurse data validation", nurseData);
-            const patientsArray = nurseData.assignedPatient;
-            console.log("patients objects array", patientsArray);
-            const patientNamesArray: string[] = [];
-            const patientRoomsArray: string[] = [];
+  const validatePatientsfieldsAgainstEachOther = (nurseData: IFormInput) => {
+    console.log("validate");
+    console.log("nurse data validation", nurseData);
+    const patientsArray = nurseData.assignedPatient;
+    console.log("patients objects array", patientsArray);
+    const patientNamesArray: string[] = [];
+    const patientRoomsArray: string[] = [];
 
-            for (const patient of patientsArray) {
-              // Add patient names to the patientNames array
-              patientNamesArray.push(patient.patientName);
+    for (const patient of patientsArray) {
+      // Add patient names to the patientNames array
+      patientNamesArray.push(patient.patientName);
 
-              // Add patient rooms to the patientRooms array
-              patientRoomsArray.push(patient.patientRoom);
+      // Add patient rooms to the patientRooms array
+      patientRoomsArray.push(patient.patientRoom);
 
-              console.log("Patient Names:", patientNamesArray);
-              console.log("Patient Rooms:", patientRoomsArray);
-            }
+      console.log("Patient Names:", patientNamesArray);
+      console.log("Patient Rooms:", patientRoomsArray);
+    }
 
-            const isDuplicateName = patientNamesArray.some(
-              (name, index) => patientNamesArray.indexOf(name) !== index
-            );
-            const isDuplicateRoom = patientRoomsArray.some(
-              (room, index) => patientRoomsArray.indexOf(room) !== index
-            );
+    const isDuplicateName = patientNamesArray.some(
+      (name, index) => patientNamesArray.indexOf(name) !== index
+    );
+    const isDuplicateRoom = patientRoomsArray.some(
+      (room, index) => patientRoomsArray.indexOf(room) !== index
+    );
 
-            if (!isDuplicateName && !isDuplicateRoom) {
-              return true;
-            } else return false;
-          };
+    if (!isDuplicateName && !isDuplicateRoom) {
+      return true;
+    } else return false;
+  };
 
   // Retrieve shift data array from localStorage
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
@@ -113,8 +108,6 @@ export function EditNursePage() {
   const patientArray = matchingNurseData.assignedPatient;
   console.log("patient array", patientArray);
 
-  
-
   if (ShiftId && nurseId) {
     const form = useForm<IFormInput>({
       defaultValues: {
@@ -128,7 +121,6 @@ export function EditNursePage() {
     });
 
     console.log("You are editing the nurse with nurseId:", nurseId);
-
 
     return (
       <div className="bg-greygreen font-nunito min-h-screen lg:px-40 md:px-10 sm:px-10 flex flex-col items-center">

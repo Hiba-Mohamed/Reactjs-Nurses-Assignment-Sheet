@@ -4,15 +4,12 @@ import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import ShiftListComponent from "../components/shiftListComponent";
 import { useNavigate } from "react-router-dom";
 
-
 interface IShiftSearch {
   shiftDate: Date;
   shiftType: string;
 }
 
-
-
-function NoShiftFound(){
+function NoShiftFound() {
   return (
     <div className="flex flex-col bg-slate-100 items-center min-h-screen">
       <h1 className="font-nunito text-center text-2xl sm:text-4xl font-bold py-8 items-center">
@@ -26,8 +23,7 @@ function NoShiftFound(){
 }
 
 export function ShiftHistory() {
-
- const  navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     watch,
@@ -39,19 +35,18 @@ export function ShiftHistory() {
   const onSubmit: SubmitHandler<IShiftSearch> = (data, event) => {
     event?.preventDefault();
     console.log(data);
-      const formattedDate = data.shiftDate
-        .toISOString()
-        .slice(0, 10)
-        .replace(/-/g, "");
+    const formattedDate = data.shiftDate
+      .toISOString()
+      .slice(0, 10)
+      .replace(/-/g, "");
 
-        navigate(`/searchResult/${formattedDate}/${data.shiftType}`);
-
+    navigate(`/searchResult/${formattedDate}/${data.shiftType}`);
   };
 
   console.log(watch("shiftType"));
   const existingDataJSON = localStorage.getItem("startShiftDataArray");
   const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-  
+
   if (existingData.length === 0 || existingData == undefined) {
     return <NoShiftFound />;
   }
@@ -117,7 +112,6 @@ export function ShiftHistory() {
                 </button>
               </form>
             </div>
-
           </div>
           <ShiftListComponent />
         </div>
