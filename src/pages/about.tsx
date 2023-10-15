@@ -3,7 +3,7 @@ export function AboutPage() {
     <div className="lg:px-40 md:px-10 sm:px-10 lg:text-2xl md:text-xl sm:text-lg">
       <div className="flex justify-center w-auto">
         <img
-          src="./images/NAS-logo.png"
+          src="/images/NAS-logo.png"
           alt="Nurses Assignment Sheet logo"
           className="h-20 w-20 m-12"
         />

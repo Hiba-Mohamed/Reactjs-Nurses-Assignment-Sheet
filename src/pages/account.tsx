@@ -6,7 +6,7 @@ export function Account() {
     >
       <div className="flex flex-col items-center">
         <img
-          src="./images/NAS-logo.png"
+          src="/images/NAS-logo.png"
           className="sm:h-24 h-20 mt-12 sm:mt-18"
           alt="Nurses Assignment Sheet logo"
         />
