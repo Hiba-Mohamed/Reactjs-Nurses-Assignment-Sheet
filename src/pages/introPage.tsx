@@ -1,34 +1,37 @@
 export function LandingPage (){
     return (
-      <div className="min-h-screen items-center bg-neutral-50 font-nunito pt-12 flex flex-col max-w-xl sm:max-w-full">
-        <div className="rounded-3xl bg-white flex flex-col items-center mx-4 shadow-lg p-4 text-lg max-w-sm sm:max-w-2xl sm:text-2xl text-center font-bold">
-          Welcome to the Electronic NAS (Nurses Assignment Sheet)
-        </div>
-        <div className="rounded-3xl bg-white flex flex-col items-center max-w-sm  sm:max-w-2xl mx-4 shadow-lg p-4 text-start mt-20 mb-20 p-12">
-          My name is Hiba, a Get Coding Full-Stack Software Developer student.
-          Due to my experience in healthcare and my passion for healthcare
-          innovation and efficiency, I chose to recreate an Electronic Nurses
-          Assignment Sheet for the React.js module of the Get Coding training
-          program. I want to express my gratitude to Get Coding coach Mitchell
-          Hynes for the guidance and support throughout this project. The first
-          version was a simplified vanilla JavaScript version that I completed
-          in the introduction module. I'd also like to extend my thanks to Get
-          Coding coach Clark Oake, who guided me through the introductory module
-          of the program, and UI/UX Get Coding coach Mat Kennedy for providing
-          invaluable UI/UX instructions.
-          <p className="py-4">
-            To learn nore about the NAS, click below to go to the "About" page.
-          </p>
-          <a
-            href="/about"
-            className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline"
-          >
-            {" "}
-            Learn More
-          </a>
+      <div className="min-h-screen items-center bg-gray-50 font-nunito pt-12 flex flex-col max-w-xl sm:max-w-full">
+        <div className="">
+          <div className="rounded-3xl bg-white flex flex-col items-center mx-4 shadow-lg p-4 text-lg max-w-sm sm:max-w-2xl sm:text-2xl text-center font-bold">
+            Welcome to the Electronic NAS (Nurses Assignment Sheet)
+          </div>
+          <div className="rounded-3xl bg-white flex flex-col items-center max-w-sm  sm:max-w-3xl mx-4 shadow-lg p-4 text-start mt-20 mb-20 p-12">
+            My name is Hiba, a Get Coding Full-Stack Software Developer student.
+            Due to my experience in healthcare and my passion for healthcare
+            innovation and efficiency, I chose to recreate an Electronic Nurses
+            Assignment Sheet for the React.js module of the Get Coding training
+            program. I want to express my gratitude to Get Coding coach Mitchell
+            Hynes for the guidance and support throughout this project. The
+            first version was a simplified using vanilla JavaScript  that I
+            completed in the introduction module. I'd also like to extend my
+            thanks to Get Coding coach Clark Oake, who guided me through the
+            introductory module of the program, and UI/UX Get Coding coach Mat
+            Kennedy for providing invaluable UI/UX instructions.
+            <p className="py-4">
+              To learn nore about the NAS, click below to go to the "About"
+              page.
+            </p>
+            <a
+              href="/about"
+              className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline"
+            >
+              {" "}
+              Learn More
+            </a>
+          </div>
         </div>
 
-        <div className="flex flex-row rounded-3xl bg-white flex flex-row items-center gap-4 sm:mt-28 max-w-sm mx-4 shadow-lg p-4 text-start text-lg my-4">
+        <div className="flex flex-row  flex flex-row items-center gap-4 sm:mt-28 max-w-lg mx-4 p-4 text-start text-lg my-4">
           <img src="/images/NAS-logo.png" alt="NAS logo" className="h-12" />
           <p className="font-bold text-xl">
             A quick guide to get started below:
