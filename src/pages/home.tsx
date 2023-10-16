@@ -7,12 +7,12 @@ export function Home() {
       <div className="font-nunito flex flex-row relative max-w-3xl sm:max-w-5xl mx-auto mb-16 pt-20">
         <div className="flex flex-col items-center w-screen mb-8">
           <img
-            src="./images/NAS-logo.png"
+            src="/images/NAS-logo.png"
             className="w-10 sm:w-20"
             alt="Nurses Assignment Sheet logo"
           />
           <img
-            src="./images/nurse-pic.png"
+            src="/images/nurse-pic.png"
             className="w-40 sm:w-80"
             alt="A picture of two pictures, on the left two nurses in nursing station, and on the right a picture of a nurse caring for a patient"
           />

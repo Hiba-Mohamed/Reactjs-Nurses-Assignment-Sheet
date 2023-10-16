@@ -3,14 +3,14 @@ export function AboutPage() {
     <div className="lg:px-40 md:px-10 sm:px-10 lg:text-2xl md:text-xl sm:text-lg">
       <div className="flex justify-center w-auto">
         <img
-          src="./images/NAS-logo.png"
+          src="/images/NAS-logo.png"
           alt="Nurses Assignment Sheet logo"
           className="h-20 w-20 m-12"
         />
       </div>
       <div className="font-nunito flex flex-col items-start mb-48">
         <div className="flex w-auto items-center flex-row">
-          <img className="h-40 sm:h-56" src="./images/about1.png" alt="" />
+          <img className="h-40 sm:h-56" src="/images/about1.png" alt="" />
           <h3 className="font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
             {" "}
             What is the NAS?
@@ -38,7 +38,7 @@ export function AboutPage() {
         <div className="flex w-auto items-center flex-row">
           <img
             className="h-40 sm:h-56"
-            src="./images/about2.png"
+            src="/images/about2.png"
             alt="A picture of question marks"
           />
           <h3 className="text-nunito-900 font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
@@ -96,7 +96,7 @@ export function AboutPage() {
           <div className="flex w-auto items-center flex-row">
             <img
               className="h-40 sm:h-56"
-              src="./images/about3.png"
+              src="/images/about3.png"
               alt="A picture of a light bulb"
             />
             <h3 className="text-nunito-900 font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
