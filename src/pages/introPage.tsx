@@ -40,8 +40,6 @@ export function LandingPage() {
           <div className="flex flex-col items-center">
             <img src="/images/features1.png" alt="" className="rounded-3xl" />
             <div>
-              <div className="flex flex-row p-4">
-                <img src="/images/NAS-logo.png" alt="" className="h-4" />
               <div className="flex flex-row p-4 gap-2">
                 <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
                 <p>Choose from the menu on the header above to get started.</p>
