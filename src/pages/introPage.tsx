@@ -21,7 +21,7 @@ export function LandingPage() {
             To learn nore about the NAS, click below to go to the "About" page.
           </p>
           <a
-            href="./pages/about"
+            href="/about"
             className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline"
           >
             {" "}
@@ -38,14 +38,14 @@ export function LandingPage() {
         <p className="font-bold text-xl pt-12 pb-4">Step 1: Navigate</p>
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src="./images/features1.png" alt="" className="rounded-3xl" />
+            <img src="/images/features1.png" alt="" className="rounded-3xl" />
             <div>
               <div className="flex flex-row p-4 gap-2">
-                <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+                <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
                 <p>Choose from the menu on the header above to get started.</p>
               </div>
               <div className="flex flex-row p-4 gap-2">
-                <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+                <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
                 <p>Click on "Create New Shift".</p>
               </div>
             </div>
@@ -58,18 +58,18 @@ export function LandingPage() {
 
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src="./images/features2.png" alt="" className="rounded-3xl" />
+            <img src="/images/features2.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
-              <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+              <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
               <p>Fill in the three steps form to create a new shift.</p>
             </div>
           </div>
         </div>
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src="./images/features6.png" alt="" className="rounded-3xl" />
+            <img src="/images/features6.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
-              <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+              <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
               <p>
                 Duplication safeguards in place to prevent shift Duplication.
               </p>
@@ -83,17 +83,17 @@ export function LandingPage() {
 
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src="./images/features5.png" alt="" className="rounded-3xl" />
+            <img src="/images/features5.png" alt="" className="rounded-3xl" />
             <div>
               <div className="flex flex-row p-4 gap-2">
-                <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+                <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
                 <p>
                   Use the nurse's information form to dynamically add nurses to
                   your shift.
                 </p>
               </div>
               <div className="flex flex-row p-4 gap-2">
-                <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+                <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
                 <p>
                   Duplication safeguards in place to prevent duplication of
                   nurse's name, patient's name, and room number.
@@ -104,9 +104,9 @@ export function LandingPage() {
         </div>
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src="./images/features4.png" alt="" className="rounded-3xl" />
+            <img src="/images/features4.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
-              <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+              <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
               <p>
                 Manange shift staff and edit nurse's assignment information.
               </p>
@@ -122,7 +122,7 @@ export function LandingPage() {
           <div className="flex flex-col items-center">
             <img src="/images/features1.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
-              <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+              <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
               <p>
                 Use the menu bar to click on "Shift Record" to access your shift
                 list.
@@ -133,16 +133,16 @@ export function LandingPage() {
 
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src="./images/features3.png" alt="" className="rounded-3xl" />
+            <img src="/images/features3.png" alt="" className="rounded-3xl" />
             <div>
               <div className="flex flex-row p-4 gap-2">
-                <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+                <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
                 <p>
                   Your shifts are autosaved and organized from newest to oldest.
                 </p>
               </div>
               <div className="flex flex-row p-4 gap-2">
-                <img src="./images/NAS-logo.png" alt="" className="h-4 mt-2" />
+                <img src="/images/NAS-logo.png" alt="" className="h-4 mt-2" />
                 <p>
                   You can always search a specific shift using the search bar.
                 </p>
