@@ -21,7 +21,7 @@ export function LandingPage() {
             To learn nore about the NAS, click below to go to the "About" page.
           </p>
           <a
-            href="/about.tsx"
+            href="./about.tsx"
             className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline"
           >
             {" "}
