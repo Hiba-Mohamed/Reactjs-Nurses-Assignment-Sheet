@@ -5,5 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/Reactjs-Nurses-Assignment-Sheet/', // Set the desired base path
-
+  optimizeDeps: {
+    include: ['*.ts', '*.d.ts', '*.tsx', '*.js', '*.jsx'],
+  },
 })
