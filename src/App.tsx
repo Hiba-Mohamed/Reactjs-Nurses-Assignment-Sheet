@@ -27,7 +27,7 @@ function App() {
           element={<SearchResults />}
         />
         <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="./about" element={<AboutPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<Account />} />
         <Route path="/manageStaff/:ShiftId" element={<NurseForm />} />
