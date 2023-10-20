@@ -1,3 +1,4 @@
+import NasLogo from "../../public/images/NAS-logo.png"
 export function LandingPage() {
   return (
     <div className="min-h-screen items-center bg-gray-50 font-nunito pt-12 flex flex-col max-w-xl sm:max-w-full p-6">
@@ -31,7 +32,7 @@ export function LandingPage() {
       </div>
 
       <div className="flex flex-row items-center gap-4 sm:mt-28 mx-4 p-4 text-start text-lg my-4">
-        <img src="/images/NAS-logo.png" alt="NAS logo" className="h-12" />
+        <img src={NasLogo} alt="Nurses Assignment Sheet logo" className="h-12" />
         <p className="font-bold text-xl">A quick guide to get started below:</p>
       </div>
       <div className="flex flex-col justify-evenly sm:text-xl p-2 items-center">
