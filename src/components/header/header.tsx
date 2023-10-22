@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Heading() {
   const [open, setOpen] = useState(false);
   return (
     <nav className="border-slate-50 bg-slate-50 font-nunito">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
-        <a href="/home" className="flex items-center">
+        <Link to="/home" className="flex items-center">
           <img
             src="images/NAS-logo.png"
             className="sm:h-12 mr-3 h-6"
             alt="Nurses Assignment Sheet logo"
           />
-        </a>
+        </Link>
         <button
           onClick={() => setOpen(!open)}
           data-collapse-toggle="navbar-hamburger"
@@ -43,53 +44,53 @@ export function Heading() {
         >
           <ul className="flex flex-col items-center font-medium mt-4 rounded-lg bg-gray-50">
             <li>
-              <a
-                href="/home"
+              <Link
+                to="/home"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
                 aria-current="page"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/account"
+              <Link
+                to="/account"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Create an Account
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/startSheet"
+              <Link
+                to="/startSheet"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Create New Shift
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/shiftHistory"
+              <Link
+                to="/shiftHistory"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 Shift Record
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/about"
+              <Link
+                to="/about"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
               >
                 About NAS
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

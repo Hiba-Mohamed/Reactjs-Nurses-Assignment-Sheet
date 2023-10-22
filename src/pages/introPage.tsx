@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export function LandingPage() {
   return (
@@ -21,13 +22,13 @@ export function LandingPage() {
           <p className="py-4">
             To learn nore about the NAS, click below to go to the "About" page.
           </p>
-          <a
-            href="/about"
+          <Link
+            to="/about"
             className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline"
           >
             {" "}
             Learn More
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -161,13 +162,13 @@ export function LandingPage() {
         <p className="max-w-xl  flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-8 text-center my-16 ">
           please use the menu to navigate through, no need to have an account to
           use it as of now.
-          <a
-            href="/home"
+          <Link
+            to="/home"
             className="bg-cyan-700 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline"
           >
             {" "}
             Visit NAS home page
-          </a>
+          </Link>
         </p>
       </div>
     </div>

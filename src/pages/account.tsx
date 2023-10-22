@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Account() {
   return (
     <div
@@ -71,9 +73,9 @@ export function Account() {
               </button>
             </div>
             <div className="mt-6">
-              <a id="login-direct" className="hover:text-green" href="/login">
+              <Link id="login-direct" className="hover:text-green" to="/login">
                 Have an account? please login
-              </a>
+              </Link>
             </div>
           </div>
         </form>

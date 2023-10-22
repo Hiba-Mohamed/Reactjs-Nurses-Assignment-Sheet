@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Login() {
   return (
     <div
@@ -39,30 +41,30 @@ export function Login() {
               ></input>
             </div>
             <div className="">
-              <a
+              <Link
                 className="inline-flex justify-center rounded-lg border border-green font-semibold py-2.5 px-4 bg-nunito-900 text-green hover:bg-nunito-700 w-full bg-white mt-6 mb-2 lg:text-lg text-md sm:text-md"
-                href="/unitNav"
+                to="/unitNav"
               >
                 Login
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="inline-flex justify-center rounded-lg font-semibold py-2.5 px-4 bg-nunito-900 text-white hover:bg-nunito-700 w-full bg-green mt-6 mb-2 lg:text-lg text-md sm:text-md"
-                href="/unitNav"
+                to="/unitNav"
               >
                 Login as a guest
-              </a>
+              </Link>
             </div>
             <div className="flex items-center flex-col lg:text-lg text-md sm:text-md">
-              <a className="hover:text-green" href="#">
+              <Link className="hover:text-green" to="#">
                 Forgot password?
-              </a>
+              </Link>
               <div className="flex flex-col items-center mt-6">
                 <p className="lg:text-xl sm:text-l hover:text-green">
                   No account?
                 </p>
                 <button className="inline-flex justify-center rounded-lg border border-green font-semibold py-2.5 px-4 bg-nunito-900 text-green hover:bg-nunito-700 w-full bg-white mt-6 mb-2 lg:text-xl sm:text-l">
-                  <a href="/account">Create an Account</a>
+                  <Link to="/account">Create an Account</Link>
                 </button>
               </div>
             </div>
