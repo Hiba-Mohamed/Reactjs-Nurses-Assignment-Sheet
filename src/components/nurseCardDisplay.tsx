@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {useState} from "react"
 
 interface IPatientData {
   patientName: string;
@@ -9,9 +10,24 @@ interface IPatientData {
 export function NurseCardDisplay({ staffData }: { staffData: any }) {
   const { ShiftId } = useParams();
   const navigate = useNavigate();
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+  console.log("existing Data", existingData);
+
+  // Find the shift data object with the matching shiftId
+  const matchingData = existingData.find(
+    (data: any) => data.ShiftId === ShiftId
+  );
+
+  console.log("matching Data:", matchingData);
+
+  const [nurses , setNurses] = useState(staffData);
+
   console.log(staffData);
 
   const deleteNurse = (ShiftId: any, nurseId: string) => {
+
     // Retrieve shift data array from localStorage
     const existingDataJSON = localStorage.getItem("startShiftDataArray");
     const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
@@ -37,7 +53,12 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
     console.log("Updated Nurse List", updatedNurseList);
     //  update the local storage
     localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
-    window.location.reload();
+
+    setNurses(updatedNurseList);
+    staffData = updatedNurseList;
+    console.log(updatedNurseList);
+
+    
   };
 
   const editNurse = (ShiftId: any, nurseId: string) => {
@@ -49,9 +70,11 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
   };
   console.log(staffData);
   if (ShiftId && staffData.length !== 0) {
+    
     return (
+
       <div className="flex flex-row flex-wrap justify-evenly">
-        {staffData?.map((staffData: any, nurseIndex: number) => (
+        {nurses.map((staffData: any, nurseIndex: number) => (
           <div className="bg-white shadow-lg rounded-lg sm:px-8 sm:pt-6 sm:pb-8 my-4  max-w-sm mx-2 text-sm">
             <div key={nurseIndex} className="flex flex-col m-4">
               <div className="flex flex-col justify-center items-center text-center font-bold">
@@ -129,8 +152,8 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
           </div>
         ))}
       </div>
-    );
-  } else {
+    
+ ) } else {
     console.log("no nurses added to this shift yet");
   }
 }

@@ -84,6 +84,10 @@ export function NurseForm() {
       setErrorMessage(
         "Error: duplicate patient name and/or room is being assigned to the same nurse"
       );
+
+      
+
+      
   };
 
   const validatePatientsfieldsAgainstEachOther = (nurseData: IFormInput) => {
@@ -174,7 +178,9 @@ export function NurseForm() {
 
           <div>
             {" "}
-            <NurseCardDisplay staffData={staffData} />{" "}
+            <NurseCardDisplay
+              staffData={staffData}
+            />{" "}
           </div>
           <div className="flex flex-col items-center">
             {" "}
