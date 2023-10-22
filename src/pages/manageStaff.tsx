@@ -84,8 +84,7 @@ export function NurseForm() {
       setErrorMessage(
         "Error: duplicate patient name and/or room is being assigned to the same nurse"
       );
-
-      
+      window.location.reload();
 
       
   };
