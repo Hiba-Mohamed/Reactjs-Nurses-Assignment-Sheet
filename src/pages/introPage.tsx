@@ -1,4 +1,23 @@
 import NasLogo from "../../public/images/NAS-logo.png"
+import About1 from "../../public/images/about1.png";
+import About2 from "../../public/images/about2.png";
+import About3 from "../../public/images/about3.png";
+import BannerPic from "../../public/images/banner-pic.png";
+import CreateLogo from "../../public/images/create-logo.png";
+import FeaturePic from "../../public/images/feature-pic.png";
+import FeaturesPic from "../../public/images/features-pic.png";
+import Features1 from "../../public/images/features1.png";
+import Features2 from "../../public/images/features2.png";
+import Features3 from "../../public/images/features3.png";
+import Features4 from "../../public/images/features4.png";
+import Features5 from "../../public/images/features5.png";
+import Features6 from "../../public/images/features6.png";
+import HistoryLogo from "../../public/images/history-logo.png";
+import NursePic from "../../public/images/nurse-pic.png";
+import Searcherror from "../../public/images/searcherror.png";
+import ShiftHistoy from "../../public/images/shifthistory.png";
+import WhyPic from "../../public/images/why-pic.png";
+
 
 export function LandingPage() {
   return (
@@ -85,7 +104,11 @@ export function LandingPage() {
 
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src="/images/features5.png" alt="" className="rounded-3xl" />
+            <img
+              src="../../public/images/features1.png"
+              alt=""
+              className="rounded-3xl"
+            />
             <div>
               <div className="flex flex-row p-4 gap-2">
                 <img src={NasLogo} alt="" className="h-4 mt-2" />
