@@ -7,7 +7,7 @@ export function Heading() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
         <a href="/home" className="flex items-center">
           <img
-            src="/images/NAS-logo.png"
+            src="images/NAS-logo.png"
             className="sm:h-12 mr-3 h-6"
             alt="Nurses Assignment Sheet logo"
           />
