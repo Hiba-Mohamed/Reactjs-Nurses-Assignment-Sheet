@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Account() {
   return (
     <div
@@ -6,7 +8,7 @@ export function Account() {
     >
       <div className="flex flex-col items-center">
         <img
-          src="/images/NAS-logo.png"
+          src="images/NAS-logo.png"
           className="sm:h-24 h-20 mt-12 sm:mt-18"
           alt="Nurses Assignment Sheet logo"
         />
@@ -71,9 +73,9 @@ export function Account() {
               </button>
             </div>
             <div className="mt-6">
-              <a id="login-direct" className="hover:text-green" href="/login">
+              <Link id="login-direct" className="hover:text-green" to="/login">
                 Have an account? please login
-              </a>
+              </Link>
             </div>
           </div>
         </form>

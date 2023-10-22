@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function UnitNav() {
   return (
     <div className="font-nunito min-h-screen">
@@ -11,8 +13,8 @@ export default function UnitNav() {
       </div>
       <div className="flex flex-row flex-wrap justify-evenly sm:py-10 pb-10 gap-4">
         <div>
-          <a
-            href="/startSheet"
+          <Link
+            to="/startSheet"
             className="flex flex-col items-center justify-center"
           >
             <img
@@ -23,11 +25,11 @@ export default function UnitNav() {
             <p className="text-md sm:text-lg rounded-lg p-2 bg-white text-green font-bold mt-2">
               Create A New Shift
             </p>
-          </a>
+          </Link>
         </div>
         <div>
-          <a
-            href="/shiftHistory"
+          <Link
+            to="/shiftHistory"
             className="flex flex-col items-center justify-center"
           >
             <img
@@ -38,7 +40,7 @@ export default function UnitNav() {
             <p className="text-md sm:text-lg rounded-lg p-2 bg-white text-green font-bold mt-2">
               Past/Future shifts
             </p>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

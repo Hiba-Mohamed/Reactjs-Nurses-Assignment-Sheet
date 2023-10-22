@@ -76,7 +76,7 @@ export const SearchResults = () => {
           Search Result
         </h1>{" "}
         <div className="items-center flex w-full justify-evenly">
-          <img src="/images/shifthistory.png" alt="" />
+          <img src="images/shifthistory.png" alt="" />
         </div>
       </div>
     );

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import NurseInfoForm from "../components/nurseForm";
@@ -141,12 +141,12 @@ export function EditNursePage() {
             </div>
           )}
         </div>{" "}
-        <a
-          href={`/manageStaff/${ShiftId}`}
+        <Link
+          to={`/manageStaff/${ShiftId}`}
           className="bg-cyan-400 hover:bg-cyan-500 text-white font-bold py-2 px-4 mb-6 rounded focus:outline-none focus:shadow-outline"
         >
           Cancel
-        </a>
+        </Link>
       </div>
     );
   } else {
