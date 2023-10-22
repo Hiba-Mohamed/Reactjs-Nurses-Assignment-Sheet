@@ -59,7 +59,7 @@ export function LandingPage() {
         <p className="font-bold text-xl pt-12 pb-4">Step 1: Navigate</p>
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src={Features1} alt="" className="rounded-3xl" />
+            <img src="/images/features1.png" alt="" className="rounded-3xl" />
             <div>
               <div className="flex flex-row p-4 gap-2">
                 <img src={NasLogo} alt="" className="h-4 mt-2" />
@@ -79,7 +79,7 @@ export function LandingPage() {
 
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src={Features2} alt="" className="rounded-3xl" />
+            <img src="/images/features2.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
               <img src={NasLogo} alt="" className="h-4 mt-2" />
               <p>Fill in the three steps form to create a new shift.</p>
@@ -88,7 +88,7 @@ export function LandingPage() {
         </div>
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src={Features6} alt="" className="rounded-3xl" />
+            <img src="/images/features6.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
               <img src={NasLogo} alt="" className="h-4 mt-2" />
               <p>
@@ -105,7 +105,7 @@ export function LandingPage() {
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img
-              src={Features5}
+              src="/../../public/images/features1.png"
               alt=""
               className="rounded-3xl"
             />
@@ -129,7 +129,7 @@ export function LandingPage() {
         </div>
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src={Features4} alt="" className="rounded-3xl" />
+            <img src="/images/features4.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
               <img src={NasLogo} alt="" className="h-4 mt-2" />
               <p>
@@ -145,7 +145,7 @@ export function LandingPage() {
 
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src={Features1} alt="" className="rounded-3xl" />
+            <img src="/images/features1.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
               <img src={NasLogo} alt="" className="h-4 mt-2" />
               <p>
@@ -158,7 +158,7 @@ export function LandingPage() {
 
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
-            <img src={Features3} alt="" className="rounded-3xl" />
+            <img src="/images/features3.png" alt="" className="rounded-3xl" />
             <div>
               <div className="flex flex-row p-4 gap-2">
                 <img src={NasLogo} alt="" className="h-4 mt-2" />
