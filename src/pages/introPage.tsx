@@ -105,7 +105,7 @@ export function LandingPage() {
         <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img
-              src="/../../public/images/features1.png"
+              src="../../public/images/features1.png"
               alt=""
               className="rounded-3xl"
             />
