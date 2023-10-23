@@ -45,6 +45,8 @@ export function ViewNurseCard({ staffData }: { staffData: any }) {
               </table>
 
               <div>
+              {staffData.nurseData.assignedPatient.length !== 0 &&
+                  staffData.nurseData.assignedPatient.length !== undefined && (
                 <table className="mb-4">
                   <thead>
                     <tr className="border border-stone-700 bg-stone-400 text-white">
@@ -63,6 +65,7 @@ export function ViewNurseCard({ staffData }: { staffData: any }) {
                     )}
                   </tbody>
                 </table>
+                  )}
               </div>
             </div>
           </div>

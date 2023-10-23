@@ -72,7 +72,6 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
   if (ShiftId && staffData.length !== 0) {
     
     return (
-
       <div className="flex flex-row flex-wrap justify-evenly">
         {nurses.map((staffData: any, nurseIndex: number) => (
           <div className="bg-white shadow-lg rounded-lg sm:px-8 sm:pt-6 sm:pb-8 my-4  max-w-sm mx-2 text-sm">
@@ -106,35 +105,38 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
               </table>
 
               <div>
-                <table className="mb-4">
-                  <thead>
-                    <tr className="border border-stone-700 bg-stone-400 text-white">
-                      <th className="border border-stone-700 px-2 py-1">
-                        Room
-                      </th>
-                      <th className="border border-stone-700 px-2 py-1">
-                        Patient
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {staffData.nurseData.assignedPatient.map(
-                      (patient: IPatientData, patientIndex: number) => (
-                        <tr key={patientIndex}>
-                          <td className="border px-2 py-1">
-                            {patient.patientRoom}
-                          </td>
-                          <td className="border px-2 py-1">
-                            {patient.patientName}
-                          </td>
+                {staffData.nurseData.assignedPatient.length !== 0 &&
+                  staffData.nurseData.assignedPatient.length !== undefined && (
+                    <table className="mb-4">
+                      <thead>
+                        <tr className="border border-stone-700 bg-stone-400 text-white">
+                          <th className="border border-stone-700 px-2 py-1">
+                            Room
+                          </th>
+                          <th className="border border-stone-700 px-2 py-1">
+                            Patient
+                          </th>
                         </tr>
-                      )
-                    )}
-                  </tbody>
-                </table>
+                      </thead>
+                      <tbody>
+                        {staffData.nurseData.assignedPatient.map(
+                          (patient: IPatientData, patientIndex: number) => (
+                            <tr key={patientIndex}>
+                              <td className="border px-2 py-1">
+                                {patient.patientRoom}
+                              </td>
+                              <td className="border px-2 py-1">
+                                {patient.patientName}
+                              </td>
+                            </tr>
+                          )
+                        )}
+                      </tbody>
+                    </table>
+                  )}
               </div>
 
-              <div className="flex flex-row justify-evenly items-center">
+              <div className="flex flex-row justify-evenly items-center gap-1">
                 <button
                   className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   onClick={() => editNurse(ShiftId, staffData.nurseId)}
@@ -152,8 +154,7 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
           </div>
         ))}
       </div>
-    
- ) } else {
+    ); } else {
     console.log("no nurses added to this shift yet");
   }
 }
