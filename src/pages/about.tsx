@@ -10,7 +10,11 @@ export function AboutPage() {
       </div>
       <div className="font-nunito flex flex-col items-start mb-48">
         <div className="flex w-auto items-center flex-row">
-          <img className="h-40 sm:h-56" src="./images/about1.png" alt="" />
+          <img
+            className="h-40 sm:h-56"
+            src="images/about1.png"
+            alt="A picture of nurse and an elderly patient who is on her wheelchair looking into the garden"
+          />
           <h3 className="font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
             {" "}
             What is the NAS?
@@ -38,8 +42,8 @@ export function AboutPage() {
         <div className="flex w-auto items-center flex-row">
           <img
             className="h-40 sm:h-56"
-            src="./images/about2.png"
-            alt="A picture of question marks"
+            src="images/about2.png"
+            alt="A picture of nurse and an elderly patient who is on her wheelchair"
           />
           <h3 className="text-nunito-900 font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
             Why Use the NAS?
@@ -96,8 +100,8 @@ export function AboutPage() {
           <div className="flex w-auto items-center flex-row">
             <img
               className="h-40 sm:h-56"
-              src="./images/about3.png"
-              alt="A picture of a light bulb"
+              src="images/about3.png"
+              alt="A picture of nurse looking at paper documenation"
             />
             <h3 className="text-nunito-900 font-extrabold tracking-tight text-center lg:text-4xl md:text-3xl sm:text-3xl">
               The unique features of the NAS:
