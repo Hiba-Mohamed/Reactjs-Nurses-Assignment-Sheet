@@ -9,7 +9,7 @@ export function Heading() {
         <Link to="/home" className="flex items-center">
           <img
             src="images/NAS-logo.png"
-            className="sm:h-12 mr-3 h-6"
+            className="sm:h-12 mr-3 h-8"
             alt="Nurses Assignment Sheet logo"
           />
         </Link>
