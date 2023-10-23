@@ -85,13 +85,13 @@ const ShiftForm = () => {
   return (
     <div className="flex flex-col items-center">
       {errorMessage && (
-        <div className="bg-white sm:px-8 shadow-lg rounded-lg max-w-xsm  sm:max-w-xl text-xsm p-4 sm:text-sm text-center mx-4">
+        <div className="bg-white sm:px-8 shadow-lg rounded-lg max-w-sm  sm:max-w-xl text-xsm p-4 sm:text-sm text-center mx-4">
           <p className="text-peach ">{errorMessage}</p>
         </div>
       )}{" "}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white sm:px-8 px-auto shadow-lg rounded-lg pt-6 pb-8 max-w-sm m-4 sm:max-w-2xl text-sm px-2 px-4 sm:text-lg flex sm:flex-row flex-col gap-4"
+        className="bg-white sm:px-8 px-auto shadow-lg rounded-lg pt-6 pb-8 m-4 sm:max-w-2xl text-sm px-4 px-8 sm:text-lg flex sm:flex-row flex-col gap-4"
         id="unitData-form"
       >
         <div className="mb-6  flex flex-col justify-center">
