@@ -48,6 +48,7 @@ export function Heading() {
                 to="/home"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
                 aria-current="page"
+                onClick={() => setOpen(!open)}
               >
                 Home
               </Link>
@@ -56,6 +57,7 @@ export function Heading() {
               <Link
                 to="/account"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
+                onClick={() => setOpen(!open)}
               >
                 Create an Account
               </Link>
@@ -64,6 +66,7 @@ export function Heading() {
               <Link
                 to="/login"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
+                onClick={() => setOpen(!open)}
               >
                 Login
               </Link>
@@ -72,6 +75,7 @@ export function Heading() {
               <Link
                 to="/startSheet"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
+                onClick={() => setOpen(!open)}
               >
                 Create New Shift
               </Link>
@@ -80,6 +84,7 @@ export function Heading() {
               <Link
                 to="/shiftHistory"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
+                onClick={() => setOpen(!open)}
               >
                 Shift Record
               </Link>
@@ -88,6 +93,7 @@ export function Heading() {
               <Link
                 to="/about"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-green"
+                onClick={() => setOpen(!open)}
               >
                 About NAS
               </Link>
