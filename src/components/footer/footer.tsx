@@ -6,6 +6,9 @@ export function Footer() {
         <p className="block text-center">
           NAS Created using Vite, Node.js, and Canva
         </p>
+        <p className="block text-center">
+          Disclaimer: All pictures used are from Canva{" "}
+        </p>
         <span className="block text-center">© 2023 All Rights Reserved.</span>
       </div>
     </footer>

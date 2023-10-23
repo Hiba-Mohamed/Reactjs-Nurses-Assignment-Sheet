@@ -38,7 +38,7 @@ export function LandingPage() {
       </div>
       <div className="flex flex-col justify-evenly sm:text-xl p-2 items-center">
         <p className="font-bold text-xl pt-12 pb-4">Step 1: Navigate</p>
-        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
+        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img src="images/features1.png" alt="" className="rounded-3xl" />
             <div>
@@ -58,7 +58,7 @@ export function LandingPage() {
           Step 2: Create your shift
         </p>
 
-        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
+        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4  shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img src="images/features2.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
@@ -67,7 +67,7 @@ export function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
+        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img src="images/features6.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
@@ -83,7 +83,7 @@ export function LandingPage() {
           Step 3: Add staff and patients to the shift
         </p>
 
-        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
+        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img src="images/features5.png" alt="" className="rounded-3xl" />
             <div>
@@ -104,7 +104,7 @@ export function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
+        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img src="images/features4.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
@@ -120,7 +120,7 @@ export function LandingPage() {
           Step 4: Access the list of the shifts you created
         </p>
 
-        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
+        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img src="images/features1.png" alt="" className="rounded-3xl" />
             <div className="flex flex-row p-4 gap-2">
@@ -133,7 +133,7 @@ export function LandingPage() {
           </div>
         </div>
 
-        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 mx-4 shadow-lg p-4 text-start mb-16 max-w-xl">
+        <div className="flex flex-col rounded-3xl bg-white flex flex-row items-center gap-4 shadow-lg p-4 text-start mb-16 max-w-xl">
           <div className="flex flex-col items-center">
             <img src="images/features3.png" alt="" className="rounded-3xl" />
             <div>
