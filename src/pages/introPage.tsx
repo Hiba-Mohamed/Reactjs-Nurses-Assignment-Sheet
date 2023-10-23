@@ -8,17 +8,20 @@ export function LandingPage() {
           Welcome to the Electronic NAS (Nurses Assignment Sheet)
         </div>
         <div className="rounded-3xl bg-white flex flex-col items-center mx-4 shadow-lg p-4 text-start mt-20 mb-20 p-12">
-          My name is Hiba, a Get Coding Full-Stack Software Developer student.
-          Due to my experience in healthcare and my passion for healthcare
-          innovation and efficiency, I chose to recreate an Electronic Nurses
-          Assignment Sheet for the React.js module of the Get Coding training
-          program. I want to express my gratitude to Get Coding coach Mitchell
-          Hynes for the guidance and support throughout this project. The first
-          version was simplified using vanilla JavaScript that I completed in
-          the introduction module. I'd also like to extend my thanks to Get
-          Coding coach Clark Oake, who guided me through the introductory module
-          of the program, and UI/UX Get Coding coach Mat Kennedy for providing
-          invaluable UI/UX instructions.
+          <p>
+            My name is Hiba, a Get Coding Full-Stack Software Developer student.
+            Due to my experience in healthcare and my passion for healthcare
+            innovation and efficiency, I chose to recreate an Electronic Nurses
+            Assignment Sheet for the React.js module of the Get Coding training
+            program. I want to express my gratitude to Get Coding coach{" "}
+            <strong>Mitchell Hynes</strong>for the guidance and support
+            throughout this project. The first version was simplified using
+            vanilla JavaScript that I completed in the introduction module. I'd
+            also like to extend my thanks to Get Coding coach{" "}
+            <strong>Clark Oake</strong>, who guided me through the introductory
+            module of the program, and UI/UX Get Coding coach{" "}
+            <strong>Mat Kennedy</strong>for providing invaluable UI/UX instructions.
+          </p>
           <p className="py-4">
             To learn nore about the NAS, click below to go to the "About" page.
           </p>
