@@ -14,13 +14,13 @@ export function LandingPage() {
             innovation and efficiency, I chose to recreate an Electronic Nurses
             Assignment Sheet for the React.js module of the Get Coding training
             program. I want to express my gratitude to Get Coding coach{" "}
-            <strong>Mitchell Hynes</strong>for the guidance and support
+            <strong>Mitchell Hynes</strong> for the guidance and support
             throughout this project. The first version was simplified using
             vanilla JavaScript that I completed in the introduction module. I'd
             also like to extend my thanks to Get Coding coach{" "}
             <strong>Clark Oake</strong>, who guided me through the introductory
             module of the program, and UI/UX Get Coding coach{" "}
-            <strong>Mat Kennedy</strong>for providing invaluable UI/UX instructions.
+            <strong>Mat Kennedy</strong> for providing invaluable UI/UX instructions.
           </p>
           <p className="py-4">
             To learn nore about the NAS, click below to go to the "About" page.
