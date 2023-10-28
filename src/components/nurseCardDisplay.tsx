@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {useState} from "react"
+import { useState, useEffect } from "react";
 
 interface IPatientData {
   patientName: string;
@@ -19,29 +19,16 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
   const matchingData = existingData.find(
     (data: any) => data.ShiftId === ShiftId
   );
+  const [nurses, setNurses] = useState(staffData);
+
 
   console.log("matching Data:", matchingData);
 
-  const [nurses , setNurses] = useState(staffData);
-
   console.log(staffData);
 
-  const deleteNurse = (ShiftId: any, nurseId: string) => {
+  const deleteNurse = (nurseId: string) => {
 
-    // Retrieve shift data array from localStorage
-    const existingDataJSON = localStorage.getItem("startShiftDataArray");
-    const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-
-    console.log("existing Data", existingData);
-
-    // Find the shift data object with the matching shiftId
-    const matchingData = existingData.find(
-      (data: any) => data.ShiftId === ShiftId
-    );
-
-    console.log("matching Data:", matchingData);
-
-    const exsitingNurseArray = matchingData.staff;
+    const exsitingNurseArray = nurses;
     // get the index of the nurse card
 
     const updatedNurseList = exsitingNurseArray.filter((item: any) => {
@@ -49,17 +36,22 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
     });
 
     matchingData.staff = updatedNurseList;
+    
+   
+
 
     console.log("Updated Nurse List", updatedNurseList);
     //  update the local storage
     localStorage.setItem("startShiftDataArray", JSON.stringify(existingData));
 
-    setNurses(updatedNurseList);
-    staffData = updatedNurseList;
     console.log(updatedNurseList);
+    setNurses(updatedNurseList);
 
     
   };
+ useEffect(() => {
+   setNurses(staffData);
+ }, staffData);
 
   const editNurse = (ShiftId: any, nurseId: string) => {
     navigate(`/editNurse/${ShiftId}/${nurseId}`);
@@ -145,7 +137,7 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
                 </button>
                 <button
                   className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={() => deleteNurse(ShiftId, staffData.nurseId)}
+                  onClick={() => deleteNurse(staffData.nurseId)}
                 >
                   Delete
                 </button>
