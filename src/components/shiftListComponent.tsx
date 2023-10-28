@@ -1,7 +1,16 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
 import { useNavigate } from "react-router-dom";
 
 export const ShiftListComponent = () => {
   const navigate = useNavigate();
+  // Retrieve shift data array from localStorage
+  const existingDataJSON = localStorage.getItem("startShiftDataArray");
+  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
+
+  const [shifts, setShifts] = useLocalStorage(
+    "startShiftDataArray",
+    existingData
+  );
 
   function formatDate(dateString: string): string {
     const year = dateString.slice(0, 4);
@@ -33,10 +42,6 @@ export const ShiftListComponent = () => {
     return months[monthIndex];
   }
 
-  // Retrieve shift data array from localStorage
-  const existingDataJSON = localStorage.getItem("startShiftDataArray");
-  const existingData = existingDataJSON ? JSON.parse(existingDataJSON) : [];
-
   existingData.sort((a: any, b: any) => {
     const dateA = a.data.shiftDate;
     const dateB = b.data.shiftDate;
@@ -65,10 +70,10 @@ export const ShiftListComponent = () => {
       "startShiftDataArray",
       JSON.stringify(updatedShiftList)
     );
-    window.location.reload();
+    setShifts(updatedShiftList);
   }
 
-  if (existingData.length !== 0) {
+  if (shifts.length !== 0) {
     return (
       <div className="flex flex-col md:flex-col items-center max-w-sm sm:max-w-2xl">
         <div className="flex flex-col lg:flex-col text-sm ms:text-md md:flex-col items-center max-w- sm:max-w-2xl">
