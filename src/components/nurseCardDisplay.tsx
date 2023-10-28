@@ -46,7 +46,6 @@ export function NurseCardDisplay({ staffData }: { staffData: any }) {
 
     console.log(updatedNurseList);
     setNurses(updatedNurseList);
-
     
   };
  useEffect(() => {
