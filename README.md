@@ -8,6 +8,7 @@
           settings. It is used to communicate vital information to nurses and the
           healthcare team members throughout the shift.
         </p>
+          <p>Link to live page: https://hiba-mohamed.github.io/Reactjs-Nurses-Assignment-Sheet/</p>
       </li>
       <li>
         <h2>Motivation behind building it</h2>
